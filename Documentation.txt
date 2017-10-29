@@ -1,0 +1,67 @@
+Entities:
+Balloon: // walks on PATH
+	isDeadNow : bool
+	hp/life : int
+	reward : int
+	speed: int
+	render()
+	update()
+
+Player
+	lives : int
+	money : int
+	render()
+	update()
+
+Tower
+	rateOfFire : int
+	bullet : Bullet(rateOfFire,damage)
+	findNearestBullet()
+	price : int
+
+Bullet
+	speed : int
+	damage : int (sort of like lives, because it shouldnt die before it has inflicted 'damage' number of hits)
+
+
+Arena 
+	is a n*n 2d grid.
+	It keeps:
+		information about the route of the balloons
+		information about placement of towers
+		information about entry and exit points
+
+Gameloop
+	Generates levels as needed
+	Starts and stops a "round"
+	Kills the game in case of game over.
+
+Diagnostics:
+	Generate tower
+	Generate balloon
+	Generate bunch of $$$
+
+Gameplay panel
+	Display:
+		Lives
+		Money
+		Current level number
+		... 
+	
+
+
+Markmið:
+
+Vika1
+Render framework
+Skilgr model
+útfæra renderingu með placeholders (hringjum/kössum etc)
+
+
+Vika2
+balloon.update (hreyfing)
+geta staðsett turna á lögleg svæði
+Turnar skjóta
+
+Vika3
+Collision
