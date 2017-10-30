@@ -30,11 +30,21 @@ Arena
 		information about the route of the balloons
 		information about placement of towers
 		information about entry and exit points
+	x (pixels)
+	y (pixels)
+	canvas width, height
+	indexToPixels(x,y) -> cx,xy
+	pixelsToIndex(cx,cy) -> x,y
+	isOccupied(x,y)
+	arena.START = -1
+	arena.END = -2
+	Path = 2,3,4,5,6....
 
 Gameloop
 	Generates levels as needed
 	Starts and stops a "round"
 	Kills the game in case of game over.
+	Pressing next round generates harder level
 
 Diagnostics:
 	Generate tower
@@ -48,6 +58,8 @@ Gameplay panel
 		Current level number
 		... 
 	
+
+
 
 
 Markmið:
