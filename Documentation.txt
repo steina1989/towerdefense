@@ -50,18 +50,4 @@ Gameplay panel
 	
 
 
-Markmið:
 
-Vika1
-Render framework
-Skilgr model
-útfæra renderingu með placeholders (hringjum/kössum etc)
-
-
-Vika2
-balloon.update (hreyfing)
-geta staðsett turna á lögleg svæði
-Turnar skjóta
-
-Vika3
-Collision

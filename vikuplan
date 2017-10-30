@@ -1,0 +1,24 @@
+Goals:
+
+Week 1
+Render framework, plan project and labour divison.
+Define models: Arena, Balloon, Bullet, Tower.
+Design rendering with placeholders (circles/squares etc).
+
+
+Week 2
+Balloon.update (movement) - balloons follow correct path.
+Tower.update (shooting) - towers aim and shoot successfully
+(do not need to hit balloons yet).
+Towers placeable in legal areas.
+
+
+Week 3
+Collision: Bullets from towers hit balloons; balloons die
+and bullets die.
+When bullets hit balloons, score is increased.
+
+When balloons finish their path and roll off the canvas,
+"lives" is decremented.
+
+Finishing touches.
