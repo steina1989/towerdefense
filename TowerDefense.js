@@ -10,6 +10,21 @@ var g_ctx = g_canvas.getContext("2d");
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 */
 
+
+// ====================
+// CREATE INITIAL TOWER FOR TESTING
+// ====================
+
+function createInitialTower() {
+
+    entityManager.generateTower({ 
+    // ASDF á eftir að búa til aðferðina í entityManager.
+        cx : 200,
+        cy : 200
+    });
+    
+}
+
 // =================
 // UPDATE SIMULATION
 // =================
@@ -80,7 +95,7 @@ var g_images = {};
 function requestPreloads() {
 
     var requiredImages = {
-        tower   : "tower.png",
+        tower   : "images/tower.png",
         balloon  : "balloon.png",
     };
 

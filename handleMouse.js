@@ -16,7 +16,7 @@ var g_mouseX = 0,
 
 function handleMouse(evt) {
     
-    g_mouseX = evt.clientX - g_canvas.offsetLeft;
+    g_mouseX = evt.clientX - g_canvas.offsetLeft; // kalla g_canvas arena í staðinn?
     g_mouseY = evt.clientY - g_canvas.offsetTop;
     
     // If no button is being pressed, then bail
@@ -29,3 +29,4 @@ function handleMouse(evt) {
 // Handle "down" and "move" events the same way.
 window.addEventListener("mousedown", handleMouse);
 window.addEventListener("mousemove", handleMouse);
+window.addEventListener("mouseup", handleMouse);
