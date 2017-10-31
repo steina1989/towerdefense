@@ -91,7 +91,7 @@ var entityManager = {
     },
 
     init: function() {
-        this._generateRocks();
+        //this._generateRocks();
         //this._generateShip();
     },
 

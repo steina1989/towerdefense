@@ -10,7 +10,6 @@ Balloon: // walks on PATH
 Player
 	lives : int
 	money : int
-	render()
 	update()
 
 Tower
@@ -30,6 +29,8 @@ Arena
 		information about the route of the balloons
 		information about placement of towers
 		information about entry and exit points
+	Balloon entry point is 1
+	Balloon exit point is the highest integer.
 
 Gameloop
 	Generates levels as needed

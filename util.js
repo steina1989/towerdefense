@@ -8,6 +8,16 @@
 
 var util = {
 
+generateZeroArray: function(rows,columns) {
+var array = [];
+for (var x = 0; x<rows; x++){
+    array[x] = [];
+    for (var y = 0; y<columns; y++){
+        array[x][y] = 0; 
+    }
+}
+console.log(array);
+},
 
 // RANGES
 // ======
