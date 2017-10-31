@@ -24,6 +24,22 @@ Bullet
 	damage : int (sort of like lives, because it shouldnt die before it has inflicted 'damage' number of hits)
 
 
+Entity Manager
+	_balloons: [],
+    _bullets: [],
+    _towers: [], 
+    generateBalloon(descr)
+    generateTower(descr)
+    findNearestBalloon(posX, posY) - return nearest balloon entity and maybe index
+    _forEachOf: function(aCategory, fn)
+    deferredSetup: function()
+    fireBullet: function(cx, cy, velX, velY, rotation)
+    generateBalloon: function(descr)
+    generateTower: function(descr)
+    update: function(du)
+    render: function(ctx)
+
+
 Arena 
 	is a n*n 2d grid.
 	It keeps:
@@ -60,20 +76,10 @@ Gameplay panel
 	
 
 
+<<<<<<< HEAD
 
 
 Markmið:
+=======
+>>>>>>> 3be4141aa954bbb3d4e3a4a5c2ae9de63855f6b5
 
-Vika1
-Render framework
-Skilgr model
-útfæra renderingu með placeholders (hringjum/kössum etc)
-
-
-Vika2
-balloon.update (hreyfing)
-geta staðsett turna á lögleg svæði
-Turnar skjóta
-
-Vika3
-Collision

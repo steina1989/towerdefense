@@ -27,24 +27,35 @@ var entityManager = {
 
     // "PRIVATE" DATA
 
-    _rocks: [],
-    _bullets: [],
-    _ships: [],
+    //_rocks: [],
+    //_bullets: [],
+    //_ships: [],
 
-    _bShowRocks: true,
+    _balloons: [],
+    _bullets: [],
+    _towers: [], 
+
+    //_bShowRocks: true,
 
     // "PRIVATE" METHODS
 
-    _generateRocks: function() {
+    /*_generateRocks: function() {
         var i,
             NUM_ROCKS = 4;
 
         for (i = 0; i < NUM_ROCKS; ++i) {
             this.generateRock();
         }
+    },*/
+
+    
+
+
+    findNearestBalloon: function(posX, posY) {
+
     },
 
-    _findNearestShip: function(posX, posY) {
+    /*_findNearestShip: function(posX, posY) {
         var closestShip = null,
             closestIndex = -1,
             closestSq = 1000 * 1000;
@@ -68,7 +79,7 @@ var entityManager = {
             theShip: closestShip,
             theIndex: closestIndex
         };
-    },
+    },*/
 
     _forEachOf: function(aCategory, fn) {
         for (var i = 0; i < aCategory.length; ++i) {
@@ -87,13 +98,13 @@ var entityManager = {
     // i.e. thing which need `this` to be defined.
     //
     deferredSetup: function() {
-        this._categories = [this._rocks, this._bullets, this._ships];
+        this._categories = [this._balloons, this._bullets, this._towers];
     },
 
-    init: function() {
+    /*init: function() {
         this._generateRocks();
-        //this._generateShip();
-    },
+        this._generateShip();
+    },*/
 
     fireBullet: function(cx, cy, velX, velY, rotation) {
         this._bullets.push(new Bullet({
@@ -106,22 +117,30 @@ var entityManager = {
         }));
     },
 
-    generateRock: function(descr) {
+    /*generateRock: function(descr) {
         this._rocks.push(new Rock(descr));
+    },*/
+
+    generateBalloon: function(descr) {
+        this._balloons.push(new Balloon(descr));
     },
 
-    generateShip: function(descr) {
+    generateTower: function(descr) {
+        this._towers.push(new Tower(descr));
+    },
+
+    /*generateShip: function(descr) {
         this._ships.push(new Ship(descr));
-    },
+    },*/
 
-    killNearestShip: function(xPos, yPos) {
+    /*killNearestShip: function(xPos, yPos) {
         var theShip = this._findNearestShip(xPos, yPos).theShip;
         if (theShip) {
             theShip.kill();
         }
-    },
+    },*/
 
-    yoinkNearestShip: function(xPos, yPos) {
+    /*yoinkNearestShip: function(xPos, yPos) {
         var theShip = this._findNearestShip(xPos, yPos).theShip;
         if (theShip) {
             theShip.setPos(xPos, yPos);
@@ -138,7 +157,7 @@ var entityManager = {
 
     toggleRocks: function() {
         this._bShowRocks = !this._bShowRocks;
-    },
+    },*/
 
     update: function(du) {
 
@@ -161,7 +180,7 @@ var entityManager = {
             }
         }
 
-        if (this._rocks.length === 0) this._generateRocks();
+        //if (this._rocks.length === 0) this._generateRocks();
 
     },
 
@@ -174,9 +193,9 @@ var entityManager = {
 
             var aCategory = this._categories[c];
 
-            if (!this._bShowRocks &&
+            /*if (!this._bShowRocks &&
                 aCategory == this._rocks)
-                continue;
+                continue;*/
 
             for (var i = 0; i < aCategory.length; ++i) {
 
