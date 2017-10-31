@@ -7,6 +7,10 @@ Balloon: // walks on PATH
 	render()
 	update()
 
+Bullet: //
+	velX : int
+	velY : int
+
 Player
 	lives : int
 	money : int
@@ -15,14 +19,25 @@ Player
 
 Tower
 	rateOfFire : int
-	bullet : Bullet(rateOfFire,damage)
-	findNearestBullet()
+	(bullet : Bullet(rateOfFire,damage,direction,speed))
+	  // Rather let Tower generate bullet?
 	price : int
+	range : int
+	bulletDamage : int
+	bulletSpeed : int
+	image : ?
+	bulletDirection()
+	inRange()
+	generateBullet()
+	update()
+	render()
+	findNearestBalloon()
 
 Bullet
 	speed : int
-	damage : int (sort of like lives, because it shouldnt die before it has inflicted 'damage' number of hits)
-
+	damage : int (sort of like lives, because it shouldn't die before it has inflicted 'damage' number of hits)
+	direction : number
+	balloon : Balloon // verður að taka inn blöðru til að geta elt hana
 
 Arena 
 	is a n*n 2d grid.
@@ -48,6 +63,3 @@ Gameplay panel
 		Current level number
 		... 
 	
-
-
-
