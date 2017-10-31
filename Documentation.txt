@@ -19,8 +19,6 @@ Player
 
 Tower
 	rateOfFire : int
-	(bullet : Bullet(rateOfFire,damage,direction,speed))
-	  // Rather let Tower generate bullet?
 	price : int
 	range : int
 	bulletDamage : int
@@ -29,15 +27,14 @@ Tower
 	bulletDirection()
 	inRange()
 	generateBullet()
+	findNearestBalloon()
 	update()
 	render()
-	findNearestBalloon()
 
 Bullet
 	speed : int
 	damage : int (sort of like lives, because it shouldn't die before it has inflicted 'damage' number of hits)
 	direction : number
-	balloon : Balloon // verður að taka inn blöðru til að geta elt hana
 
 Arena 
 	is a n*n 2d grid.

@@ -13,17 +13,20 @@
 
 
 // A generic contructor which accepts an arbitrary descriptor object
+// Needs to know and take in "type"
 function Tower(descr) {
 	this.setup(descr);
-};
+}
 
 Tower.prototype = new Entity();
 
-Tower.prototype.bulletDirection = function(balloon) {
+// turninn gerir generate bullet í þá átt sem hann snýr
+// 
+Tower.prototype.rotation = function(balloon) {
 	// Position of balloon
 	var posB = {
 		x: balloon.cx,
-		y: balyloon.cy
+		y: balloon.cy
 	};
 
 	// Position of tower
@@ -34,7 +37,7 @@ Tower.prototype.bulletDirection = function(balloon) {
 
 	// Return the angle between these 2 entities in Radians
 	return Math.atan2(posT.y - posB.y, posT.x - posB.x);
-}
+};
 
 Tower.prototype.inRange = function(balloon){
 	var dist = utils.distSq(balloon.cx, balloon.cy,
@@ -43,7 +46,7 @@ Tower.prototype.inRange = function(balloon){
 		return true;
 	}
 	return false;
-}
+};
 
 Tower.prototype.update = function (du) {    
 
@@ -54,21 +57,27 @@ Tower.prototype.update = function (du) {
     if(inRange(nearestBln)) {
     	var damage = this.bulletDamage;
     	var speed = this.bulletSpeed;
-    	var direction = this.bulletDirection;
-		generateBullet(speed, damage, direction);
-		// hraði blaðranna er hunsanlegur
+    	var rotation = this.rotation(findNearestBalloon());
+		generateBullet(speed, damage, rotation);
 	}
-}
+};
 
-Tower.prototype.generateBullet(damage, speed, direction, balloon) {
-	
-	// Initiates bullet with correct direction
-    var dirn = this.bulletDirection(balloon); 
-    bullet.velX = speed * Math.cos(dirn);
-    bullet.velY = speed * Math.sin(dirn);
+Tower.prototype.generateBullet = function(speed, damage, rotation) {
+
+    var velX = speed * Math.cos(rotation);
+    var velY = speed * Math.sin(rotation);
     // í Bullet.update verður að uppfæra posX og posY
     // með því að nota velX og velY.
-}
+
+    this._bullets.push(new Bullet({
+            cx: this.cx,
+            cy: this.cy,
+            velX: velX,
+            velY: velY,
+
+            rotation: this.rotation
+        }));
+};
 
 Tower.prototype.render = function (ctx) {
     this.sprite.drawCentredAt(
@@ -76,7 +85,7 @@ Tower.prototype.render = function (ctx) {
     );
 };
 
-Tower.prototype.findNearestBalloon() {
+Tower.prototype.findNearestBalloon = function (){
 	// Leitar gegn um allar blöðrurnar (fylki)
 	// Skilar blöðru hlut í minnstri fjarlægð
 	var shortestDist = Number.MAX_VALUE;
@@ -89,4 +98,4 @@ Tower.prototype.findNearestBalloon() {
 			nearestBalloon = balloons[i];
 		}
 	return closestBalloon;
-}
+};
