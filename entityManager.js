@@ -147,6 +147,16 @@ var entityManager = {
         }
     },
 
+    placeTower: function(xPos, yPos) {
+    	// ASDF þarf að breyta, er á byrjunarstigi
+    	var tower = this.generateTower({ // ASDF á eftir að búa til aðferðina hér.
+        	cx : xPos,
+        	cy : yPos
+    	});
+
+    	tower.setPos(xPos, yPos);
+    }
+
     resetShips: function() {
         this._forEachOf(this._ships, Ship.prototype.reset);
     },
