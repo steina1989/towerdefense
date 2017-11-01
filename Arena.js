@@ -18,8 +18,8 @@ var Arena = function()
 	this.ORIGINX = 0;
 	this.ORIGINY = 0;
 
-	this.width = 500;
-	this.height = 500;
+	this.WIDTH = 500;
+	this.HEIGHT = 500;
 
 	this.numRows = 10;
 	this.numColumns = 10;
@@ -33,17 +33,6 @@ var Arena = function()
 	var a = this.START;
 	var b = this.STOP;
 
-
-		this.numColumns = 12; 
-	this.numRows = 5; 
-	this.brickCount = this.numColumns*this.numRows;
-	this.initialValue = 1;
-	this.array = makeArray(this.numRows,this.numColumns,this.initialValue);
-	this.colors = generateColors(this.numRows,this.numColumns,this.initialValue);
-	this.WALL_Y_BASE = 70;
-	this.WALL_X_BASE = 40;
-	this.BRICK_WIDTH = 60;
-	this.BRICK_HEIGHT = 20;
   
   
 function posToIndex(x,y){
@@ -54,7 +43,6 @@ function posToIndex(x,y){
 		row : row
 	}
 }
-
 
 	this.grid = 
 	[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -76,7 +64,7 @@ function posToIndex(x,y){
 	  in order to reach the next cell in its path.
 	 **/
 	function nextCellInPath(cx,cy){
-		var index = posToIndex(cx,cy);
+	var index = posToIndex(cx,cy);
     var cellNumber = this.array[index.row][index.column]
     // find index of the next
 	}

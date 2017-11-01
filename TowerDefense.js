@@ -49,7 +49,9 @@ function updateSimulation(du) {
 
 var g_allowMixedActions = true;
 var g_renderSpatialDebug = false;
+var g_renderArena = false;
 
+var KEY_RENDERARENA = keyCode('J')
 var KEY_SPATIAL = keyCode('X');
 var KEY_RESET = keyCode('R');
 var KEY_GEN_BALLOON = keyCode('0');
@@ -58,6 +60,9 @@ function processDiagnostics() {
 
     // Key toggles for diagnostics
     if (eatKey(KEY_SPATIAL)) g_renderSpatialDebug = !g_renderSpatialDebug;
+
+    if (eatKey(KEY_RENDERARENA)) g_renderArena = !g_renderArena;
+    
 
     // Special diagnostic functions (halt balloons, reset )
     // Ex: if (eatKey(KEY_K)) entityManager.killNearestShip(g_mouseX, g_mouseY);
@@ -83,6 +88,7 @@ function renderSimulation(ctx) {
     entityManager.render(ctx);
 
     if (g_renderSpatialDebug) spatialManager.render(ctx);
+    if (g_renderArena) Arena.render(ctx);
 }
 
 
