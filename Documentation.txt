@@ -35,6 +35,22 @@ Bullet
 	damage : int (sort of like lives, because it shouldn't die before it has inflicted 'damage' number of hits)
 	direction : number
 
+Entity Manager
+	_balloons: [],
+    _bullets: [],
+    _towers: [], 
+    KILL_ME_NOW : -1
+    generateBalloon(descr)
+    generateTower(descr)
+    _forEachOf: function(aCategory, fn)
+    deferredSetup: function()
+    fireBullet: function(cx, cy, velX, velY, rotation)
+    generateBalloon: function(descr)
+    generateTower: function(descr)
+    update: function(du)
+    render: function(ctx)
+
+
 Arena 
 	is a n*n 2d grid.
 	It keeps:
@@ -43,11 +59,21 @@ Arena
 		information about entry and exit points
 	Balloon entry point is 1
 	Balloon exit point is the highest integer.
+	x (pixels)
+	y (pixels)
+	canvas width, height
+	indexToPixels(x,y) -> cx,xy
+	pixelsToIndex(cx,cy) -> x,y
+	isOccupied(x,y)
+	arena.START = -1
+	arena.END = -2
+	Path = 2,3,4,5,6....
 
 Gameloop
 	Generates levels as needed
 	Starts and stops a "round"
 	Kills the game in case of game over.
+	Pressing next round generates harder level
 
 Diagnostics:
 	Generate tower
@@ -60,4 +86,4 @@ Gameplay panel
 		Money
 		Current level number
 		... 
-	
+
