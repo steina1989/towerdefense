@@ -12,16 +12,40 @@
 */
 
 
+// A generic contructor which accepts an arbitrary descriptor object
 function Bullet(descr) {
 
     // Common inherited setup logic from Entity
     this.setup(descr);
+
+    // Make a noise when I am created (i.e. fired)
+    this.fireSound.play();
+    
+/*
+    // Diagnostics to check inheritance stuff
+    this._bulletProperty = true;
+    console.dir(this);
+*/
+
+}
+
+Bullet.prototype = new Entity();
+
+// HACKED-IN AUDIO (no preloading)
+Bullet.prototype.fireSound = new Audio(
+    "sounds/bulletFire.ogg");
+Bullet.prototype.zappedSound = new Audio(
+    "sounds/bulletZapped.ogg");
+    
+// Initial, inheritable, default values
+=======
 }
 
 
 Bullet.prototype = new Entity();
 
 
+>>>>>>> 00b65fec14ec868029c839abff4360b5846700aa
 Bullet.prototype.rotation = 0;
 Bullet.prototype.cx = 200;
 Bullet.prototype.cy = 200;
@@ -49,6 +73,15 @@ Bullet.prototype.update = function (du) {
 
     this.rotation += 1 * du;
 
+    var hitEntity = this.findHitEntity();
+    if (hitEntity) {
+        var canTakeHit = hitEntity.takeBulletHit;
+        // If there exists such a function then call takeBulletHit(hitEntity)
+        if (canTakeHit) canTakeHit.call(hitEntity); 
+        return entityManager.KILL_ME_NOW;
+    }
+    
+
     
     // Handle collisions
     //
@@ -65,6 +98,7 @@ Bullet.prototype.update = function (du) {
 };
 
 Bullet.prototype.getRadius = function () {
+
     return 2;
 };
 
@@ -75,7 +109,6 @@ Bullet.prototype.takeBulletHit = function () {
 
 Bullet.prototype.render = function (ctx) {
 
-
     g_sprites.bullet.drawCentredAt(
         ctx, this.cx, this.cy, this.rotation
     );
@@ -83,3 +116,4 @@ Bullet.prototype.render = function (ctx) {
     g_sprites.bullet.drawCentredAt(50,50,0);
 
 };
+

@@ -14,7 +14,6 @@ Bullet: //
 Player
 	lives : int
 	money : int
-	render()
 	update()
 
 Tower
@@ -58,6 +57,8 @@ Arena
 		information about the route of the balloons
 		information about placement of towers
 		information about entry and exit points
+	Balloon entry point is 1
+	Balloon exit point is the highest integer.
 	x (pixels)
 	y (pixels)
 	canvas width, height
@@ -85,16 +86,4 @@ Gameplay panel
 		Money
 		Current level number
 		... 
-	
-<<<<<<< HEAD
 
-
-<<<<<<< HEAD
-
-
-Markmið:
-=======
->>>>>>> 3be4141aa954bbb3d4e3a4a5c2ae9de63855f6b5
-
-=======
->>>>>>> d44fb1d4fb90840c623749d7b5427c48247b8edc
