@@ -84,7 +84,7 @@ Bullet.prototype.update = function (du) {
 
 Bullet.prototype.getRadius = function () {
 
-    return 2;
+    return g_images.bullet.width/2;
 };
 
 Bullet.prototype.takeBulletHit = function () {
