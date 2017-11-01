@@ -2,9 +2,6 @@
 
 /* jshint browser: true, devel: true, globalstrict: true */
 
-var g_canvas = document.getElementById("myCanvas");
-var g_ctx = g_canvas.getContext("2d");
-
 /*
 0        1         2         3         4         5         6         7         8
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
@@ -82,6 +79,8 @@ function renderSimulation(ctx) {
 
     entityManager.render(ctx);
 
+    entityManager.fireBullet(300,300,5,5,0);
+
     if (g_renderSpatialDebug) spatialManager.render(ctx);
 }
 
@@ -96,7 +95,8 @@ function requestPreloads() {
 
     var requiredImages = {
         tower   : "images/tower.png",
-        balloon  : "balloon.png",
+        balloon  : "images/balloon.png",
+        bullet  : "images/bullet.png"
     };
 
     imagesPreload(requiredImages, g_images, preloadDone);
@@ -107,7 +107,8 @@ var g_sprites = {};
 function preloadDone() {
 
     g_sprites.tower  = new Sprite(g_images.tower);
-    g_sprites.ship2 = new Sprite(g_images.balloon);
+    g_sprites.balloon = new Sprite(g_images.balloon);
+    g_sprites.bullet = new Sprite(g_images.bullet);
     entityManager.init();
 
     main.init();
