@@ -75,9 +75,13 @@ Bullet.prototype.render = function (ctx) {
 
     var fadeThresh = Bullet.prototype.lifeSpan / 3;
 
+    //ASDF ekki fade - deyja þegar þau fara útaf arena
     if (this.lifeSpan < fadeThresh) {
         ctx.globalAlpha = this.lifeSpan / fadeThresh;
     }
+
+    // Arena.ORIGINX + Arena.WIDTH
+    // Arena.ORIGINY + Arena.HEIGHT
 
     g_sprites.bullet.drawCentredAt(
         ctx, this.cx, this.cy, this.rotation
