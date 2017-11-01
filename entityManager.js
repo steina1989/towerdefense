@@ -100,7 +100,7 @@ var entityManager = {
     	});
 
     	tower.setPos(xPos, yPos);
-    }
+    },
 
     /*resetShips: function() {
         this._forEachOf(this._ships, Ship.prototype.reset);
