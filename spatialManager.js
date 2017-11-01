@@ -24,11 +24,6 @@ var spatialManager = {
 
     _entities: [],
 
-    // "PRIVATE" METHODS
-    //
-    // <none yet>
-
-
     // PUBLIC METHODS
 
     getNewSpatialID: function() {
@@ -53,11 +48,7 @@ var spatialManager = {
 
     unregister: function(entity) {
         var spatialID = entity.getSpatialID();
-
-        // TODO: YOUR STUFF HERE!
         this._entities[spatialID] = null;
-
-
     },
 
     findEntityInRange: function(posX, posY, radius) {
@@ -69,11 +60,8 @@ var spatialManager = {
                 if (dsquared < limitSq) {
                     return e.entity;
                 }
-
             }
-
         }
-
     },
 
     render: function(ctx) {
