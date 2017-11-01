@@ -1,5 +1,5 @@
 // ====
-// Arrena stuff.
+// Arena stuff.
 // ====
 
 "use strict";

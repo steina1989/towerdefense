@@ -1,5 +1,5 @@
 // ==========
-// SHIP STUFF
+// TOWER STUFF
 // ==========
 
 "use strict";
@@ -20,8 +20,8 @@ function Tower(descr) {
 
 Tower.prototype = new Entity();
 
-// turninn gerir generate bullet í þá átt sem hann snýr
-// 
+// The tower generates bullet (fires) in the direction
+// it is facing.
 Tower.prototype.rotation = function(balloon) {
 	// Position of balloon
 	var posB = {
