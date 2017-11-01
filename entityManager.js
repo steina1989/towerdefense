@@ -27,59 +27,11 @@ var entityManager = {
 
     // "PRIVATE" DATA
 
-    //_rocks: [],
-    //_bullets: [],
-    //_ships: [],
-
     _balloons: [],
     _bullets: [],
     _towers: [], 
 
-    //_bShowRocks: true,
-
-    // "PRIVATE" METHODS
-
-    /*_generateRocks: function() {
-        var i,
-            NUM_ROCKS = 4;
-
-        for (i = 0; i < NUM_ROCKS; ++i) {
-            this.generateRock();
-        }
-    },*/
-
     
-
-
-    findNearestBalloon: function(posX, posY) {
-
-    },
-
-    /*_findNearestShip: function(posX, posY) {
-        var closestShip = null,
-            closestIndex = -1,
-            closestSq = 1000 * 1000;
-
-        for (var i = 0; i < this._ships.length; ++i) {
-
-            var thisShip = this._ships[i];
-            var shipPos = thisShip.getPos();
-            var distSq = util.wrappedDistSq(
-                shipPos.posX, shipPos.posY,
-                posX, posY,
-                g_canvas.width, g_canvas.height);
-
-            if (distSq < closestSq) {
-                closestShip = thisShip;
-                closestIndex = i;
-                closestSq = distSq;
-            }
-        }
-        return {
-            theShip: closestShip,
-            theIndex: closestIndex
-        };
-    },*/
 
     _forEachOf: function(aCategory, fn) {
         for (var i = 0; i < aCategory.length; ++i) {
@@ -101,10 +53,10 @@ var entityManager = {
         this._categories = [this._balloons, this._bullets, this._towers];
     },
 
-    /*init: function() {
-        this._generateRocks();
-        this._generateShip();
-    },*/
+    init: function() {
+        //this._generateRocks();
+        //this._generateShip();
+    },
 
     fireBullet: function(cx, cy, velX, velY, rotation) {
         this._bullets.push(new Bullet({
@@ -117,10 +69,6 @@ var entityManager = {
         }));
     },
 
-    /*generateRock: function(descr) {
-        this._rocks.push(new Rock(descr));
-    },*/
-
     generateBalloon: function(descr) {
         this._balloons.push(new Balloon(descr));
     },
@@ -129,9 +77,6 @@ var entityManager = {
         this._towers.push(new Tower(descr));
     },
 
-    /*generateShip: function(descr) {
-        this._ships.push(new Ship(descr));
-    },*/
 
     /*killNearestShip: function(xPos, yPos) {
         var theShip = this._findNearestShip(xPos, yPos).theShip;
@@ -145,7 +90,7 @@ var entityManager = {
         if (theShip) {
             theShip.setPos(xPos, yPos);
         }
-    },
+    },*/
 
     placeTower: function(xPos, yPos) {
     	// ASDF þarf að breyta, er á byrjunarstigi
@@ -157,7 +102,7 @@ var entityManager = {
     	tower.setPos(xPos, yPos);
     }
 
-    resetShips: function() {
+    /*resetShips: function() {
         this._forEachOf(this._ships, Ship.prototype.reset);
     },
 

@@ -40,9 +40,9 @@ Entity Manager
 	_balloons: [],
     _bullets: [],
     _towers: [], 
+    KILL_ME_NOW : -1
     generateBalloon(descr)
     generateTower(descr)
-    findNearestBalloon(posX, posY) - return nearest balloon entity and maybe index
     _forEachOf: function(aCategory, fn)
     deferredSetup: function()
     fireBullet: function(cx, cy, velX, velY, rotation)
