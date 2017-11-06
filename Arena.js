@@ -11,64 +11,147 @@
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 */
 
-var Arena = function()
-{
+var DIR_ENUM = {
+	LEFT: 1,
+	RIGHT: 2,
+	UP: 3,
+	DOWN: 4
+}
+
+
+var Arena = {
 
 	// Upper left coordinates
-	this.ORIGINX = 0;
-	this.ORIGINY = 0;
+	ORIGINX : 0,
+	ORIGINY : 0,
 
-	this.WIDTH = 500;
-	this.HEIGHT = 500;
+	WIDTH : 500,
+	HEIGHT : 500,
 
-	this.numRows = 10;
-	this.numColumns = 10;
+	numRows : 10,
+	numColumns : 10,
 
-	this.cellWidth = this.width/this.numColumns;
-	this.cellHeight = this.height/this.numRows
+	cellWidth : 50,
+	cellHeight : 50,
 
-	this.START = 1;
-	this.STOP = 14;
+	grid :
+	[[ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+	 [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+	 [ 1,  2,  3,  4,  5,  6,  7,  8,  0,  0],
+	 [ 0,  0,  0,  0,  0,  0,  0,  9,  0,  0],
+	 [ 0,  0,  0, 14, 13, 12, 11, 10,  0,  0],
+	 [ 0,  0,  0, 15,  0,  0,  0,  0,  0,  0],
+	 [ 0,  0,  0, 16,  0,  0,  0,  0,  0,  0],
+	 [ 0,  0,  0, 17, 18, 19, 20,  0,  0,  0],
+	 [ 0,  0,  0,  0,  0,  0, 21,  0,  0,  0],
+	 [ 0,  0,  0,  0,  0,  0, 22,  0,  0,  0]]
+};
 
-	var a = this.START;
-	var b = this.STOP;
 
-  
-  
-function posToIndex(x,y){
+
+
+/**
+cx and cy is the current position of a balloon
+the function will return a two-tuple object containing
+the direction that the balloon should be travelling  in, 
+in order to reach the next cell in its path.
+**/
+Arena.getDirection = function(cx,cy){
+	var indexCurrent = this.posToIndex(cx,cy);
+    var cellNumber = this.grid[indexCurrent.row][indexCurrent.column]
+    var indexNext = this.getIndexOfCellNumber(cellNumber+1);
+    console.log(indexCurrent)
+
+    if (indexNext.row > indexCurrent.row) return DIR_ENUM.DOWN;
+    if (indexNext.row < indexCurrent.row) return DIR_ENUM.UP;
+    if (indexNext.column > indexCurrent.column) return DIR_ENUM.RIGHT;
+    if (indexNext.column < indexCurrent.column) return DIR_ENUM.LEFT;
+}
+
+Arena.testGetDirection = function(cx,cy){
+	var output = this.getDirection(cx,cy)
+	if (output === DIR_ENUM.RIGHT) console.log("Right");
+	else if (output === DIR_ENUM.LEFT) console.log("Left");
+	else if (output === DIR_ENUM.UP) console.log("Up");
+	else if (output === DIR_ENUM.DOWN) console.log("Down");
+}
+
+Arena.getIndexOfCellNumber = function(cellNumber){
+	for (var row = 0; row<this.grid.length; row++)
+		for (var column = 0; column<this.grid[0].length; column++){
+			if (cellNumber === this.grid[row][column]){
+				return {row:row, column:column};
+			}
+		}
+}
+
+Arena.posToIndex = function(x,y){
 	var column = Math.floor((x - this.ORIGINX) / this.cellWidth);
 	var row = Math.floor((y - this.ORIGINY) / this.cellHeight);
 	return {
-		column : column,
-		row : row
+		row : row,
+		column : column
+
 	}
 }
 
-	this.grid = 
-	[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	 [a, 2, 3, 0, 0, 0, 0, 0, 0, 0],
-	 [0, 0, 4, 0, 0, 0, 0, 0, 0, 0],
-	 [0, 0, 5, 6, 7, 8, 0, 0, 0, 0],
-	 [0, 0, 0, 0, 0, 9, 0, 0, 0, 0],
-	 [0, 0, 0, 0, 0, 10, 0, 0, 0, 0],
-	 [0, 0, 0, 0, 0, 11, 0, 0, 0, 0],
-	 [0, 0, 0, 0, 0, 12, 0, 0, 0, 0],
-	 [0, 0, 0, 0, 0, 13, 0, 0, 0, 0],
-	 [0, 0, 0, 0, 0, b, 0, 0, 0, 0]];	
-
-
-	 /**
-	  cx and cy is the current position of a balloon
-	  the function will return a two-tuple object containing
-	  the direction that the balloon should be travelling  in, 
-	  in order to reach the next cell in its path.
-	 **/
-	function nextCellInPath(cx,cy){
-	var index = posToIndex(cx,cy);
-    var cellNumber = this.array[index.row][index.column]
-    // find index of the next
+Arena.indexToPos = function(row,column){
+	var pix =  this.ORIGINX + this.cellWidth * column;
+	var piy =  this.ORIGINY + this.cellHeight * row;
+	return {
+		x : pix,
+		y : piy
 	}
+}
+
+
+Arena.update = function(){
 
 
 }
+
+// To do: Draw pretty background
+Arena.render = function(ctx) {
+	this.drawBackground(ctx);
+}
+
+// Placeholder backdrop
+Arena.drawBackground = function(ctx){
+	ctx.beginPath();
+	ctx.save;
+	ctx.strokeStyle="black";
+	ctx.fillStyle="white";
+	ctx.rect(this.ORIGINX,this.ORIGINY,this.WIDTH,this.HEIGHT);
+	ctx.fill()
+	ctx.stroke();
+	ctx.restore;
+}
+
+
+// Visualises the grid.
+Arena.renderDiagnostics = function(ctx){
+	for (var x = 0; x < this.numRows; x++)
+	{
+		for (var y = 0; y < this.numColumns; y++)
+		{
+			if (this.grid[x][y] > 0){
+				var pos = this.indexToPos(x,y)
+				var posX = 	pos.x;
+				var posY = pos.y;
+				this._drawArrayPath(ctx,posX,posY); 
+			}
+
+		}
+	}	
+}
+
+Arena._drawArrayPath = function(ctx,x,y){
+	ctx.beginPath();
+	ctx.save;
+	ctx.strokeStyle="black";
+	ctx.rect(x,y,this.cellWidth,this.cellHeight);
+	ctx.stroke();
+	ctx.restore;
+}
+
 
