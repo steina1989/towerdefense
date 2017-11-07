@@ -19,6 +19,56 @@ function Tower(descr) {
 }
 
 /*
+The three different types of towers available.
+rateOfFire and bulletSpeed are measured in "per second".
+range is measured in pixels
+*/
+var towerType;
+
+
+Tower.init = function() {
+	towerType = {
+		BRAIN : 1,
+		SPYRO : 2,
+		UNICORN : 3,
+		properties: {
+			1: {name: "brain", rateOfFire: 1, price: 5, range: 100, bulletDamage: 1, bulletSpeed: 90, sprite: g_sprites.twrHeili},
+			2: {name: "spyro", rateOfFire: 3, price: 15, range: 170, bulletDamage: 2, bulletSpeed: 120, sprite: g_sprites.twrSpyro},
+			3: {name: "unicorn", rateOfFire: 6, price: 25, range: 250, bulletDamage: 3, bulletSpeed: 180, sprite: g_sprites.twrUnicorn},
+		}
+	};
+};
+
+
+
+// Debug fall, eyða út
+Tower.generateTower = function() {
+	//
+	return new Tower(towerType.properties[towerType.BRAIN]);
+
+};
+
+/*
+var SizeEnum = {
+  SMALL: 1,
+  MEDIUM: 2,
+  LARGE: 3,
+  properties: {
+    1: {name: "small", value: 1, code: "S"},
+    2: {name: "medium", value: 2, code: "M"},
+    3: {name: "large", value: 3, code: "L"}
+  }
+};
+
+Then use it like so:
+
+var mySize = SizeEnum.MEDIUM;
+var myCode = SizeEnum.properties[mySize].code; // myCode == "M"
+
+*/
+
+
+/*
 In order to be able to construct different types of towers, 
 need to have a constructor that takes in type (which can be
 defined in Tower.js as an array/enum/something) and the 
@@ -73,8 +123,6 @@ Tower.prototype.generateBullet = function(speed, damage, rotation) {
 
     var velX = speed * Math.cos(rotation);
     var velY = speed * Math.sin(rotation);
-    // í Bullet.update verður að uppfæra posX og posY
-    // með því að nota velX og velY.
 
     this._bullets.push(new Bullet({
             cx: this.cx,
@@ -93,16 +141,19 @@ Tower.prototype.render = function (ctx) {
 };
 
 Tower.prototype.findNearestBalloon = function (){
-	// Leitar gegn um allar blöðrurnar (fylki)
 	// Skilar blöðru hlut í minnstri fjarlægð
+	var numBloons = entityManager._balloons.length;
 	var shortestDist = Number.MAX_VALUE;
-	// for all balloons:
-	// balloons[i] er blaðran sem við erum að skoða "núna"
+
+	for(var i = 0; i < numBloons; i++) {
+	// balloons[i] is our current balloon
 		var dist = utils.distSq(balloons[i].cx, balloons[i].cy,
 							this.cx, this.cy);
-		//var nearestBalloon = balloons[i];
+		var nearestBalloon = balloons[i];
 		if(dist < shortestDist) {
 			nearestBalloon = balloons[i];
 		}
+	}
 	return closestBalloon;
 };
+

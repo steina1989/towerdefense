@@ -107,7 +107,9 @@ var g_images = {};
 function requestPreloads() {
 
     var requiredImages = {
-        tower   : "images/tower.png",
+        twrHeili   : "images/heili.png",
+        twrSpyro   : "images/spyro.png",
+        twrUnicorn : "images/unicorn.png",
         balloon  : "images/bluebloon.png",
         bullet  : "images/bullet.png"
     };
@@ -118,11 +120,15 @@ function requestPreloads() {
 var g_sprites = {};
 
 function preloadDone() {
+	console.log("Heisenbug?!?!?!?!");
 
-    g_sprites.tower  = new Sprite(g_images.tower);
+    g_sprites.twrHeili  = new Sprite(g_images.twrHeili);
+    g_sprites.twrSpyro  = new Sprite(g_images.twrSpyro);
+    g_sprites.twrUnicorn  = new Sprite(g_images.twrUnicorn);
     g_sprites.balloon = new Sprite(g_images.balloon);
     g_sprites.bullet = new Sprite(g_images.bullet);
     entityManager.init();
+    Tower.init();
 
     main.init();
 }
