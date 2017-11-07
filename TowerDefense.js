@@ -88,7 +88,7 @@ function renderSimulation(ctx) {
 
     g_sprites.balloon.drawCentredAt(ctx, 200,200,0);
 
-    g_sprites.tower.drawCentredAt(ctx,300,200,0);
+    g_sprites.tower.drawCentredAt(ctx,400,200,0);
 
     if (g_renderSpatialDebug) spatialManager.render(ctx);
     if (g_renderArena) Arena.render(ctx);
@@ -104,7 +104,7 @@ var g_images = {};
 function requestPreloads() {
 
     var requiredImages = {
-        tower   : "images/tower.png",
+        tower   : "images/heili.png",
         balloon  : "images/bluebloon.png",
         bullet  : "images/bullet.png"
     };
