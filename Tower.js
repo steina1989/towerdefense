@@ -1,5 +1,5 @@
 // ==========
-// SHIP STUFF
+// TOWER STUFF
 // ==========
 
 "use strict";
@@ -18,10 +18,17 @@ function Tower(descr) {
 	this.setup(descr);
 }
 
+/*
+In order to be able to construct different types of towers, 
+need to have a constructor that takes in type (which can be
+defined in Tower.js as an array/enum/something) and the 
+tower then has the properties of the type.
+*/
+
 Tower.prototype = new Entity();
 
-// turninn gerir generate bullet í þá átt sem hann snýr
-// 
+// The tower generates bullet (fires) in the direction
+// it is facing.
 Tower.prototype.rotation = function(balloon) {
 	// Position of balloon
 	var posB = {
