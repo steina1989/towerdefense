@@ -86,11 +86,11 @@ function renderSimulation(ctx) {
 
     entityManager.render(ctx);
 
-    entityManager.fireBullet(300,300,5,5,0);
+    //entityManager.fireBullet(300,300,5,5,0);
 
-    g_sprites.balloon.drawCentredAt(ctx, 200,200,0);
+    //g_sprites.balloon.drawCentredAt(ctx, 200,200,0);
 
-    g_sprites.tower.drawCentredAt(ctx,300,200,0);
+    //g_sprites.tower.drawCentredAt(ctx,400,200,0);
 
     if (g_renderSpatialDebug) spatialManager.render(ctx);
     if (g_renderArenaGrid) Arena.renderDiagnostics(ctx);
