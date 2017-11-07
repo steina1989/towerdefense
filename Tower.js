@@ -44,29 +44,12 @@ Tower.init = function() {
 // Debug fall, eyða út
 Tower.generateTower = function() {
 	//
-	return new Tower(towerType.properties[towerType.BRAIN]);
+	var twr = new Tower(towerType.properties[towerType.BRAIN]);
+	//twr.render(ctx);
+	return twr;
 
 };
-
-/*
-var SizeEnum = {
-  SMALL: 1,
-  MEDIUM: 2,
-  LARGE: 3,
-  properties: {
-    1: {name: "small", value: 1, code: "S"},
-    2: {name: "medium", value: 2, code: "M"},
-    3: {name: "large", value: 3, code: "L"}
-  }
-};
-
-Then use it like so:
-
-var mySize = SizeEnum.MEDIUM;
-var myCode = SizeEnum.properties[mySize].code; // myCode == "M"
-
-*/
-
+//kallað á í TowerDefense
 
 /*
 In order to be able to construct different types of towers, 
@@ -97,7 +80,7 @@ Tower.prototype.rotation = function(balloon) {
 };
 
 Tower.prototype.inRange = function(balloon){
-	var dist = utils.distSq(balloon.cx, balloon.cy,
+	var dist = util.distSq(balloon.cx, balloon.cy,
     	 			  this.cx, this.cy);
 	if(dist <= this.range) {
 		return true;
@@ -111,7 +94,7 @@ Tower.prototype.update = function (du) {
     var nearestBln = this.findNearestBalloon();
     
     // If nearest balloon is in range, shoot it
-    if(inRange(nearestBln)) {
+    if(this.inRange(nearestBln)) {
     	var damage = this.bulletDamage;
     	var speed = this.bulletSpeed;
     	var rotation = this.rotation(findNearestBalloon());
@@ -154,6 +137,6 @@ Tower.prototype.findNearestBalloon = function (){
 			nearestBalloon = balloons[i];
 		}
 	}
-	return closestBalloon;
+	return 5;//closestBalloon;
 };
 
