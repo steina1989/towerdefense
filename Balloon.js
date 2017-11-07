@@ -12,21 +12,22 @@
 */
 
 //function Balloon(descr){
-function Balloon(){
-	//this.setup(descr);
+function Balloon(descr){
+	this.setup(descr);
       
     // Default sprite and scale, if not otherwise specified
-    //this.sprite = this.sprite || g_sprites.rock;
-    //this.scale  = this.scale  || 1;
-    this.sprite = g_sprites.balloon;
+    this.sprite = this.sprite || g_sprites.balloon;
+    this.scale  = this.scale  || 1;
     this._scale = 1;
+
+
 };
 
-Balloon.prototype=new Entity();
+Balloon.prototype = new Entity();
 
 Balloon.prototype.firstCell = Arena.getIndexOfCellNumber(1);
-Balloon.prototype.cx = Arena.indexToPos(firstCell).x;
-Balloon.prototype.cy = Arena.indexToPos(firstCell).y;
+Balloon.prototype.cx = Arena.indexToPos(this.firstCell).x;
+Balloon.prototype.cy = Arena.indexToPos(this.firstCell).y;
 //Balloon.prototype.velX = ...
 //Balloon.prototype.velY = ...
 
@@ -62,63 +63,58 @@ Balloon.prototype.takeBulletHit = function(){
 
 };
 
-
+/*
 var redBloon = new Balloon({
 	cx: 50,
 	cy: 0,
 
-	isDeadNow: false,
 	hitPoints: 1,
 	reward: 5,
-	speed: 
+	speed: 5
 });
 
 var blueBloon = new Balloon({
 	cx: 50,
 	cy: 0,
 
-	isDeadNow: false,
 	hitPoints: 2,
 	reward: 5,
-	speed:
+	speed: 5
 });
 
 var greenBloon = new Balloon({
 	cx: 50,
 	cy: 0,
 
-	isDeadNow: false,
 	hitPoints: 3,
 	reward: 5,
-	speed: 
+	speed: 5
 });
 
 var yellowBloon = new Balloon({
 	cx: 50,
 	cy: 0,
-	isDeadNow: false,
 	hitPoints: 4,
 	reward: 5,
-	speed:
+	speed: 5
 });
 
 var whiteBloon = new Balloon({
 	cx: 50,
 	cy: 0,
 
-	isDeadNow: false,
 	hitPoints: 5,
 	reward: 5,
-	speed:
+	speed: 5
 });
 
 var blackBloon = new Balloon({
 	cx: 50,
 	cy: 0,
 
-	isDeadNow: false,
 	hitPoints: 6,
 	reward: 5,
-	speed:
+	speed: 5
 });
 
+*/
