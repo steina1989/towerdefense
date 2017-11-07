@@ -71,7 +71,6 @@ var redBloon = new Balloon({
 	hitPoints: 1,
 	reward: 5,
 	speed: 
-	direction: 
 });
 
 var blueBloon = new Balloon({
@@ -82,7 +81,6 @@ var blueBloon = new Balloon({
 	hitPoints: 2,
 	reward: 5,
 	speed:
-	direction: 
 });
 
 var greenBloon = new Balloon({
@@ -93,7 +91,6 @@ var greenBloon = new Balloon({
 	hitPoints: 3,
 	reward: 5,
 	speed: 
-	direction:
 });
 
 var yellowBloon = new Balloon({
@@ -103,7 +100,6 @@ var yellowBloon = new Balloon({
 	hitPoints: 4,
 	reward: 5,
 	speed:
-	direction: 
 });
 
 var whiteBloon = new Balloon({
@@ -114,7 +110,6 @@ var whiteBloon = new Balloon({
 	hitPoints: 5,
 	reward: 5,
 	speed:
-	direction:
 });
 
 var blackBloon = new Balloon({
@@ -125,6 +120,5 @@ var blackBloon = new Balloon({
 	hitPoints: 6,
 	reward: 5,
 	speed:
-	direction:
 });
 
