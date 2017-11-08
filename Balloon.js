@@ -19,7 +19,6 @@ function Balloon(descr){
     this.sprite = this.sprite || g_sprites.balloon;
     this.scale  = this.scale  || 1;
     this._scale = 1;
-
     
     var firstCell = Arena.getIndexOfCellNumber(1);
     var pos = Arena.indexToPos(this.firstCell.row, this.firstCell.column);
@@ -30,7 +29,6 @@ function Balloon(descr){
     console.log(this.cy);
     //console.log(this.firstCell);
     //console.log(Arena.indexToPos(this.firstCell.row, this.firstCell.column));
-
 
 };
 
