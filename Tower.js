@@ -39,14 +39,20 @@ Tower.init = function() {
 	};
 };
 
+// ASDF SETJA Í INIT Í ENTITYMANAGER
 
-
-// Debug fall, eyða út
+// ASDF Debug fall, eyða út
 Tower.generateTower = function() {
 	//
 	var twr = new Tower(towerType.properties[towerType.BRAIN]);
-	//twr.render(ctx);
+	twr.cx = 250;
+	twr.cy = 250;
+	twr.rotation = 0;
+	twr.render(ctx);
+	entityManager._towers.push(twr);
+	console.log(entityManager._towers.[0]);
 	return twr;
+	//Teiknast í 0.00000000000sek ókei
 
 };
 //kallað á í TowerDefense
@@ -89,7 +95,7 @@ Tower.prototype.inRange = function(balloon){
 };
 
 Tower.prototype.update = function (du) {    
-
+	console.log("update");
 	// Distance between nearest balloon and tower
     var nearestBln = this.findNearestBalloon();
     
@@ -101,6 +107,7 @@ Tower.prototype.update = function (du) {
 		generateBullet(speed, damage, rotation);
 	}
 };
+
 
 Tower.prototype.generateBullet = function(speed, damage, rotation) {
 

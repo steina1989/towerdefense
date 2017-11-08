@@ -129,8 +129,6 @@ function preloadDone() {
     g_sprites.bullet = new Sprite(g_images.bullet);
     entityManager.init();
     Tower.init();
-    //ASDF taka út!
-    Tower.generateTower();
 
     main.init();
 }
