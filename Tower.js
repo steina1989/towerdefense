@@ -39,34 +39,23 @@ Tower.init = function() {
 	};
 };
 
+// ASDF SETJA Í INIT Í ENTITYMANAGER
 
-
-// Debug fall, eyða út
+// ASDF Debug fall, eyða út
 Tower.generateTower = function() {
 	//
-	return new Tower(towerType.properties[towerType.BRAIN]);
+	var twr = new Tower(towerType.properties[towerType.BRAIN]);
+	twr.cx = 250;
+	twr.cy = 250;
+	twr.rotation = 0;
+	twr.render(ctx);
+	entityManager._towers.push(twr);
+	console.log(entityManager._towers[0]);
+	return twr;
+	//Teiknast í 0.00000000000sek ókei
 
 };
-
-/*
-var SizeEnum = {
-  SMALL: 1,
-  MEDIUM: 2,
-  LARGE: 3,
-  properties: {
-    1: {name: "small", value: 1, code: "S"},
-    2: {name: "medium", value: 2, code: "M"},
-    3: {name: "large", value: 3, code: "L"}
-  }
-};
-
-Then use it like so:
-
-var mySize = SizeEnum.MEDIUM;
-var myCode = SizeEnum.properties[mySize].code; // myCode == "M"
-
-*/
-
+//kallað á í TowerDefense
 
 /*
 In order to be able to construct different types of towers, 
@@ -97,7 +86,7 @@ Tower.prototype.rotation = function(balloon) {
 };
 
 Tower.prototype.inRange = function(balloon){
-	var dist = utils.distSq(balloon.cx, balloon.cy,
+	var dist = util.distSq(balloon.cx, balloon.cy,
     	 			  this.cx, this.cy);
 	if(dist <= this.range) {
 		return true;
@@ -106,18 +95,19 @@ Tower.prototype.inRange = function(balloon){
 };
 
 Tower.prototype.update = function (du) {    
-
+	console.log("update");
 	// Distance between nearest balloon and tower
     var nearestBln = this.findNearestBalloon();
     
     // If nearest balloon is in range, shoot it
-    if(inRange(nearestBln)) {
+    if(this.inRange(nearestBln)) {
     	var damage = this.bulletDamage;
     	var speed = this.bulletSpeed;
     	var rotation = this.rotation(findNearestBalloon());
 		generateBullet(speed, damage, rotation);
 	}
 };
+
 
 Tower.prototype.generateBullet = function(speed, damage, rotation) {
 
@@ -154,6 +144,6 @@ Tower.prototype.findNearestBalloon = function (){
 			nearestBalloon = balloons[i];
 		}
 	}
-	return closestBalloon;
+	return 5;//closestBalloon;
 };
 
