@@ -50,7 +50,7 @@ Tower.generateTower = function() {
 	twr.rotation = 0;
 	twr.render(ctx);
 	entityManager._towers.push(twr);
-	console.log(entityManager._towers.[0]);
+	console.log(entityManager._towers[0]);
 	return twr;
 	//Teiknast í 0.00000000000sek ókei
 
