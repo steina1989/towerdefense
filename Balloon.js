@@ -50,12 +50,17 @@ Balloon.prototype.update = function(du) {
 	if (this._isDeadNow)
         return entityManager.KILL_ME_NOW;
 
-    
-    //this.velX = Arena.getDirection(this.cx,this.cy);
+    this.velX = this.speed;
+    this.velY = this.speed;
+
+
+    var direction = Arena.getDirection(this.cx,this.cy);
+    this.velX *= direction[0];
+    this.velY *= direction[1];
     //console.log(this.velX);
 
-    //this.cx += this.velX * du;
-    //this.cy += this.velY * du;
+    this.cx += this.velX * du;
+    this.cy += this.velY * du;
 
 
 

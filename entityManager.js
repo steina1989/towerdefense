@@ -65,7 +65,7 @@ var entityManager = {
             this._balloonQueue.push(new Balloon({ 
                 cx: pos.x,
                 cy: pos.y,
-                speed: 5
+                speed: 3
             }))
         }
         this._balloons.push(this._balloonQueue.pop());
