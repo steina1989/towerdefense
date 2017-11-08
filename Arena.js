@@ -25,14 +25,14 @@ var Arena = {
 	ORIGINX : 0,
 	ORIGINY : 0,
 
-	WIDTH : 500,
-	HEIGHT : 500,
+	WIDTH : 600,
+	HEIGHT : 600,
 
 	numRows : 10,
 	numColumns : 10,
 
-	cellWidth : 50,
-	cellHeight : 50,
+	cellWidth : 60,
+	cellHeight : 60,
 
 	grid :
 	[[ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
