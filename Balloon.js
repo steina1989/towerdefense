@@ -25,6 +25,8 @@ function Balloon(descr){
     this.cx = pos.x;
     this.cy = pos.y;
 
+    this.direction = Arena.getDirection(this.cx, this.cy);
+
     
     console.log(this.cy);
     //console.log(this.firstCell);
@@ -44,6 +46,7 @@ Balloon.prototype.cy = 0; //Arena.indexToPos(this.firstCell).y;
 //Balloon.prototype.cy = this.pos.y;
 Balloon.prototype.velX;
 Balloon.prototype.velY;
+Balloon.prototype.direction;
 
 Balloon.prototype.update = function(du) {
 
@@ -53,11 +56,28 @@ Balloon.prototype.update = function(du) {
     this.velX = this.speed;
     this.velY = this.speed;
 
+    var newX = this.cx;
+    var newY = this.cy;
 
-    var direction = Arena.getDirection(this.cx,this.cy);
-    this.velX *= direction[0];
-    this.velY *= direction[1];
-    //console.log(this.velX);
+    if (this.direction[0] === 1) {
+    	newX = this.cx-Arena.cellWidth/2;
+    }
+    if (this.direction[0] === -1) {
+    	newX = this.cx+Arena.cellWidth/2;
+    }
+    if (this.direction[1] === 1) {
+    	newY = this.cy-Arena.cellHeight/2;
+    }
+    if (this.direction[1] === -1) {
+    	newY = this.cy+Arena.cellHeight/2;
+    }
+
+    var newDirection = Arena.getDirection(newX, newY);
+
+    this.velX *= newDirection[0];
+    this.velY *= newDirection[1];
+
+    this.direction = newDirection;
 
     this.cx += this.velX * du;
     this.cy += this.velY * du;
@@ -73,18 +93,6 @@ Balloon.prototype.render = function(ctx) {
 	}
 	var currentCell = Arena.getIndexOfCellNumber(this.currentCellNumber);
 	var pos = Arena.indexToPos(currentCell);
-
-	//temporary:
-	//this.cx = pos.x;
-	//this.cy = pos.y;
-
-
-
-	//this.cx = pos.x;
-	//this.cy = pos.y
-
-	//console.log(this.cx);
-	//console.log(this.cy);
 
 	var origScale = this.sprite.scale;
     // draw scaled sprite
