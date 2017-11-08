@@ -57,7 +57,7 @@ the direction that the balloon should be travelling  in,
 in order to reach the next cell in its path.
 **/
 Arena.getDirection = function(cx,cy){
-	var indexCurrent = this.posToIndex(cx,cy);
+	var indexCurrent = this.posToIndex(cx - this.cellWidth/2,cy - this.cellHeight/2);
     var cellNumber = this.grid[indexCurrent.row][indexCurrent.column]
     var indexNext = this.getIndexOfCellNumber(cellNumber+1);
     console.log(indexCurrent)

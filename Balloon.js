@@ -19,41 +19,83 @@ function Balloon(descr){
     this.sprite = this.sprite || g_sprites.balloon;
     this.scale  = this.scale  || 1;
     this._scale = 1;
+    
+    var firstCell = Arena.getIndexOfCellNumber(1);
+    var pos = Arena.indexToPos(this.firstCell.row, this.firstCell.column);
+    this.cx = pos.x;
+    this.cy = pos.y;
+
+    
+    console.log(this.cy);
+    //console.log(this.firstCell);
+    //console.log(Arena.indexToPos(this.firstCell.row, this.firstCell.column));
 
 };
 
 Balloon.prototype = new Entity();
 
+Balloon.prototype.currentCellNumber = 1;
 Balloon.prototype.firstCell = Arena.getIndexOfCellNumber(1);
-Balloon.prototype.cx = Arena.indexToPos(this.firstCell).x;
-Balloon.prototype.cy = Arena.indexToPos(this.firstCell).y;
-//Balloon.prototype.velX = ...
-//Balloon.prototype.velY = ...
+Balloon.prototype.currentCell = this.firstCell;
+//Balloon.prototype.pos = Arena.indexToPos(this.firstCell.row, this.firstCell.column);
+Balloon.prototype.cx = 0; //Arena.indexToPos(this.firstCell).x;
+Balloon.prototype.cy = 0; //Arena.indexToPos(this.firstCell).y;
+//Balloon.prototype.cx = this.pos.x;
+//Balloon.prototype.cy = this.pos.y;
+Balloon.prototype.velX;
+Balloon.prototype.velY;
 
 Balloon.prototype.update = function(du) {
+
+	if (this._isDeadNow)
+        return entityManager.KILL_ME_NOW;
+
+    this.velX = this.speed;
+    this.velY = this.speed;
+
+
+    var direction = Arena.getDirection(this.cx,this.cy);
+    this.velX *= direction[0];
+    this.velY *= direction[1];
+    //console.log(this.velX);
+
+    this.cx += this.velX * du;
+    this.cy += this.velY * du;
+
+
 
 };
 
 Balloon.prototype.render = function(ctx) {
-	// temporary drawing only in cell no. 1
-	var currentCell = Arena.getIndexOfCellNumber(1);
+	var newPosIndex = Arena.posToIndex(this.cx, this.cy);
+	if (newPosIndex != currentCell) {
+		this.currentCellNumber++;
+	}
+	var currentCell = Arena.getIndexOfCellNumber(this.currentCellNumber);
 	var pos = Arena.indexToPos(currentCell);
+
+	//temporary:
+	//this.cx = pos.x;
+	//this.cy = pos.y;
+
+
 
 	//this.cx = pos.x;
 	//this.cy = pos.y
 
+	//console.log(this.cx);
+	//console.log(this.cy);
+
 	var origScale = this.sprite.scale;
     // draw scaled sprite
     this.sprite.scale = this._scale;
-    this.sprite.drawWrappedCentredAt(
-	ctx, this.cx, this.cy, this.rotation
-    );
+    this.sprite.drawCentredAt(ctx, this.cx,this.cy,0);
     this.sprite.scale = origScale;
 };
 
 Balloon.prototype.findDirection = function(){
 	this.nextX = Arena.nextCellInPath.nextY(this.cx,this.cy);
-	this.nextY = Arena.nextCellInPath.nextX(this.cx.this.cy);
+	this.nextY = Arena.nextCellInPath.nextX(this.cx,this.cy);
 };
 
 Balloon.prototype.takeBulletHit = function(){

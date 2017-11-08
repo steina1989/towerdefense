@@ -58,16 +58,20 @@ var entityManager = {
         //this._generateRocks();
         //this._generateShip();
         var cellIndex = Arena.getIndexOfCellNumber(1);
-        var pos = Arena.indexToPos(cellIndex);
+        var pos = Arena.indexToPos(cellIndex.row, cellIndex.column);
         // Push 10 balloons into queue
+        console.log(pos);
         for (var x = 0; x<10; x++){
             this._balloonQueue.push(new Balloon({ 
                 cx: pos.x,
                 cy: pos.y,
-                speed: 5
+                speed: 3
             }))
         }
+
         this._towers.push(new Tower(towerType.properties[towerType.BRAIN]));
+
+        this._balloons.push(this._balloonQueue.pop());
     },
 
     fireBullet: function(cx, cy, velX, velY, rotation) {
@@ -152,6 +156,10 @@ var entityManager = {
     },
 
     render: function(ctx) {
+
+        //this._balloonQueue[1].sprite.drawCentredAt(ctx, 50,50,0);
+
+
 
         var debugX = 10,
             debugY = 100;
