@@ -27,11 +27,11 @@ var entityManager = {
 
     // "PRIVATE" DATA
 
+    _balloonQueue: [],
     _balloons: [],
     _bullets: [],
     _towers: [], 
 
-    
 
     _forEachOf: function(aCategory, fn) {
         for (var i = 0; i < aCategory.length; ++i) {
@@ -51,11 +51,22 @@ var entityManager = {
     //
     deferredSetup: function() {
         this._categories = [this._balloons, this._bullets, this._towers];
+
     },
 
     init: function() {
         //this._generateRocks();
         //this._generateShip();
+        var cellIndex = Arena.getIndexOfCellNumber(1);
+        var pos = Arena.indexToPos(cellIndex);
+        // Push 10 balloons into queue
+        for (var x = 0; x<10; x++){
+            this._balloonQueue.push(new Balloon({ 
+                cx: pos.x,
+                cy: pos.y,
+                speed: 5
+            }))
+        }
     },
 
     fireBullet: function(cx, cy, velX, velY, rotation) {

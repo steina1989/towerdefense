@@ -12,10 +12,10 @@
 */
 
 var DIR_ENUM = {
-	LEFT: 1,
-	RIGHT: 2,
-	UP: 3,
-	DOWN: 4
+	LEFT: [-1,0],
+	RIGHT: [1,0],
+	UP: [0,-1],
+	DOWN: [0,1]
 }
 
 
@@ -98,6 +98,8 @@ Arena.posToIndex = function(x,y){
 Arena.indexToPos = function(row,column){
 	var pix =  this.ORIGINX + this.cellWidth * column;
 	var piy =  this.ORIGINY + this.cellHeight * row;
+	pix = pix + this.cellWidth/2;
+	piy = piy + this.cellHeight/2;
 	return {
 		x : pix,
 		y : piy
@@ -149,7 +151,7 @@ Arena._drawArrayPath = function(ctx,x,y){
 	ctx.beginPath();
 	ctx.save;
 	ctx.strokeStyle="black";
-	ctx.rect(x,y,this.cellWidth,this.cellHeight);
+	ctx.rect(x-this.cellWidth/2,y-this.cellWidth/2,this.cellWidth,this.cellHeight);
 	ctx.stroke();
 	ctx.restore;
 }
