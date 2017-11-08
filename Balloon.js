@@ -50,6 +50,7 @@ Balloon.prototype.direction;
 
 Balloon.prototype.update = function(du) {
 
+
 	if (this._isDeadNow)
         return entityManager.KILL_ME_NOW;
 
@@ -73,6 +74,9 @@ Balloon.prototype.update = function(du) {
     }
 
     var newDirection = Arena.getDirection(newX, newY);
+    if (newDirection === entityManager.KILL_ME_NOW){
+    	this._isDeadNow = true;
+    }
 
     this.velX *= newDirection[0];
     this.velY *= newDirection[1];

@@ -58,9 +58,15 @@ in order to reach the next cell in its path.
 **/
 Arena.getDirection = function(cx,cy){
 	var indexCurrent = this.posToIndex(cx,cy);
+   
+    if (indexCurrent.row >= this.numRows-1 || indexCurrent.column >= this.numColumns-1){
+    	return entityManager.KILL_ME_NOW;
+    }
+
     var cellNumber = this.grid[indexCurrent.row][indexCurrent.column]
     var indexNext = this.getIndexOfCellNumber(cellNumber+1);
-    console.log(indexCurrent)
+
+
 
     if (indexNext.row > indexCurrent.row) return DIR_ENUM.DOWN;
     if (indexNext.row < indexCurrent.row) return DIR_ENUM.UP;

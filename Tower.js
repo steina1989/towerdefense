@@ -94,7 +94,6 @@ Tower.prototype.inRange = function(balloon){
 };
 
 Tower.prototype.update = function (du) {    
-	console.log("update");
 	// Distance between nearest balloon and tower
     var nearestBln = this.findNearestBalloon();
     
