@@ -67,6 +67,7 @@ var entityManager = {
                 speed: 5
             }))
         }
+        this._towers.push(new Tower(towerType.properties[towerType.BRAIN]));
     },
 
     fireBullet: function(cx, cy, velX, velY, rotation) {
