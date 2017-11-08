@@ -18,7 +18,7 @@ function Tower(descr) {
 	this.towerType;
 	this.setup(descr);
 	this.cx = 300;
-	this.cy = 300;
+	this.cy = 350;
 }
 
 /*
