@@ -17,6 +17,8 @@
 function Tower(descr) {
 	this.towerType;
 	this.setup(descr);
+	this.cx = 300;
+	this.cy = 300;
 }
 
 /*
@@ -47,10 +49,11 @@ Tower.generateTower = function() {
 	twr.cx = 250;
 	twr.cy = 250;
 	twr.rotation = 0;
-	twr.render(ctx);
+	//twr.render(ctx);
+
 	entityManager._towers.push(twr);
 	console.log(entityManager._towers[0]);
-	return twr;
+	//return twr;
 	//Teiknast í 0.00000000000sek ókei
 
 };
