@@ -39,8 +39,6 @@ Tower.init = function() {
 	};
 };
 
-// ASDF SETJA Í INIT Í ENTITYMANAGER
-
 // ASDF Debug fall, eyða út
 Tower.generateTower = function() {
 	//

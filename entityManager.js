@@ -68,6 +68,9 @@ var entityManager = {
                 speed: 3
             }))
         }
+
+        this._towers.push(new Tower(towerType.properties[towerType.BRAIN]));
+
         this._balloons.push(this._balloonQueue.pop());
     },
 
