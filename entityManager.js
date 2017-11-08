@@ -69,7 +69,8 @@ var entityManager = {
             }))
         }
 
-        this._towers.push(new Tower(towerType.properties[towerType.BRAIN]));
+        this._towers.push(new Tower(Tower.towerType.properties[Tower.towerType.BRAIN]));
+        //console.log(this._towers[0]);
 
         this._balloons.push(this._balloonQueue.pop());
     },

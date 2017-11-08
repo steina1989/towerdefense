@@ -15,6 +15,7 @@
 // A generic contructor which accepts an arbitrary descriptor object
 // Needs to know and take in "type"
 function Tower(descr) {
+	this.towerType;
 	this.setup(descr);
 }
 
@@ -23,11 +24,11 @@ The three different types of towers available.
 rateOfFire and bulletSpeed are measured in "per second".
 range is measured in pixels
 */
-var towerType;
+//var towerType;
 
 
 Tower.init = function() {
-	towerType = {
+	this.towerType = {
 		BRAIN : 1,
 		SPYRO : 2,
 		UNICORN : 3,
@@ -135,11 +136,11 @@ Tower.prototype.findNearestBalloon = function (){
 
 	for(var i = 0; i < numBloons; i++) {
 	// balloons[i] is our current balloon
-		var dist = utils.distSq(balloons[i].cx, balloons[i].cy,
+		var dist = util.distSq(entityManager._balloons[i].cx, entityManager._balloons[i].cy,
 							this.cx, this.cy);
-		var nearestBalloon = balloons[i];
+		var nearestBalloon = entityManager._balloons[i];
 		if(dist < shortestDist) {
-			nearestBalloon = balloons[i];
+			nearestBalloon = entityManager._balloons[i];
 		}
 	}
 	return 5;//closestBalloon;

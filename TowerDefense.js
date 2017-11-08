@@ -127,8 +127,8 @@ function preloadDone() {
     g_sprites.twrUnicorn  = new Sprite(g_images.twrUnicorn);
     g_sprites.balloon = new Sprite(g_images.balloon);
     g_sprites.bullet = new Sprite(g_images.bullet);
-    entityManager.init();
     Tower.init();
+    entityManager.init();
 
     main.init();
 }
