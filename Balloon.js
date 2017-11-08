@@ -28,7 +28,7 @@ function Balloon(descr){
     this.direction = Arena.getDirection(this.cx, this.cy);
 
     
-    console.log(this.cy);
+    //console.log(this.cy);
     //console.log(this.firstCell);
     //console.log(Arena.indexToPos(this.firstCell.row, this.firstCell.column));
 

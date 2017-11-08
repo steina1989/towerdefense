@@ -120,7 +120,6 @@ function requestPreloads() {
 var g_sprites = {};
 
 function preloadDone() {
-	console.log("Heisenbug?!?!?!?!");
 
     g_sprites.twrHeili  = new Sprite(g_images.twrHeili);
     g_sprites.twrSpyro  = new Sprite(g_images.twrSpyro);
