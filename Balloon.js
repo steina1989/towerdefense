@@ -20,7 +20,6 @@ function Balloon(descr){
     this.scale  = this.scale  || 1;
     this._scale = 1;
 
-
 };
 
 Balloon.prototype = new Entity();

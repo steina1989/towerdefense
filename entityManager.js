@@ -61,7 +61,7 @@ var entityManager = {
         var pos = Arena.indexToPos(cellIndex);
         // Push 10 balloons into queue
         for (var x = 0; x<10; x++){
-            this._balloonQueue.push(new Balloon({
+            this._balloonQueue.push(new Balloon({ 
                 cx: pos.x,
                 cy: pos.y,
                 speed: 5
