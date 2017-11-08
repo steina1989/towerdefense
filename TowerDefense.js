@@ -111,7 +111,8 @@ function requestPreloads() {
         twrSpyro   : "images/spyro.png",
         twrUnicorn : "images/unicorn.png",
         balloon  : "images/bluebloon.png",
-        bullet  : "images/bullet.png"
+        bullet  : "images/bullet.png",
+        background : "images/level01.png"
     };
 
     imagesPreload(requiredImages, g_images, preloadDone);

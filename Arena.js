@@ -122,9 +122,7 @@ Arena.drawBackground = function(ctx){
 	ctx.beginPath();
 	ctx.save;
 	ctx.strokeStyle="black";
-	ctx.fillStyle="white";
-	ctx.rect(this.ORIGINX,this.ORIGINY,this.WIDTH,this.HEIGHT);
-	ctx.fill()
+	ctx.drawImage(g_images.background, 0,0, this.WIDTH, this.HEIGHT);
 	ctx.stroke();
 	ctx.restore;
 }
