@@ -26,7 +26,6 @@ with suitable 'data' and 'methods'.
 var entityManager = {
 
     // "PRIVATE" DATA
-
     _balloonQueue: [],
     _balloons: [],
     _bullets: [],
@@ -63,8 +62,6 @@ var entityManager = {
         console.log(pos);
         for (var x = 0; x<10; x++){
             this._balloonQueue.push(new Balloon({ 
-                cx: pos.x,
-                cy: pos.y,
                 speed: 3
             }))
         }
@@ -86,8 +83,10 @@ var entityManager = {
         }));
     },
 
-    generateBalloon: function(descr) {
-        this._balloons.push(new Balloon(descr));
+    generateBalloon: function() {
+        this._balloons.push(new Balloon({ 
+            speed: 3
+        }))
     },
 
     generateTower: function(descr) {

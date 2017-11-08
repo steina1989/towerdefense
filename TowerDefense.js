@@ -51,7 +51,7 @@ var g_renderArenaGrid = true;
 var KEY_RENDERARENA_GRID = keyCode('J')
 var KEY_SPATIAL = keyCode('X');
 var KEY_RESET = keyCode('R');
-var KEY_GEN_BALLOON = keyCode('0');
+var KEY_GEN_BALLOON = keyCode('1');
 
 function processDiagnostics() {
 
@@ -60,9 +60,8 @@ function processDiagnostics() {
 
     if (eatKey(KEY_RENDERARENA_GRID)) g_renderArenaGrid = !g_renderArenaGrid;
     
-
     // Special diagnostic functions (halt balloons, reset )
-    // Ex: if (eatKey(KEY_K)) entityManager.killNearestShip(g_mouseX, g_mouseY);
+    if (eatKey(KEY_GEN_BALLOON)) entityManager.generateBalloon();
 }
 
 
