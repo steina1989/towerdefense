@@ -17,8 +17,8 @@ function Balloon(descr){
       
     // Default sprite and scale, if not otherwise specified
     this.sprite = this.sprite || g_sprites.balloon;
-    this.scale  = this.scale  || 1;
-    this._scale = 1;
+    //this.scale  = this.scale  || 1;
+    //this._scale = 1;
     
     var firstCell = Arena.getIndexOfCellNumber(1);
     var pos = Arena.indexToPos(this.firstCell.row, this.firstCell.column);
