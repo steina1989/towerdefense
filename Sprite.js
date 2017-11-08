@@ -19,7 +19,14 @@ function Sprite(image) {
 
     this.width = image.width;
     this.height = image.height;
-    this.scale = 1;
+    if (this.width > this.height) {
+        var ratio = Arena.cellWidth / this.width;
+        this.scale = ratio; 
+    }
+    else {
+        var ratio = Arena.cellHeight / this.height;
+        this.scale = ratio;
+    }
 }
 
 Sprite.prototype.drawAt = function (ctx, x, y) {

@@ -96,9 +96,9 @@ Balloon.prototype.render = function(ctx) {
 
 	var origScale = this.sprite.scale;
     // draw scaled sprite
-    this.sprite.scale = this._scale;
+    //this.sprite.scale = this._scale;
     this.sprite.drawCentredAt(ctx, this.cx,this.cy,0);
-    this.sprite.scale = origScale;
+    //this.sprite.scale = origScale;
 };
 
 Balloon.prototype.findDirection = function(){
