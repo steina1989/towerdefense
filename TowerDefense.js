@@ -84,6 +84,8 @@ function renderSimulation(ctx) {
     Arena.render(ctx);
 
     entityManager.render(ctx);
+    menuBar.render(ctx);
+
 
     //entityManager.fireBullet(300,300,5,5,0);
 
