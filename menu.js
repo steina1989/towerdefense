@@ -49,14 +49,11 @@ var playerInfo = {
 
 menuBar.getTower = function (x,y,ctx){
   if(x>=600 && x<=700 && y>=220 && y<=330){
-    //ctx.drawImage(getImage("images/heili.png")x,y);
-
     return getImage('images/heili.png');
     //heili
   }else if(x>700 && x<=800 && y>220 && y<330){
     return getImage('images/pat.png');
     //pat
-
   }else if(x>=600 && x<=700 && y>=330 && y<=390){
     return getImage('images/spyro.png');
     //spyro

@@ -89,7 +89,7 @@ Bullet.prototype.getRadius = function () {
 
 Bullet.prototype.takeBulletHit = function () {
     this.kill();
-    playerInfo.lives-=1;
+    playerInfo.coins-=23; //ASDF þarf að skoða
     
 };
 
