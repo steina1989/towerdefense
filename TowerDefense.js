@@ -51,7 +51,7 @@ var g_renderArenaGrid = true;
 var KEY_RENDERARENA_GRID = keyCode('J')
 var KEY_SPATIAL = keyCode('X');
 var KEY_RESET = keyCode('R');
-var KEY_GEN_BALLOON = keyCode('0');
+var KEY_GEN_BALLOON = keyCode('1');
 
 function processDiagnostics() {
 
@@ -60,9 +60,8 @@ function processDiagnostics() {
 
     if (eatKey(KEY_RENDERARENA_GRID)) g_renderArenaGrid = !g_renderArenaGrid;
     
-
     // Special diagnostic functions (halt balloons, reset )
-    // Ex: if (eatKey(KEY_K)) entityManager.killNearestShip(g_mouseX, g_mouseY);
+    if (eatKey(KEY_GEN_BALLOON)) entityManager.generateBalloon();
 }
 
 
@@ -111,7 +110,8 @@ function requestPreloads() {
         twrSpyro   : "images/spyro.png",
         twrUnicorn : "images/unicorn.png",
         balloon  : "images/bluebloon.png",
-        bullet  : "images/bullet.png"
+        bullet  : "images/bullet.png",
+        background : "images/level01.png"
     };
 
     imagesPreload(requiredImages, g_images, preloadDone);
@@ -120,7 +120,6 @@ function requestPreloads() {
 var g_sprites = {};
 
 function preloadDone() {
-	console.log("Heisenbug?!?!?!?!");
 
     g_sprites.twrHeili  = new Sprite(g_images.twrHeili);
     g_sprites.twrSpyro  = new Sprite(g_images.twrSpyro);

@@ -17,8 +17,8 @@ function Balloon(descr){
       
     // Default sprite and scale, if not otherwise specified
     this.sprite = this.sprite || g_sprites.balloon;
-    this.scale  = this.scale  || 1;
-    this._scale = 1;
+    //this.scale  = this.scale  || 1;
+    //this._scale = 1;
     
     var firstCell = Arena.getIndexOfCellNumber(1);
     var pos = Arena.indexToPos(this.firstCell.row, this.firstCell.column);
@@ -28,7 +28,7 @@ function Balloon(descr){
     this.direction = Arena.getDirection(this.cx, this.cy);
 
     
-    console.log(this.cy);
+    //console.log(this.cy);
     //console.log(this.firstCell);
     //console.log(Arena.indexToPos(this.firstCell.row, this.firstCell.column));
 
@@ -49,6 +49,7 @@ Balloon.prototype.velY;
 Balloon.prototype.direction;
 
 Balloon.prototype.update = function(du) {
+
 
 	if (this._isDeadNow)
         return entityManager.KILL_ME_NOW;
@@ -73,6 +74,9 @@ Balloon.prototype.update = function(du) {
     }
 
     var newDirection = Arena.getDirection(newX, newY);
+    if (newDirection === entityManager.KILL_ME_NOW){
+    	this._isDeadNow = true;
+    }
 
     this.velX *= newDirection[0];
     this.velY *= newDirection[1];

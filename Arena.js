@@ -25,14 +25,14 @@ var Arena = {
 	ORIGINX : 0,
 	ORIGINY : 0,
 
-	WIDTH : 500,
-	HEIGHT : 500,
+	WIDTH : 600,
+	HEIGHT : 600,
 
 	numRows : 10,
 	numColumns : 10,
 
-	cellWidth : 50,
-	cellHeight : 50,
+	cellWidth : 60,
+	cellHeight : 60,
 
 	grid :
 	[[ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
@@ -58,9 +58,15 @@ in order to reach the next cell in its path.
 **/
 Arena.getDirection = function(cx,cy){
 	var indexCurrent = this.posToIndex(cx,cy);
+   
+    if (indexCurrent.row >= this.numRows-1 || indexCurrent.column >= this.numColumns-1){
+    	return entityManager.KILL_ME_NOW;
+    }
+
     var cellNumber = this.grid[indexCurrent.row][indexCurrent.column]
     var indexNext = this.getIndexOfCellNumber(cellNumber+1);
-    console.log(indexCurrent)
+
+
 
     if (indexNext.row > indexCurrent.row) return DIR_ENUM.DOWN;
     if (indexNext.row < indexCurrent.row) return DIR_ENUM.UP;
@@ -122,9 +128,7 @@ Arena.drawBackground = function(ctx){
 	ctx.beginPath();
 	ctx.save;
 	ctx.strokeStyle="black";
-	ctx.fillStyle="white";
-	ctx.rect(this.ORIGINX,this.ORIGINY,this.WIDTH,this.HEIGHT);
-	ctx.fill()
+	ctx.drawImage(g_images.background, 0,0, this.WIDTH, this.HEIGHT);
 	ctx.stroke();
 	ctx.restore;
 }

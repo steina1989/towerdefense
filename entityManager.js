@@ -26,7 +26,6 @@ with suitable 'data' and 'methods'.
 var entityManager = {
 
     // "PRIVATE" DATA
-
     _balloonQueue: [],
     _balloons: [],
     _bullets: [],
@@ -60,16 +59,17 @@ var entityManager = {
         var cellIndex = Arena.getIndexOfCellNumber(1);
         var pos = Arena.indexToPos(cellIndex.row, cellIndex.column);
         // Push 10 balloons into queue
-        console.log(pos);
+        //console.log(pos);
         for (var x = 0; x<10; x++){
             this._balloonQueue.push(new Balloon({ 
-                cx: pos.x,
-                cy: pos.y,
                 speed: 3
             }))
         }
 
         this._towers.push(new Tower(Tower.towerType.properties[Tower.towerType.BRAIN]));
+
+        this._towers.push(new Tower(Tower.towerType.properties[Tower.towerType.SPYRO]));
+
 
         this._balloons.push(this._balloonQueue.pop());
     },
@@ -85,8 +85,10 @@ var entityManager = {
         }));
     },
 
-    generateBalloon: function(descr) {
-        this._balloons.push(new Balloon(descr));
+    generateBalloon: function() {
+        this._balloons.push(new Balloon({ 
+            speed: 3
+        }))
     },
 
     generateTower: function(descr) {
