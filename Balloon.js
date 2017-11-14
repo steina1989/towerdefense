@@ -92,6 +92,9 @@ Balloon.prototype.update = function(du) {
 };
 
 Balloon.prototype.render = function(ctx) {
+	if (this._isDeadNow) 
+		return
+
 	var newPosIndex = Arena.posToIndex(this.cx, this.cy);
 	if (newPosIndex != currentCell) {
 		this.currentCellNumber++;
