@@ -84,6 +84,8 @@ function renderSimulation(ctx) {
     Arena.render(ctx);
 
     entityManager.render(ctx);
+    menuBar.render(ctx);
+
 
     //entityManager.fireBullet(300,300,5,5,0);
 
@@ -106,6 +108,7 @@ var g_images = {};
 function requestPreloads() {
 
     var requiredImages = {
+        //ASDF þarf að updatea
         twrHeili   : "images/heili.png",
         twrSpyro   : "images/spyro.png",
         twrUnicorn : "images/unicorn.png",
@@ -120,6 +123,7 @@ function requestPreloads() {
 var g_sprites = {};
 
 function preloadDone() {
+    //ASDF þarf að updatea
 
     g_sprites.twrHeili  = new Sprite(g_images.twrHeili);
     g_sprites.twrSpyro  = new Sprite(g_images.twrSpyro);
@@ -128,6 +132,7 @@ function preloadDone() {
     g_sprites.bullet = new Sprite(g_images.bullet);
     Tower.init();
     entityManager.init();
+
 
     main.init();
 }
