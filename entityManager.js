@@ -65,12 +65,7 @@ var entityManager = {
                 speed: 3
             }))
         }
-
-        this._towers.push(new Tower(Tower.towerType.properties[Tower.towerType.BRAIN]));
-
-        this._towers.push(new Tower(Tower.towerType.properties[Tower.towerType.SPYRO]));
-
-
+        
         this._balloons.push(this._balloonQueue.pop());
     },
 
