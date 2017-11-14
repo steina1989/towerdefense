@@ -15,14 +15,13 @@ var menuBar = {
 };
 
 var getImage = function(image){
-  var img = new Image(400, 400);
+  var img = new Image(50, 50);
   img.src = image;
   return img;
 }
 
 
 menuBar.render = function(ctx){
-  //this.drawMenuBar(ctx);
   this.drawButton(600,0,200,g_canvas.height/2, getImage('images/ground.jpg'),ctx);
   this.drawButton(600,g_canvas.height/2,200,g_canvas.height/2, getImage('images/ground.jpg'),ctx);
   this.drawButton(620,220,80,60,getImage('images/heili.png'),ctx);
@@ -47,6 +46,36 @@ var playerInfo = {
   coins:0
 };
 
+
+menuBar.getTower = function (x,y,ctx){
+  if(x>=600 && x<=700 && y>=220 && y<=330){
+    //ctx.drawImage(getImage("images/heili.png")x,y);
+
+    return getImage('images/heili.png');
+    //heili
+  }else if(x>700 && x<=800 && y>220 && y<330){
+    return getImage('images/pat.png');
+    //pat
+
+  }else if(x>=600 && x<=700 && y>=330 && y<=390){
+    return getImage('images/spyro.png');
+    //spyro
+  }else if(x>700 && x<=800 && y>330 && y<390){
+    //diamond
+    return getImage('images/diamond.png');
+
+  }else if(x>=650 && x<=750 && y>330 && y<=450){
+    //cloud
+    //kalla á cloud aðferð
+
+  }else{
+    return;
+  }
+}
+
+ 
+
+
 playerInfo.write = function(ctx){
   ctx.fillStyle="black";
   ctx.font="bold 20px Arial"; //ASDF breyta
@@ -66,36 +95,8 @@ playerInfo.write = function(ctx){
 
 menuBar.drawButton=function(x,y,width,height,sprite,ctx){
   ctx.save();
-  //ctx.fillStyle="black";
-  //ctx.fillRect(x,y,width,height);
-
   ctx.drawImage(sprite,x,y,width,height);
   ctx.restore;
 
 }
-
-
-
-
-   
-/*
-    // draw the 3 states: default, hover, active
-    var defaultButton = new Button(0, 0, 100, 50, {
-      'background': '#1879BD',
-      'top': '#43A4BD',
-      'bottom': '#084D79'
-    });
-
-    var hoverButton = new Button(100, 0, 100, 50, {
-      'background': '#093905',
-      'top': '#88A964',
-      'bottom': '#678834'
-    });
-
-    var activeButton = new Button(200, 0, 100, 50, {
-      'background': '#A80000',
-      'top': '#FCFC15',
-      'bottom': '#EB7723'
-    });
-*/
 

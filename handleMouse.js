@@ -12,7 +12,8 @@
 */
 
 var g_mouseX = 0,
-    g_mouseY = 0;
+    g_mouseY = 0,
+    mynd;
 
 function handleMouse(evt) {
     
@@ -23,7 +24,12 @@ function handleMouse(evt) {
 
     // If no button is being pressed, then bail
     var button = evt.buttons === undefined ? evt.which : evt.buttons;
+  
     if (!button) return;
+    mynd = menuBar.getTower(g_mouseX,g_mouseY,g_ctx);
+    //menuBar.drawButton()
+    g_ctx.drawImage(mynd,g_mouseX,g_mouseY,50,50);
+
     
 }
 
@@ -31,3 +37,11 @@ function handleMouse(evt) {
 window.addEventListener("mousedown", handleMouse);
 window.addEventListener("mousemove", handleMouse);
 window.addEventListener("mouseup", handleMouse);
+
+
+
+
+
+
+
+
