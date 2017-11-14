@@ -65,6 +65,9 @@ var entityManager = {
                 speed: 3
             }))
         }
+
+        // ASDF taka út þessa ĺínu:
+        this._towers.push(new Tower(Tower.towerType.properties[Tower.towerType.SPYRO]));
         
         this._balloons.push(this._balloonQueue.pop());
     },

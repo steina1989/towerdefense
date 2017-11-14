@@ -33,16 +33,16 @@ Tower.init = function() {
 	this.towerType = {
 		BRAIN : 1,
 		SPYRO : 2,
-		UNICORN : 3,
+		DIAMOND : 3,
 		properties: {
 			1: {name: "brain", rateOfFire: 1, price: 5, range: 100, bulletDamage: 1, bulletSpeed: 90, sprite: g_sprites.twrHeili},
 			2: {name: "spyro", rateOfFire: 3, price: 15, range: 170, bulletDamage: 2, bulletSpeed: 120, sprite: g_sprites.twrSpyro},
-			3: {name: "unicorn", rateOfFire: 6, price: 25, range: 250, bulletDamage: 3, bulletSpeed: 180, sprite: g_sprites.twrUnicorn},
+			3: {name: "diamond", rateOfFire: 6, price: 25, range: 250, bulletDamage: 3, bulletSpeed: 180, sprite: g_sprites.twrDiamond},
 		}
 	};
 };
 
-// ASDF Debug fall, eyða út
+// ASDF Debug fall, eyða út 
 Tower.generateTower = function() {
 	//
 	var twr = new Tower(towerType.properties[towerType.BRAIN]);
@@ -145,6 +145,6 @@ Tower.prototype.findNearestBalloon = function (){
 			nearestBalloon = entityManager._balloons[i];
 		}
 	}
-	return 5;//closestBalloon;
+	return nearestBalloon;
 };
 
