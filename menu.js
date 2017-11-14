@@ -6,104 +6,79 @@
 0        1         2         3         4         5         6         7         8
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 */
-
 var menuBar = {
-  color: "#FF69B4",
+  color: "white",
   x: Arena.WIDTH,
   y:0,
   width: g_canvas.width - Arena.WIDTH,
   height:g_canvas.height
-
 };
+
+var getImage = function(image){
+  var img = new Image(400, 400);
+  img.src = image;
+  return img;
+}
+
+
 menuBar.render = function(ctx){
-  this.drawMenuBar(ctx);
+  //this.drawMenuBar(ctx);
+  this.drawButton(600,0,200,g_canvas.height/2, getImage('images/ground.jpg'),ctx);
+  this.drawButton(600,g_canvas.height/2,200,g_canvas.height/2, getImage('images/ground.jpg'),ctx);
+  this.drawButton(620,220,80,60,getImage('images/heili.png'),ctx);
+  this.drawButton(620,330,80,60,getImage('images/spyro.png'),ctx);
+  this.drawButton(715,180,60,100,getImage('images/pat.png'),ctx);
+  this.drawButton(710,320,80,80,getImage('images/diamond.png'),ctx);
+  this.drawButton(650,420,120,60,getImage('images/cloud.png'),ctx);
+  playerInfo.write(ctx);
+
 }
 
 menuBar.drawMenuBar=function(ctx){
   ctx.save;
   ctx.fillStyle = this.color;
   ctx.fillRect(this.x,this.y,this.width,this.height);
-  //ctx.fillRect(600,0,200,600);
   ctx.restore;
 }
 
-var buttons = { 
+
+var playerInfo = {
+  lives:200,
+  coins:0
 };
-    /**
-     * A complex button background.
-     * @param {integer} x     - X coordinate of the button.
-     * @param {integer} y     - Y coordinate of the button.
-     * @param {integer} w     - Width of the button.
-     * @param {integer} h     - Height of the button.
-     * @param {object} colors - The colors of the button.
-     * @param {string} colors.background - The background color.
-     * @param {string} colors.top - Top particle color.
-     * @param {string} colors.bottom - Bottom particle color.
-     */
 
-    buttons.Button=function(x, y, w, h, colors) {
-      var halfHeight = h / 2;
+playerInfo.write = function(ctx){
+  ctx.fillStyle="black";
+  ctx.font="bold 20px Arial"; //ASDF breyta
+  
+  ctx.fillText("Yolo's: " + this.lives,615,50);
+  ctx.fillText("Ca$hMoneyzz: " + this.coins,615,70);
+  ctx.font="15px Arial bold";
+  ctx.fillText("Cost: 100",720,300); //PAT
+  ctx.fillText("Cost: 100",630,300); //HEILI
+  ctx.fillText("Cost: 100",630,405); //SPYRO
+  ctx.fillText("Cost: 100",720,405); //DIAMOND
+  ctx.fillText("Cost: 1000",670,495); //CLOUD
 
-      g_ctx.save();
+}
 
-      // draw the button
-      g_ctx.fillStyle = colors.background;
 
-      g_ctx.beginPath();
-      g_ctx.rect(x, y, w, h);
-      g_ctx.rect(x, y, w, h);
-      g_ctx.fill();
-      g_ctx.clip();
 
-      // light gradient
-      var grad = ctx.createLinearGradient(
-        x, y,
-        x, y + halfHeight
-      );
-      grad.addColorStop(0, 'rgb(221,181,155)');
-      grad.addColorStop(1, 'rgb(22,13,8)');
-      g_ctx.fillStyle = grad;
-      g_ctx.globalAlpha = 0.5;
-      g_ctx.fillRect(x, y, w, h);
+menuBar.drawButton=function(x,y,width,height,sprite,ctx){
+  ctx.save();
+  //ctx.fillStyle="black";
+  //ctx.fillRect(x,y,width,height);
 
-      // draw the top half of the button
-      g_ctx.fillStyle = colors.top;
+  ctx.drawImage(sprite,x,y,width,height);
+  ctx.restore;
 
-      // draw the top and bottom particles
-      for (var i = 0; i < h; i += halfHeight) {
+}
 
-        g_ctx.fillStyle = (i === 0 ? colors.top : colors.bottom);
 
-        for (var j = 0; j < 50; j++) {
-          // get random values for particle
-          var partX = x + Math.random() * w;
-          var partY = y + i + Math.random() * halfHeight;
-          var width = Math.random() * 10;
-          var height = Math.random() * 10;
-          var rotation = Math.random() * 360;
-          var alpha = Math.random();
 
-          g_ctx.save();
-
-          // rotate the canvas by 'rotation'
-          g_ctx.translate(partX, partY);
-          g_ctx.rotate(rotation * Math.PI / 180);
-          g_ctx.translate(-partX, -partY);
-
-          // set alpha transparency to 'alpha'
-          g_ctx.globalAlpha = alpha;
-
-          g_ctx.fillRect(partX, partY, width, height);
-
-          g_ctx.restore();
-        }
-      }
-
-      ctx.restore();
-    }
 
    
-
+/*
     // draw the 3 states: default, hover, active
     var defaultButton = new Button(0, 0, 100, 50, {
       'background': '#1879BD',
@@ -122,4 +97,5 @@ var buttons = {
       'top': '#FCFC15',
       'bottom': '#EB7723'
     });
+*/
 
