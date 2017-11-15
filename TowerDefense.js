@@ -121,7 +121,8 @@ function requestPreloads() {
         greenbloon  : "images/greenbloon.png",
         yellowbloon  : "images/yellowbloon.png",
         whitebloon  : "images/whitebloon.png",
-        blackbloon  : "images/blackbloon.png"
+        blackbloon  : "images/blackbloon.png",
+        menuBackground : "images/ground.jpg"
     };
 
     imagesPreload(requiredImages, g_images, preloadDone);
@@ -145,6 +146,8 @@ function preloadDone() {
     g_sprites.yellowbloon = new Sprite(g_images.yellowbloon);
     g_sprites.whitebloon = new Sprite(g_images.whitebloon);
     g_sprites.blackbloon = new Sprite(g_images.blackbloon);
+    g_sprites.menuBackground = new Sprite(g_images.menuBackground);
+    g_sprites.menuBackground.scale = 1
     Tower.init();
     Balloon.init();
     entityManager.init();
