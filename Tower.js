@@ -132,14 +132,15 @@ Tower.prototype.findNearestBalloon = function (){
 	// Skilar blöðru hlut í minnstri fjarlægð
 	var numBloons = entityManager._balloons.length;
 	var shortestDist = Number.MAX_VALUE;
+	var nearestBalloon;
 
 	for(var i = 0; i < numBloons; i++) {
 	// balloons[i] is our current balloon
 		var dist = util.distSq(entityManager._balloons[i].cx, entityManager._balloons[i].cy,
 							this.cx, this.cy);
-		var nearestBalloon = entityManager._balloons[i];
 		if(dist < shortestDist) {
 			nearestBalloon = entityManager._balloons[i];
+			shortestDist = dist;
 		}
 	}
 	return nearestBalloon;
