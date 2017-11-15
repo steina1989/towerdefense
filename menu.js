@@ -53,23 +53,25 @@ menuBar.getTower = function (x,y){
     entityManager.generateTower(Tower.towerType.properties[Tower.towerType.BRAIN],x,y);
     //console.log(Tower.towerType.properties[Tower.towerType.BRAIN]);
     isDragging=true;
-    console.log("ert inní brain");
     return entityManager._towers[i];
     //entityManager.generateTower(towerType.BRAIN);
     //return 'images/heili.png';
     //heili
   }else if(x>700 && x<=800 && y>220 && y<330){
     entityManager.generateTower(Tower.towerType.properties[Tower.towerType.PAT],x,y);
+    isDragging=true;
     return entityManager._towers[i];
     //return 'images/pat.png';
     //pat
   }else if(x>=600 && x<=700 && y>=330 && y<=390){
-    entityManager.generateTower(Tower.towerType.SPYRO,x,y);
+    entityManager.generateTower(Tower.towerType.properties[Tower.towerType.SPYRO],x,y);
+    isDragging=true;
     return entityManager._towers[i];
     //return 'images/spyro.png';
     //spyro
   }else if(x>700 && x<=800 && y>330 && y<390){
-    entityManager.generateTower(Tower.towerType.DIAMOND,x,y);
+    entityManager.generateTower(Tower.towerType.properties[Tower.towerType.DIAMOND],x,y);
+    isDragging=true;
     return entityManager._towers[i];
     //diamond
     //return 'images/diamond.png';
