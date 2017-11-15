@@ -61,11 +61,22 @@ var entityManager = {
         // Push 10 balloons into queue
         //console.log(pos);
         for (var x = 0; x<10; x++){
-            this._balloonQueue.push(new Balloon({ 
-                speed: 3
-            }))
+            //this._balloonQueue.push(new Balloon({ 
+              //  speed: 3
+            //}))
+            this._balloonQueue.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]));
         }
-        
+
+        // ASDF taka út þessa ĺínu:
+
+        var tower = new Tower(Tower.towerType.properties[Tower.towerType.BRAIN]);
+        var pos = Arena.indexToPos(3,6);
+        tower.setPos(pos.x, pos.y);
+        this._towers.push(tower);
+
+
+        //HÉR FYRIR OFAN: DEBUG, TAKA ÚT SEINNA
+
         this._balloons.push(this._balloonQueue.pop());
     },
 
@@ -79,11 +90,29 @@ var entityManager = {
             rotation: rotation
         }));
     },
+/*
+    Tower.prototype.generateBullet = function(speed, damage, rotation) {
+
+    var velX = speed * Math.cos(rotation);
+    var velY = speed * Math.sin(rotation);
+
+    this._bullets.push(new Bullet({
+            cx: this.cx,
+            cy: this.cy,
+            velX: velX,
+            velY: velY,
+
+            rotation: this.rotation
+        }));
+};*/
 
     generateBalloon: function() {
-        this._balloons.push(new Balloon({ 
-            speed: 3
-        }))
+        //this._balloons.push(new Balloon({ 
+          //  speed: 3
+        //}))
+        //var balloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE])
+        this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]))
+        //var twr = new Tower(towerType.properties[towerType.BRAIN]);
     },
 
     generateTower: function(descr,xPos, yPos) {
@@ -111,6 +140,7 @@ var entityManager = {
 
     placeTower: function(xPos,yPos) {
     	// ASDF þarf að breyta, er á byrjunarstigi
+        // Þarf að taka inn staðsetningu og turninn sem var búinn til
     	var tower = this.generateTower({ // ASDF á eftir að búa til aðferðina hér.
         	cx : xPos,
         	cy : yPos

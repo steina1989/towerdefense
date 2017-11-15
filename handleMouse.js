@@ -16,6 +16,8 @@ var g_mouseX = 0,
     isDragging=false,
     tower=null;
   
+    //mynd,
+    isDragging=false;
 
 function handleMouse(evt) {
     

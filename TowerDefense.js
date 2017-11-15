@@ -111,9 +111,17 @@ function requestPreloads() {
         //ASDF þarf að updatea
         twrHeili   : "images/heili.png",
         twrSpyro   : "images/spyro.png",
+        twrUnicorn : "images/unicorn.png",
+        twrDiamond : "images/diamond.png",
         balloon  : "images/bluebloon.png",
         bullet  : "images/bullet.png",
-        background : "images/level01.png"
+        background : "images/level01.png",
+        redbloon  : "images/redbloon.png",
+        bluebloon  : "images/bluebloon.png",
+        greenbloon  : "images/greenbloon.png",
+        yellowbloon  : "images/yellowbloon.png",
+        whitebloon  : "images/whitebloon.png",
+        blackbloon  : "images/blackbloon.png"
     };
 
     imagesPreload(requiredImages, g_images, preloadDone);
@@ -126,9 +134,19 @@ function preloadDone() {
 
     g_sprites.twrHeili  = new Sprite(g_images.twrHeili);
     g_sprites.twrSpyro  = new Sprite(g_images.twrSpyro);
+    g_sprites.twrUnicorn  = new Sprite(g_images.twrUnicorn);
+    g_sprites.twrDiamond = new Sprite(g_images.twrDiamond);
     g_sprites.balloon = new Sprite(g_images.balloon);
     g_sprites.bullet = new Sprite(g_images.bullet);
+    g_sprites.bullet.scale = 2;
+    g_sprites.redbloon = new Sprite(g_images.redbloon);
+    g_sprites.bluebloon = new Sprite(g_images.bluebloon);
+    g_sprites.greenbloon = new Sprite(g_images.greenbloon);
+    g_sprites.yellowbloon = new Sprite(g_images.yellowbloon);
+    g_sprites.whitebloon = new Sprite(g_images.whitebloon);
+    g_sprites.blackbloon = new Sprite(g_images.blackbloon);
     Tower.init();
+    Balloon.init();
     entityManager.init();
 
 
