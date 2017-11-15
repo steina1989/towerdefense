@@ -20,17 +20,17 @@ var getImage = function(image){
   return img;
 }
 
-var origBrainX = 660
-var origBrainY = 250
+var origBrainX = 660;
+var origBrainY = 250;
 
-var origPatX = 750 
-var origPatY = 250
+var origPatX = 750;
+var origPatY = 250;
 
-var origSpyroX = 660
-var origSpyroY = 360
+var origSpyroX = 660;
+var origSpyroY = 360;
 
-var origDiamondX = 750
-var origDiamondY = 360
+var origDiamondX = 750;
+var origDiamondY = 360;
 
 menuBar.render = function(ctx){
   //this.drawMenuBar(ctx);
@@ -48,13 +48,13 @@ menuBar.render = function(ctx){
   playerInfo.write(ctx);
 
 }
-
+/*
 menuBar.drawMenuBar=function(ctx){
-  ctx.save;
+  ctx.save();
   ctx.fillStyle = this.color;
   ctx.fillRect(this.x,this.y,this.width,this.height);
-  ctx.restore;
-}
+  ctx.restore();
+}*/
 
 
 var playerInfo = {
@@ -66,7 +66,9 @@ var playerInfo = {
 var i=-1;
 
 menuBar.getTower = function (x,y){
-  if(x>=origBrainX && x<=origBrainX+g_sprites.twrHeili.scaledWidth && y>=origBrainY && y<=origBrainY+g_sprites.twrHeili.scaledHeight){
+  console.log("fer inn í getTower aðferð")
+  console.log(x,y)
+  if((x>=origBrainX && x<=origBrainX+g_sprites.twrHeili.scaledWidth) && (y>=origBrainY && y<=origBrainY+g_sprites.twrHeili.scaledHeight)){
     entityManager.generateTower(Tower.towerType.properties[Tower.towerType.BRAIN],x,y);
     //console.log(Tower.towerType.properties[Tower.towerType.BRAIN]);
     isDragging=true;
@@ -101,8 +103,10 @@ menuBar.getTower = function (x,y){
     return entityManager._towers[i];
     //diamond
     //return 'images/diamond.png';
+  }else{
+    console.log("for hingað")
+    return;
   }
-  else return
 }
 
  
@@ -128,7 +132,7 @@ playerInfo.write = function(ctx){
 menuBar.drawButton=function(x,y,width,height,sprite,ctx){
   ctx.save();
   ctx.drawImage(sprite,x,y,width,height);
-  ctx.restore;
+  ctx.restore();
 
 }
 
