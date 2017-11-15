@@ -111,6 +111,7 @@ function requestPreloads() {
         //ASDF þarf að updatea
         twrHeili   : "images/heili.png",
         twrSpyro   : "images/spyro.png",
+        twrDiamond : "images/diamond.png",
         balloon  : "images/bluebloon.png",
         bullet  : "images/bullet.png",
         background : "images/level01.png"
@@ -126,6 +127,7 @@ function preloadDone() {
 
     g_sprites.twrHeili  = new Sprite(g_images.twrHeili);
     g_sprites.twrSpyro  = new Sprite(g_images.twrSpyro);
+    g_sprites.twrDiamond = new Sprite(g_images.twrDiamond);
     g_sprites.balloon = new Sprite(g_images.balloon);
     g_sprites.bullet = new Sprite(g_images.bullet);
     Tower.init();

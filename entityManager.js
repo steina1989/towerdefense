@@ -67,8 +67,15 @@ var entityManager = {
         }
 
         // ASDF taka út þessa ĺínu:
-        this._towers.push(new Tower(Tower.towerType.properties[Tower.towerType.SPYRO]));
-        
+
+        var tower = new Tower(Tower.towerType.properties[Tower.towerType.SPYRO]);
+        var pos = Arena.indexToPos(3,6);
+        tower.setPos(pos.x, pos.y);
+        this._towers.push(tower);
+
+
+        //HÉR FYRIR OFAN: DEBUG, TAKA ÚT SEINNA
+
         this._balloons.push(this._balloonQueue.pop());
     },
 
@@ -82,6 +89,21 @@ var entityManager = {
             rotation: rotation
         }));
     },
+/*
+    Tower.prototype.generateBullet = function(speed, damage, rotation) {
+
+    var velX = speed * Math.cos(rotation);
+    var velY = speed * Math.sin(rotation);
+
+    this._bullets.push(new Bullet({
+            cx: this.cx,
+            cy: this.cy,
+            velX: velX,
+            velY: velY,
+
+            rotation: this.rotation
+        }));
+};*/
 
     generateBalloon: function() {
         this._balloons.push(new Balloon({ 
