@@ -20,15 +20,30 @@ var getImage = function(image){
   return img;
 }
 
+var origBrainX = 660
+var origBrainY = 250
+
+var origPatX = 750 
+var origPatY = 250
+
+var origSpyroX = 660
+var origSpyroY = 360
+
+var origDiamondX = 750
+var origDiamondY = 360
+
 
 menuBar.render = function(ctx){
-  this.drawButton(600,0,200,g_canvas.height/2, getImage('images/ground.jpg'),ctx);
-  this.drawButton(600,g_canvas.height/2,200,g_canvas.height/2, getImage('images/ground.jpg'),ctx);
-  this.drawButton(620,220,80,60,getImage('images/heili.png'),ctx);
-  this.drawButton(620,330,80,60,getImage('images/spyro.png'),ctx);
-  this.drawButton(715,180,60,100,getImage('images/pat.png'),ctx);
-  this.drawButton(710,310,80,80,getImage('images/diamond.png'),ctx);
-  this.drawButton(650,420,120,60,getImage('images/cloud.png'),ctx);
+ // this.drawButton(600,0,200,g_canvas.height/2, getImage('images/ground.jpg'),ctx);
+ // this.drawButton(600,g_canvas.height/2,200,g_canvas.height/2, getImage('images/ground.jpg'),ctx);
+
+  g_sprites.menuBackground.drawAt(ctx,600,0)
+
+  g_sprites.twrHeili.drawCentredAt(ctx,origBrainX,origBrainY);
+  g_sprites.twrPat.drawCentredAt(ctx,origPatX,origPatY);
+  g_sprites.twrSpyro.drawCentredAt(ctx,origSpyroX,origSpyroY);
+  g_sprites.twrDiamond.drawCentredAt(ctx,origDiamondX,origDiamondY);
+
   playerInfo.write(ctx);
 
 }
@@ -49,39 +64,34 @@ var i=-1;
 
 menuBar.getTower = function (x,y){
   i++;
-  if(x>=600 && x<=700 && y>=220 && y<=330){
+  if(x>=origBrainX && x<=origBrainX+g_sprites.twrHeili.width && y>=origBrainY && y<=origBrainY+g_sprites.twrHeili.height){
     entityManager.generateTower(Tower.towerType.properties[Tower.towerType.BRAIN],x,y);
     //console.log(Tower.towerType.properties[Tower.towerType.BRAIN]);
     isDragging=true;
+    console.log("brain");
     return entityManager._towers[i];
     //entityManager.generateTower(towerType.BRAIN);
     //return 'images/heili.png';
     //heili
-  }else if(x>700 && x<=800 && y>220 && y<330){
+  }else if(x>origPatX && x<=origPatX+g_sprites.twrPat.width && y>origPatY && y<origPatY+g_sprites.twrPat.height){
+    console.log("pat");
     entityManager.generateTower(Tower.towerType.properties[Tower.towerType.PAT],x,y);
-    isDragging=true;
     return entityManager._towers[i];
     //return 'images/pat.png';
     //pat
-  }else if(x>=600 && x<=700 && y>=330 && y<=390){
-    entityManager.generateTower(Tower.towerType.properties[Tower.towerType.SPYRO],x,y);
-    isDragging=true;
+  }else if(x>origSpyroX && x<=origSpyroX+g_sprites.twrSpry.width && y>origSpyroY && y<origSpyroY+g_sprites.twrSpyro.height){
+    console.log("spyro")
+    entityManager.generateTower(Tower.towerType.SPYRO,x,y);
     return entityManager._towers[i];
     //return 'images/spyro.png';
     //spyro
-  }else if(x>700 && x<=800 && y>330 && y<390){
-    entityManager.generateTower(Tower.towerType.properties[Tower.towerType.DIAMOND],x,y);
-    isDragging=true;
+  }else if(x>origDiamondX && x<=origDiamondX+g_sprites.twrDiamond.width && y>origDiamondY && y<origDiamondY+g_sprites.twrDiamond.height){
+    console.log("diamoon")
+    entityManager.generateTower(Tower.towerType.DIAMOND,x,y);
     return entityManager._towers[i];
     //diamond
     //return 'images/diamond.png';
 
-  }else if(x>=650 && x<=750 && y>330 && y<=450){
-    //cloud
-    //kalla á cloud aðferð
-
-  }else{
-    return;
   }
 }
 
