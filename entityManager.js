@@ -132,6 +132,7 @@ var entityManager = {
 
     placeTower: function(xPos, yPos) {
     	// ASDF þarf að breyta, er á byrjunarstigi
+        // Þarf að taka inn staðsetningu og turninn sem var búinn til
     	var tower = this.generateTower({ // ASDF á eftir að búa til aðferðina hér.
         	cx : xPos,
         	cy : yPos
