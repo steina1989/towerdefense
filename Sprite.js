@@ -27,6 +27,7 @@ function Sprite(image) {
         var ratio = Arena.cellHeight / this.height;
         this.scale = ratio;
     }
+    
 }
 
 Sprite.prototype.drawAt = function (ctx, x, y) {
