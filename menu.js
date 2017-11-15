@@ -63,36 +63,46 @@ var playerInfo = {
 var i=-1;
 
 menuBar.getTower = function (x,y){
-  i++;
-  if(x>=origBrainX && x<=origBrainX+g_sprites.twrHeili.width && y>=origBrainY && y<=origBrainY+g_sprites.twrHeili.height){
+  if(x>=origBrainX && x<=origBrainX+g_sprites.twrHeili.scaledWidth && y>=origBrainY && y<=origBrainY+g_sprites.twrHeili.scaledHeight){
     entityManager.generateTower(Tower.towerType.properties[Tower.towerType.BRAIN],x,y);
     //console.log(Tower.towerType.properties[Tower.towerType.BRAIN]);
     isDragging=true;
     console.log("brain");
+    i++;
     return entityManager._towers[i];
     //entityManager.generateTower(towerType.BRAIN);
     //return 'images/heili.png';
     //heili
-  }else if(x>origPatX && x<=origPatX+g_sprites.twrPat.width && y>origPatY && y<origPatY+g_sprites.twrPat.height){
+  }else if(x>=origPatX && x<=origPatX+g_sprites.twrPat.scaledWidth && y>=origPatY && y<=origPatY+g_sprites.twrPat.scaledHeight){
     console.log("pat");
     entityManager.generateTower(Tower.towerType.properties[Tower.towerType.PAT],x,y);
+    isDragging=true;
+    i++;
+
     return entityManager._towers[i];
     //return 'images/pat.png';
     //pat
-  }else if(x>origSpyroX && x<=origSpyroX+g_sprites.twrSpry.width && y>origSpyroY && y<origSpyroY+g_sprites.twrSpyro.height){
+  }else if(x>origSpyroX && x<=origSpyroX+g_sprites.twrSpyro.scaledWidth && y>origSpyroY && y<origSpyroY+g_sprites.twrSpyro.scaledHeight){
     console.log("spyro")
-    entityManager.generateTower(Tower.towerType.SPYRO,x,y);
+    entityManager.generateTower(Tower.towerType.properties[Tower.towerType.SPYRO],x,y);
+    isDragging=true;
+    i++;
     return entityManager._towers[i];
     //return 'images/spyro.png';
     //spyro
-  }else if(x>origDiamondX && x<=origDiamondX+g_sprites.twrDiamond.width && y>origDiamondY && y<origDiamondY+g_sprites.twrDiamond.height){
+  }else if(x>origDiamondX && x<=origDiamondX+g_sprites.twrDiamond.scaledWidth && y>origDiamondY && y<origDiamondY+g_sprites.twrDiamond.scaledHeight){
     console.log("diamoon")
-    entityManager.generateTower(Tower.towerType.DIAMOND,x,y);
+    entityManager.generateTower(Tower.towerType.properties[Tower.towerType.DIAMOND],x,y);
+    isDragging=true;
+    i++;
     return entityManager._towers[i];
     //diamond
     //return 'images/diamond.png';
 
+  
+  
   }
+  else return
 }
 
  
