@@ -94,7 +94,6 @@ menuBar.getTower = function (x,y){
 
  
 
->>>>>>> af780f42c0ac4acbc50c855f822d3a3334fda2f6
 
 playerInfo.write = function(ctx){
   ctx.fillStyle="black";
