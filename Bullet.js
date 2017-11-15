@@ -99,7 +99,8 @@ Bullet.prototype.render = function (ctx) {
         ctx, this.cx, this.cy, this.rotation
     );
 
-    g_sprites.bullet.drawCentredAt(ctx, 50,50,0);
+    //g_sprites.bullet.drawCentredAt(ctx, 50,50,0);
 
 };
 
+var firstTime = true;

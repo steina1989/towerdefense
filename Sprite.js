@@ -21,12 +21,13 @@ function Sprite(image) {
     this.height = image.height;
     if (this.width > this.height) {
         var ratio = Arena.cellWidth / this.width;
-        this.scale = ratio; 
+        var spriteScale = ratio; 
     }
     else {
         var ratio = Arena.cellHeight / this.height;
-        this.scale = ratio;
+        var spriteScale = ratio;
     }
+    this.scale = this.scale || spriteScale;
     
 }
 

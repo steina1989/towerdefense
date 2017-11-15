@@ -13,7 +13,7 @@
 
 var g_mouseX = 0,
     g_mouseY = 0,
-    mynd;
+    //mynd,
     isDragging=false;
 
 function handleMouse(evt) {

@@ -20,6 +20,8 @@ function Tower(descr) {
 	this.cx = 300;
 	this.cy = 350;
 	this.range *= this.range;
+	var d =  new Date();
+	this.lastTime = d.getTime();
 }
 
 /*
@@ -36,9 +38,9 @@ Tower.init = function() {
 		SPYRO : 2,
 		DIAMOND : 3,
 		properties: {
-			1: {name: "brain", rateOfFire: 1, price: 5, range: 130, bulletDamage: 1, bulletSpeed: 90, sprite: g_sprites.twrHeili},
-			2: {name: "spyro", rateOfFire: 3, price: 15, range: 165, bulletDamage: 2, bulletSpeed: 120, sprite: g_sprites.twrSpyro},
-			3: {name: "diamond", rateOfFire: 6, price: 25, range: 190, bulletDamage: 3, bulletSpeed: 180, sprite: g_sprites.twrDiamond},
+			1: {name: "brain", rateOfFire: 500, price: 5, range: 130, bulletDamage: 1, bulletSpeed: 3, sprite: g_sprites.twrHeili},
+			2: {name: "spyro", rateOfFire: 300, price: 15, range: 165, bulletDamage: 2, bulletSpeed: 3, sprite: g_sprites.twrSpyro},
+			3: {name: "diamond", rateOfFire: 200, price: 25, range: 190, bulletDamage: 3, bulletSpeed: 8, sprite: g_sprites.twrDiamond},
 		}
 	};
 };
@@ -112,8 +114,32 @@ Tower.prototype.update = function (du) {
     	var damage = this.bulletDamage;
     	var speed = this.bulletSpeed;
     	this.rotation = this.findAngle(this.findNearestBalloon());
-    	//var vel = this.properties.bulletSpeed;
-    	//entityManager.fireBullet(this.cx, this.cy, velX, velY, this.rotation);
+    	var dX = +Math.sin(this.rotation);
+        var dY = -Math.cos(this.rotation);
+        var relVelX = dX * speed;
+        var relVelY = dY * speed;
+        var launchDist = this.sprite.width * 1.2;
+    	//var velX = this.properties.bulletSpeed;
+
+    	var now = new Date();
+    	var currentTime = now.getTime();
+
+    	if (currentTime - this.lastTime > this.rateOfFire) {
+    		entityManager.fireBullet(this.cx + dX, this.cy + dY, relVelX, relVelY, 0);
+    		firstTime = false;
+    		this.lastTime = currentTime;
+    	}
+
+
+        //var launchDist = this.getRadius() * 1.2;
+        
+        //var relVel = this.launchVel;
+        
+
+        //entityManager.fireBullet(
+          // this.cx + dX * launchDist, this.cy + dY * launchDist,
+           //this.velX + relVelX, this.velY + relVelY,
+           //this.rotation);
 		//this.generateBullet(speed, damage, this.rotation); ASDF dót
 	}
 };
@@ -132,14 +158,15 @@ Tower.prototype.findNearestBalloon = function (){
 	// Skilar blöðru hlut í minnstri fjarlægð
 	var numBloons = entityManager._balloons.length;
 	var shortestDist = Number.MAX_VALUE;
+	var nearestBalloon;
 
 	for(var i = 0; i < numBloons; i++) {
 	// balloons[i] is our current balloon
 		var dist = util.distSq(entityManager._balloons[i].cx, entityManager._balloons[i].cy,
 							this.cx, this.cy);
-		var nearestBalloon = entityManager._balloons[i];
 		if(dist < shortestDist) {
 			nearestBalloon = entityManager._balloons[i];
+			shortestDist = dist;
 		}
 	}
 	return nearestBalloon;
