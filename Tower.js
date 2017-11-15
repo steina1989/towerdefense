@@ -41,10 +41,12 @@ Tower.init = function() {
 		BRAIN : 1,
 		SPYRO : 2,
 		DIAMOND : 3,
+		PAT: 4,
 		properties: {
 			1: {name: "brain", rateOfFire: 500, price: 5, range: 130, bulletDamage: 1, bulletSpeed: 3, sprite: g_sprites.twrHeili},
 			2: {name: "spyro", rateOfFire: 300, price: 15, range: 165, bulletDamage: 2, bulletSpeed: 3, sprite: g_sprites.twrSpyro},
 			3: {name: "diamond", rateOfFire: 200, price: 25, range: 190, bulletDamage: 3, bulletSpeed: 8, sprite: g_sprites.twrDiamond},
+			3: {name: "pat", rateOfFire: 200, price: 25, range: 190, bulletDamage: 3, bulletSpeed: 8, sprite: g_sprites.twrPat},
 		}
 	};
 };
