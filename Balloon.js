@@ -14,9 +14,10 @@
 //function Balloon(descr){
 function Balloon(descr){
 	this.setup(descr);
+	this.balloonType;
       
     // Default sprite and scale, if not otherwise specified
-    this.sprite = this.sprite || g_sprites.balloon;
+    this.sprite = this.sprite || g_sprites.redbloon;
     //this.scale  = this.scale  || 1;
     //this._scale = 1;
     
@@ -47,6 +48,27 @@ Balloon.prototype.cy = 0; //Arena.indexToPos(this.firstCell).y;
 Balloon.prototype.velX;
 Balloon.prototype.velY;
 Balloon.prototype.direction;
+
+
+Balloon.init = function() {
+	this.balloonType = {
+		RED : 1,
+		BLUE : 2,
+		GREEN : 3,
+		YELLOW : 4,
+		WHITE : 5,
+		BLACK : 6,
+		properties: {
+			1: {name: "red", penalty: 1, speed: 2, sprite: g_sprites.redbloon},
+			2: {name: "blue", penalty: 2, speed: 2, sprite: g_sprites.bluebloon},
+			3: {name: "green", penalty: 3, speed: 3, sprite: g_sprites.greenbloon},
+			4: {name: "yellow", penalty: 4, speed: 3, sprite: g_sprites.yellowbloon},
+			5: {name: "white", penalty: 5, speed: 2, sprite: g_sprites.whitebloon},
+			6: {name: "black", penalty: 6, speed: 2, sprite: g_sprites.blackbloon}
+		}
+	};
+};
+
 
 Balloon.prototype.update = function(du) {
 

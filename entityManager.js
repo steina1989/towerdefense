@@ -61,9 +61,10 @@ var entityManager = {
         // Push 10 balloons into queue
         //console.log(pos);
         for (var x = 0; x<10; x++){
-            this._balloonQueue.push(new Balloon({ 
-                speed: 3
-            }))
+            //this._balloonQueue.push(new Balloon({ 
+              //  speed: 3
+            //}))
+            this._balloonQueue.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]));
         }
         
         this._balloons.push(this._balloonQueue.pop());
@@ -81,9 +82,12 @@ var entityManager = {
     },
 
     generateBalloon: function() {
-        this._balloons.push(new Balloon({ 
-            speed: 3
-        }))
+        //this._balloons.push(new Balloon({ 
+          //  speed: 3
+        //}))
+        //var balloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE])
+        this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]))
+        //var twr = new Tower(towerType.properties[towerType.BRAIN]);
     },
 
     generateTower: function(descr) {
