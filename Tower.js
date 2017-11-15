@@ -19,6 +19,7 @@ function Tower(descr) {
 	this.setup(descr);
 	this.cx = 300;
 	this.cy = 350;
+	this.range *= this.range;
 }
 
 /*
@@ -33,16 +34,17 @@ Tower.init = function() {
 	this.towerType = {
 		BRAIN : 1,
 		SPYRO : 2,
-		UNICORN : 3,
+		DIAMOND : 3,
 		properties: {
-			1: {name: "brain", rateOfFire: 1, price: 5, range: 100, bulletDamage: 1, bulletSpeed: 90, sprite: g_sprites.twrHeili},
-			2: {name: "spyro", rateOfFire: 3, price: 15, range: 170, bulletDamage: 2, bulletSpeed: 120, sprite: g_sprites.twrSpyro},
-			3: {name: "unicorn", rateOfFire: 6, price: 25, range: 250, bulletDamage: 3, bulletSpeed: 180, sprite: g_sprites.twrUnicorn},
+			1: {name: "brain", rateOfFire: 1, price: 5, range: 130, bulletDamage: 1, bulletSpeed: 90, sprite: g_sprites.twrHeili},
+			2: {name: "spyro", rateOfFire: 3, price: 15, range: 165, bulletDamage: 2, bulletSpeed: 120, sprite: g_sprites.twrSpyro},
+			3: {name: "diamond", rateOfFire: 6, price: 25, range: 190, bulletDamage: 3, bulletSpeed: 180, sprite: g_sprites.twrDiamond},
 		}
 	};
 };
 
-// ASDF Debug fall, eyða út
+// ASDF Debug fall, eyða út 
+/*
 Tower.generateTower = function() {
 	//
 	var twr = new Tower(towerType.properties[towerType.BRAIN]);
@@ -57,6 +59,9 @@ Tower.generateTower = function() {
 	//Teiknast í 0.00000000000sek ókei
 
 };
+
+*/
+
 //kallað á í TowerDefense
 
 /*
@@ -70,7 +75,7 @@ Tower.prototype = new Entity();
 
 // The tower generates bullet (fires) in the direction
 // it is facing.
-Tower.prototype.rotation = function(balloon) {
+Tower.prototype.findAngle = function(balloon) {
 	// Position of balloon
 	var posB = {
 		x: balloon.cx,
@@ -84,14 +89,16 @@ Tower.prototype.rotation = function(balloon) {
 	};
 
 	// Return the angle between these 2 entities in Radians
-	return Math.atan2(posT.y - posB.y, posT.x - posB.x);
+	return Math.atan2(posT.y - posB.y, posT.x - posB.x) - Math.PI/2;
 };
 
 Tower.prototype.inRange = function(balloon){
-	var dist = util.distSq(balloon.cx, balloon.cy,
-    	 			  this.cx, this.cy);
-	if(dist <= this.range) {
-		return true;
+	if (balloon){
+		var dist = util.distSq(balloon.cx, balloon.cy,
+	    	 			  this.cx, this.cy);
+		if(dist <= this.range) 
+			return true;
+
 	}
 	return false;
 };
@@ -104,31 +111,21 @@ Tower.prototype.update = function (du) {
     if(this.inRange(nearestBln)) {
     	var damage = this.bulletDamage;
     	var speed = this.bulletSpeed;
-    	var rotation = this.rotation(findNearestBalloon());
-		generateBullet(speed, damage, rotation);
+    	this.rotation = this.findAngle(this.findNearestBalloon());
+    	//var vel = this.properties.bulletSpeed;
+    	//entityManager.fireBullet(this.cx, this.cy, velX, velY, this.rotation);
+		//this.generateBullet(speed, damage, this.rotation); ASDF dót
 	}
 };
 
 
-Tower.prototype.generateBullet = function(speed, damage, rotation) {
-
-    var velX = speed * Math.cos(rotation);
-    var velY = speed * Math.sin(rotation);
-
-    this._bullets.push(new Bullet({
-            cx: this.cx,
-            cy: this.cy,
-            velX: velX,
-            velY: velY,
-
-            rotation: this.rotation
-        }));
-};
+// ASDF kalla á generate bullet
 
 Tower.prototype.render = function (ctx) {
     this.sprite.drawCentredAt(
 	ctx, this.cx, this.cy, this.rotation
     );
+    util.strokeCircle(ctx, this.cx, this.cy, Math.sqrt(this.range)); // ASDF
 };
 
 Tower.prototype.findNearestBalloon = function (){
@@ -145,6 +142,6 @@ Tower.prototype.findNearestBalloon = function (){
 			nearestBalloon = entityManager._balloons[i];
 		}
 	}
-	return 5;//closestBalloon;
+	return nearestBalloon;
 };
 

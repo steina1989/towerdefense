@@ -126,11 +126,11 @@ Arena.render = function(ctx) {
 // Placeholder backdrop
 Arena.drawBackground = function(ctx){
 	ctx.beginPath();
-	ctx.save();
+	ctx.save;
 	ctx.strokeStyle="black";
 	ctx.drawImage(g_images.background, 0,0, this.WIDTH, this.HEIGHT);
 	ctx.stroke();
-	ctx.restore();
+	ctx.restore;
 }
 
 
@@ -153,11 +153,11 @@ Arena.renderDiagnostics = function(ctx){
 
 Arena._drawArrayPath = function(ctx,x,y){
 	ctx.beginPath();
-	ctx.save();
+	ctx.save;
 	ctx.strokeStyle="black";
 	ctx.rect(x-this.cellWidth/2,y-this.cellWidth/2,this.cellWidth,this.cellHeight);
 	ctx.stroke();
-	ctx.restore();
+	ctx.restore;
 }
 
 
