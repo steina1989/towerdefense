@@ -19,6 +19,8 @@ function Tower(descr) {
 	this.setup(descr);
 	this.cx = 300;
 	this.cy = 350;
+	this.rotation=0;
+
 }
 
 /*
@@ -124,6 +126,7 @@ Tower.prototype.generateBullet = function(speed, damage, rotation) {
             rotation: this.rotation
         }));
 };
+
 
 Tower.prototype.render = function (ctx) {
     this.sprite.drawCentredAt(

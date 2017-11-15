@@ -27,39 +27,52 @@ menuBar.render = function(ctx){
   this.drawButton(620,220,80,60,getImage('images/heili.png'),ctx);
   this.drawButton(620,330,80,60,getImage('images/spyro.png'),ctx);
   this.drawButton(715,180,60,100,getImage('images/pat.png'),ctx);
-  this.drawButton(710,320,80,80,getImage('images/diamond.png'),ctx);
+  this.drawButton(710,310,80,80,getImage('images/diamond.png'),ctx);
   this.drawButton(650,420,120,60,getImage('images/cloud.png'),ctx);
   playerInfo.write(ctx);
 
 }
 
-menuBar.drawMenuBar=function(ctx){
+/*menuBar.drawMenuBar=function(ctx){
   ctx.save;
   ctx.fillStyle = this.color;
   ctx.fillRect(this.x,this.y,this.width,this.height);
   ctx.restore;
 }
-
+*/
 
 var playerInfo = {
   lives:200,
   coins:0
 };
+var i=-1;
 
-
-menuBar.getTower = function (x,y,ctx){
+menuBar.getTower = function (x,y){
+  i++;
   if(x>=600 && x<=700 && y>=220 && y<=330){
-    return getImage('images/heili.png');
+    entityManager.generateTower(Tower.towerType.properties[Tower.towerType.BRAIN],x,y);
+    //console.log(Tower.towerType.properties[Tower.towerType.BRAIN]);
+    isDragging=true;
+    console.log("ert inní brain");
+    return entityManager._towers[i];
+    //entityManager.generateTower(towerType.BRAIN);
+    //return 'images/heili.png';
     //heili
   }else if(x>700 && x<=800 && y>220 && y<330){
-    return getImage('images/pat.png');
+    entityManager.generateTower(Tower.towerType.properties[Tower.towerType.PAT],x,y);
+    return entityManager._towers[i];
+    //return 'images/pat.png';
     //pat
   }else if(x>=600 && x<=700 && y>=330 && y<=390){
-    return getImage('images/spyro.png');
+    entityManager.generateTower(Tower.towerType.SPYRO,x,y);
+    return entityManager._towers[i];
+    //return 'images/spyro.png';
     //spyro
   }else if(x>700 && x<=800 && y>330 && y<390){
+    entityManager.generateTower(Tower.towerType.DIAMOND,x,y);
+    return entityManager._towers[i];
     //diamond
-    return getImage('images/diamond.png');
+    //return 'images/diamond.png';
 
   }else if(x>=650 && x<=750 && y>330 && y<=450){
     //cloud

@@ -86,8 +86,12 @@ var entityManager = {
         }))
     },
 
-    generateTower: function(descr) {
-        this._towers.push(new Tower(descr));
+    generateTower: function(descr,xPos, yPos) {
+        var tower = new Tower(descr);
+        tower.setPos(xPos,yPos);
+        this._towers.push(tower);
+        console.log(tower);
+
     },
 
 
@@ -105,7 +109,7 @@ var entityManager = {
         }
     },*/
 
-    placeTower: function(xPos, yPos) {
+    placeTower: function(xPos,yPos) {
     	// ASDF þarf að breyta, er á byrjunarstigi
     	var tower = this.generateTower({ // ASDF á eftir að búa til aðferðina hér.
         	cx : xPos,
