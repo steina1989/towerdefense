@@ -138,6 +138,7 @@ function preloadDone() {
     g_sprites.twrDiamond = new Sprite(g_images.twrDiamond);
     g_sprites.balloon = new Sprite(g_images.balloon);
     g_sprites.bullet = new Sprite(g_images.bullet);
+    g_sprites.bullet.scale = 2;
     g_sprites.redbloon = new Sprite(g_images.redbloon);
     g_sprites.bluebloon = new Sprite(g_images.bluebloon);
     g_sprites.greenbloon = new Sprite(g_images.greenbloon);
