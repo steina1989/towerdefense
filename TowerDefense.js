@@ -59,6 +59,7 @@ function processDiagnostics() {
     if (eatKey(KEY_SPATIAL)) g_renderSpatialDebug = !g_renderSpatialDebug;
 
     if (eatKey(KEY_RENDERARENA_GRID)) g_renderArenaGrid = !g_renderArenaGrid;
+
     
     // Special diagnostic functions (halt balloons, reset )
     if (eatKey(KEY_GEN_BALLOON)) entityManager.generateBalloon();

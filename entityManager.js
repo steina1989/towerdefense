@@ -69,7 +69,7 @@ var entityManager = {
 
         // ASDF taka út þessa ĺínu:
 
-        var tower = new Tower(Tower.towerType.properties[Tower.towerType.BRAIN]);
+        var tower = new Tower(Tower.towerType.properties[Tower.towerType.DIAMOND]);
         var pos = Arena.indexToPos(3,6);
         tower.setPos(pos.x, pos.y);
         this._towers.push(tower);
