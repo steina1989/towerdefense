@@ -28,12 +28,19 @@ function Sprite(image) {
         var spriteScale = ratio;
     }
     this.scale = this.scale || spriteScale;
+
+    this.scaledWidth = this.width * this.scale;
+    this.scaledHeight = this.height * this.scale;
+
     
 }
 
-Sprite.prototype.drawAt = function (ctx, x, y) {
-    ctx.drawImage(this.image, 
-                  x, y);
+Sprite.prototype.drawAt = function (ctx, x, y,width,height) {
+    ctx.save()
+    //ctx.translate(x, y);
+    //ctx.scale(this.scale,this.scale)
+    ctx.drawImage(this.image,x,y,width,height);
+    ctx.restore()
 };
 
 Sprite.prototype.drawCentredAt = function (ctx, cx, cy, rotation) {

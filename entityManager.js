@@ -69,11 +69,11 @@ var entityManager = {
 
         // ASDF taka út þessa ĺínu:
 
-        var tower = new Tower(Tower.towerType.properties[Tower.towerType.DIAMOND]);
+       /* var tower = new Tower(Tower.towerType.properties[Tower.towerType.BRAIN]);
         var pos = Arena.indexToPos(3,6);
         tower.setPos(pos.x, pos.y);
         this._towers.push(tower);
-
+*/
 
         //HÉR FYRIR OFAN: DEBUG, TAKA ÚT SEINNA
 
@@ -115,8 +115,12 @@ var entityManager = {
         //var twr = new Tower(towerType.properties[towerType.BRAIN]);
     },
 
-    generateTower: function(descr) {
-        this._towers.push(new Tower(descr));
+    generateTower: function(descr,xPos, yPos) {
+        var tower = new Tower(descr);
+        tower.setPos(xPos,yPos);
+        this._towers.push(tower);
+        console.log(tower);
+
     },
 
 
@@ -134,8 +138,9 @@ var entityManager = {
         }
     },*/
 
-    placeTower: function(xPos, yPos) {
+    placeTower: function(xPos,yPos) {
     	// ASDF þarf að breyta, er á byrjunarstigi
+        // Þarf að taka inn staðsetningu og turninn sem var búinn til
     	var tower = this.generateTower({ // ASDF á eftir að búa til aðferðina hér.
         	cx : xPos,
         	cy : yPos

@@ -83,9 +83,9 @@ function processDiagnostics() {
 function renderSimulation(ctx) {
 
     Arena.render(ctx);
-
-    entityManager.render(ctx);
     menuBar.render(ctx);
+    entityManager.render(ctx);
+    
 
 
     //entityManager.fireBullet(300,300,5,5,0);
@@ -112,7 +112,7 @@ function requestPreloads() {
         //ASDF þarf að updatea
         twrHeili   : "images/heili.png",
         twrSpyro   : "images/spyro.png",
-        twrUnicorn : "images/unicorn.png",
+        twrPat : "images/pat.png",
         twrDiamond : "images/diamond.png",
         balloon  : "images/bluebloon.png",
         bullet  : "images/bullet.png",
@@ -122,7 +122,8 @@ function requestPreloads() {
         greenbloon  : "images/greenbloon.png",
         yellowbloon  : "images/yellowbloon.png",
         whitebloon  : "images/whitebloon.png",
-        blackbloon  : "images/blackbloon.png"
+        blackbloon  : "images/blackbloon.png",
+        menuBackground : "images/ground.jpg"
     };
 
     imagesPreload(requiredImages, g_images, preloadDone);
@@ -135,7 +136,7 @@ function preloadDone() {
 
     g_sprites.twrHeili  = new Sprite(g_images.twrHeili);
     g_sprites.twrSpyro  = new Sprite(g_images.twrSpyro);
-    g_sprites.twrUnicorn  = new Sprite(g_images.twrUnicorn);
+    g_sprites.twrPat  = new Sprite(g_images.twrPat);
     g_sprites.twrDiamond = new Sprite(g_images.twrDiamond);
     g_sprites.balloon = new Sprite(g_images.balloon);
     g_sprites.bullet = new Sprite(g_images.bullet);
@@ -146,6 +147,8 @@ function preloadDone() {
     g_sprites.yellowbloon = new Sprite(g_images.yellowbloon);
     g_sprites.whitebloon = new Sprite(g_images.whitebloon);
     g_sprites.blackbloon = new Sprite(g_images.blackbloon);
+    g_sprites.menuBackground = new Sprite(g_images.menuBackground);
+    g_sprites.menuBackground.scale = 1
     Tower.init();
     Balloon.init();
     entityManager.init();
