@@ -35,11 +35,11 @@ function Sprite(image) {
     
 }
 
-Sprite.prototype.drawAt = function (ctx, x, y) {
+Sprite.prototype.drawAt = function (ctx, x, y,width,height) {
     ctx.save()
-    ctx.scale(this.scale,this.scale)
-    ctx.drawImage(this.image, 
-                  x, y);
+    //ctx.translate(x, y);
+    //ctx.scale(this.scale,this.scale)
+    ctx.drawImage(this.image,x,y,width,height);
     ctx.restore()
 };
 

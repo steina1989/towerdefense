@@ -20,29 +20,37 @@ var getImage = function(image){
   return img;
 }
 
-var origBrainX = 660;
-var origBrainY = 250;
+var origBrainX = 630;
+var origBrainY = 230;
+var origBrainW = 65;
+var origBrainH = 50;
 
-var origPatX = 750;
-var origPatY = 250;
+var origPatX = 720;
+var origPatY = 200;
+var origPatW = 60;
+var origPatH = 80;
 
-var origSpyroX = 660;
-var origSpyroY = 360;
+var origSpyroX = 640;
+var origSpyroY = 320;
+var origSpyroW = 60;
+var origSpyroH = 70;
 
-var origDiamondX = 750;
-var origDiamondY = 360;
+var origDiamondX = 720;
+var origDiamondY = 330;
+var origDiamondW = 65;
+var origDiamondH = 50;
 
 menuBar.render = function(ctx){
   //this.drawMenuBar(ctx);
    // this.drawButton(600,0,200,g_canvas.height/2, getImage('images/ground.jpg'),ctx);
  // this.drawButton(600,g_canvas.height/2,200,g_canvas.height/2, getImage('images/ground.jpg'),ctx);
 
-  g_sprites.menuBackground.drawAt(ctx,600,0)
+  g_sprites.menuBackground.drawAt(ctx,600,0,200,g_canvas.height)
 
-  g_sprites.twrHeili.drawCentredAt(ctx,origBrainX,origBrainY);
-  g_sprites.twrPat.drawCentredAt(ctx,origPatX,origPatY);
-  g_sprites.twrSpyro.drawCentredAt(ctx,origSpyroX,origSpyroY);
-  g_sprites.twrDiamond.drawCentredAt(ctx,origDiamondX,origDiamondY);
+  g_sprites.twrHeili.drawAt(ctx,origBrainX,origBrainY,origBrainW,origBrainH);
+  g_sprites.twrPat.drawAt(ctx,origPatX,origPatY,origPatW,origPatH);
+  g_sprites.twrSpyro.drawAt(ctx,origSpyroX,origSpyroY,origSpyroW,origSpyroH);
+  g_sprites.twrDiamond.drawAt(ctx,origDiamondX,origDiamondY,origDiamondW,origDiamondH);
 
 
   playerInfo.write(ctx);
@@ -68,7 +76,8 @@ var i=-1;
 menuBar.getTower = function (x,y){
   console.log("fer inn í getTower aðferð")
   console.log(x,y)
-  if((x>=origBrainX && x<=origBrainX+g_sprites.twrHeili.scaledWidth) && (y>=origBrainY && y<=origBrainY+g_sprites.twrHeili.scaledHeight)){
+  console.log(origBrainX,origBrainY);
+  if((x>=origBrainX && x<=origBrainX+origBrainW) && (y>=origBrainY && y<=origBrainY+origBrainH)){
     entityManager.generateTower(Tower.towerType.properties[Tower.towerType.BRAIN],x,y);
     //console.log(Tower.towerType.properties[Tower.towerType.BRAIN]);
     isDragging=true;
@@ -78,7 +87,7 @@ menuBar.getTower = function (x,y){
     //entityManager.generateTower(towerType.BRAIN);
     //return 'images/heili.png';
     //heili
-  }else if(x>=origPatX && x<=origPatX+g_sprites.twrPat.scaledWidth && y>=origPatY && y<=origPatY+g_sprites.twrPat.scaledHeight){
+  }else if(x>=origPatX && x<=origPatX+origPatW && y>=origPatY && y<=origPatY+origPatH){
     console.log("pat");
     entityManager.generateTower(Tower.towerType.properties[Tower.towerType.PAT],x,y);
     isDragging=true;
@@ -87,7 +96,7 @@ menuBar.getTower = function (x,y){
     return entityManager._towers[i];
     //return 'images/pat.png';
     //pat
-  }else if(x>origSpyroX && x<=origSpyroX+g_sprites.twrSpyro.scaledWidth && y>origSpyroY && y<origSpyroY+g_sprites.twrSpyro.scaledHeight){
+  }else if(x>origSpyroX && x<=origSpyroX+origSpyroW && y>origSpyroY && y<origSpyroY+origSpyroH){
     console.log("spyro")
     entityManager.generateTower(Tower.towerType.properties[Tower.towerType.SPYRO],x,y);
     isDragging=true;
@@ -95,7 +104,7 @@ menuBar.getTower = function (x,y){
     return entityManager._towers[i];
     //return 'images/spyro.png';
     //spyro
-  }else if(x>origDiamondX && x<=origDiamondX+g_sprites.twrDiamond.scaledWidth && y>origDiamondY && y<origDiamondY+g_sprites.twrDiamond.scaledHeight){
+  }else if(x>origDiamondX && x<=origDiamondX+origDiamondW && y>origDiamondY && y<origDiamondY+origDiamondH){
     console.log("diamoon")
     entityManager.generateTower(Tower.towerType.properties[Tower.towerType.DIAMOND],x,y);
     isDragging=true;
