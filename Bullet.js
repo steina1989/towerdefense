@@ -70,12 +70,12 @@ Bullet.prototype.update = function (du) {
     
     // Handle collisions
     //
-    var hitEntity = this.findHitEntity();
+    /*var hitEntity = this.findHitEntity();
     if (hitEntity) {
         var canTakeHit = hitEntity.takeBulletHit;
         if (canTakeHit) canTakeHit.call(hitEntity);
         return entityManager.KILL_ME_NOW;
-    }
+    }*/
 
     // put back in the grid at the new place
     spatialManager.register(this);

@@ -59,12 +59,12 @@ Balloon.init = function() {
 		WHITE : 5,
 		BLACK : 6,
 		properties: {
-			1: {name: "red", penalty: 1, speed: 2, sprite: g_sprites.redbloon},
-			2: {name: "blue", penalty: 2, speed: 2, sprite: g_sprites.bluebloon},
-			3: {name: "green", penalty: 3, speed: 3, sprite: g_sprites.greenbloon},
-			4: {name: "yellow", penalty: 4, speed: 3, sprite: g_sprites.yellowbloon},
-			5: {name: "white", penalty: 5, speed: 2, sprite: g_sprites.whitebloon},
-			6: {name: "black", penalty: 6, speed: 2, sprite: g_sprites.blackbloon}
+			1: {name: "red", penalty: 1, speed: 2, sprite: g_sprites.redbloon, type: "balloon"},
+			2: {name: "blue", penalty: 2, speed: 2, sprite: g_sprites.bluebloon, type: "balloon"},
+			3: {name: "green", penalty: 3, speed: 3, sprite: g_sprites.greenbloon, type: "balloon"},
+			4: {name: "yellow", penalty: 4, speed: 3, sprite: g_sprites.yellowbloon, type: "balloon"},
+			5: {name: "white", penalty: 5, speed: 2, sprite: g_sprites.whitebloon, type: "balloon"},
+			6: {name: "black", penalty: 6, speed: 2, sprite: g_sprites.blackbloon, type: "balloon"}
 		}
 	};
 };
@@ -137,9 +137,9 @@ Balloon.prototype.getRadius = function() {
 	return (this.sprite.width / 2)*0.8;
 };
 
-Balloon.prototype.takeBulletHit = function () {
+/*Balloon.prototype.takeBulletHit = function () {
     this.kill();
-};
+};*/
 
 Balloon.prototype.render = function(ctx) {
 	if (this._isDeadNow) 

@@ -56,9 +56,9 @@ var spatialManager = {
             var e = this._entities[ID];
 
             if (e != null) {
-                if (e.name === "blue" && entity.name === "blue") {
-                continue;
-            }
+                if (e.entity.type === "balloon" && entity.type === "balloon") {
+                    continue;
+                }
                 var limitSq = util.square(e.radius + radius);
                 var dsquared = util.distSq(e.posX, e.posY, posX, posY);
                 if (dsquared < limitSq) {
