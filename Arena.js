@@ -85,7 +85,7 @@ Arena.testGetDirection = function(cx,cy){
 Arena.getIndexOfCellNumber = function(cellNumber){
 	for (var row = 0; row<this.grid.length; row++)
 		for (var column = 0; column<this.grid[0].length; column++){
-			if (cellNumber === this.grid[row][column]){
+			 if (cellNumber === this.grid[row][column]){
 				return {row:row, column:column};
 			}
 		}

@@ -16,8 +16,7 @@ var g_mouseX = 0,
     isDragging=false,
     tower=null;
   
-    //mynd,
-    isDragging=false;
+    //mynd
 
 function handleMouse(evt) {
     
@@ -37,8 +36,7 @@ function handleMouse(evt) {
       //isDragging=true;
       //menuBar.drawButton()
       //g_ctx.drawImage(mynd,g_mouseX,g_mouseY,50,50);
-}
-    
+	}    
 }
 
 function handleMove(evt){
@@ -52,25 +50,37 @@ function handleMove(evt){
       tower.setPos(g_mouseX,g_mouseY);
       tower.render(g_ctx);
     }
-
-    
-
 }
+
+/*Arena.posToIndex = function(x,y){
+	var column = Math.floor((x - this.ORIGINX) / this.cellWidth);
+	var row = Math.floor((y - this.ORIGINY) / this.cellHeight);
+	return {
+		row : row,
+		column : column
+
+	}
+}*/
 
 function handleUp(evt){
   g_mouseX = evt.clientX - g_canvas.offsetLeft; // kalla g_canvas arena í staðinn?
   g_mouseY = evt.clientY - g_canvas.offsetTop;
-  isDragging=false;
-  //place tower at g_mouseX/Y
-  //entityManager.placeTower(g_mouseX,g_mouseY);
+  
+  var pos = Arena.posToIndex(g_mouseX, g_mouseY);
+  var row = pos.row;
+  var column = pos.column;
+  if(Arena.grid[row][column] === 0){ // posToIndex != 0 þá placed er true
+  	// breyta í placeTower að staðsetning sé miðja reits
+  	console.log("núll reitur");
+  	tower.isPlaced = true;
+  	isDragging = false;
+  }
+  // posToIndex fall til að segja hvort sé í löglegum reit
+  // if isPlaced, minnka coins
 
 }
+
 // Handle "down" and "move" events the same way.
 window.addEventListener("mousedown", handleMouse);
 window.addEventListener("mousemove", handleMove);
 window.addEventListener("mouseup", handleUp);
-
-
-
-
-

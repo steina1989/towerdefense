@@ -43,10 +43,10 @@ Tower.init = function() {
 		DIAMOND : 3,
 		PAT: 4,
 		properties: {
-			1: {name: "brain", rateOfFire: 500, price: 5, range: 130, bulletDamage: 1, bulletSpeed: 3, sprite: g_sprites.twrHeili},
-			2: {name: "spyro", rateOfFire: 300, price: 15, range: 165, bulletDamage: 2, bulletSpeed: 3, sprite: g_sprites.twrSpyro},
-			3: {name: "diamond", rateOfFire: 200, price: 25, range: 190, bulletDamage: 3, bulletSpeed: 8, sprite: g_sprites.twrDiamond},
-			4: {name: "pat", rateOfFire: 200, price: 25, range: 190, bulletDamage: 3, bulletSpeed: 8, sprite: g_sprites.twrPat}
+			1: {name: "brain", rateOfFire: 500, price: 5, range: 130, bulletDamage: 1, bulletSpeed: 3, sprite: g_sprites.twrHeili, isPlaced: false},
+			2: {name: "spyro", rateOfFire: 300, price: 15, range: 165, bulletDamage: 2, bulletSpeed: 3, sprite: g_sprites.twrSpyro, isPlaced: false},
+			3: {name: "diamond", rateOfFire: 200, price: 25, range: 190, bulletDamage: 3, bulletSpeed: 8, sprite: g_sprites.twrDiamond,isPlaced: false},
+			4: {name: "pat", rateOfFire: 200, price: 25, range: 190, bulletDamage: 3, bulletSpeed: 8, sprite: g_sprites.twrPat, isPlaced: false}
 		}
 	};
 };
@@ -111,30 +111,35 @@ Tower.prototype.inRange = function(balloon){
 	return false;
 };
 
+// isPlaced er breyta sem er false þar til músin fer upp ASDF
+
 Tower.prototype.update = function (du) {    
-	// Distance between nearest balloon and tower
-    var nearestBln = this.findNearestBalloon();
-    
-    // If nearest balloon is in range, shoot it
-    if(this.inRange(nearestBln)) {
-    	var damage = this.bulletDamage;
-    	var speed = this.bulletSpeed;
-    	this.rotation = this.findAngle(this.findNearestBalloon());
-    	var dX = +Math.sin(this.rotation);
-        var dY = -Math.cos(this.rotation);
-        var relVelX = dX * speed;
-        var relVelY = dY * speed;
-        var launchDist = this.sprite.width * 1.2;
-    	//var velX = this.properties.bulletSpeed;
 
-    	var now = new Date();
-    	var currentTime = now.getTime();
+	if(this.isPlaced){
+		// Distance between nearest balloon and tower
+	    var nearestBln = this.findNearestBalloon();
+	    
+	    // If nearest balloon is in range, shoot it
+	    if(this.inRange(nearestBln)) {
+	    	var damage = this.bulletDamage;
+	    	var speed = this.bulletSpeed;
+	    	this.rotation = this.findAngle(this.findNearestBalloon());
+	    	var dX = +Math.sin(this.rotation);
+	        var dY = -Math.cos(this.rotation);
+	        var relVelX = dX * speed;
+	        var relVelY = dY * speed;
+	        var launchDist = this.sprite.width * 1.2;
+	    	//var velX = this.properties.bulletSpeed;
 
-    	if (currentTime - this.lastTime > this.rateOfFire) {
-    		entityManager.fireBullet(this.cx + dX, this.cy + dY, relVelX, relVelY, 0);
-    		firstTime = false;
-    		this.lastTime = currentTime;
-    	}
+	    	var now = new Date();
+	    	var currentTime = now.getTime();
+
+	    	if (currentTime - this.lastTime > this.rateOfFire) {
+	    		entityManager.fireBullet(this.cx + dX, this.cy + dY, relVelX, relVelY, 0);
+	    		firstTime = false;
+	    		this.lastTime = currentTime;
+	    	}
+	    }
 
 
         //var launchDist = this.getRadius() * 1.2;
@@ -158,7 +163,15 @@ Tower.prototype.render = function (ctx) {
     this.sprite.drawCentredAt(
 	ctx, this.cx, this.cy, this.rotation
     );
-    util.strokeCircle(ctx, this.cx, this.cy, Math.sqrt(this.range)); // ASDF
+    if(!this.isPlaced){
+    	//ctx.save();
+    	ctx.strokeStyle = "red";
+    	util.strokeCircle(ctx, this.cx, this.cy, Math.sqrt(this.range)); // ASDF
+    	ctx.fillStyle = "rgba(240, 80, 100, 0.3)";
+    	util.fillCircle(ctx, this.cx, this.cy, Math.sqrt(this.range));
+    	//ctx.restore();
+    	//ctx.close();
+    }
 };
 
 Tower.prototype.findNearestBalloon = function (){
