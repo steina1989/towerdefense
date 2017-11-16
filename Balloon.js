@@ -75,7 +75,6 @@ Balloon.prototype.update = function(du) {
 	spatialManager.unregister(this);
 
 	if (this._isDeadNow) {
-		console.log("dead")
         return entityManager.KILL_ME_NOW;
 	}
 
@@ -112,7 +111,7 @@ Balloon.prototype.update = function(du) {
     this.cx += this.velX * du;
     this.cy += this.velY * du;
 
-    var hitEntity = this.findHitEntity();
+    //var hitEntity = this.findHitEntity();
     /*if (hitEntity) {
     	console.log(this.getRadius())
     	this._isDeadNow = true;

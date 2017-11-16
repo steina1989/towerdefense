@@ -67,7 +67,7 @@ menuBar.drawMenuBar=function(ctx){
 
 var playerInfo = {
   lives:200,
-  coins:0
+  coins:5000
 };
 
 

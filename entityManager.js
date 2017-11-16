@@ -111,7 +111,7 @@ var entityManager = {
           //  speed: 3
         //}))
         //var balloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE])
-        this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]))
+        this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]))
         //var twr = new Tower(towerType.properties[towerType.BRAIN]);
     },
 
