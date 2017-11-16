@@ -40,6 +40,7 @@ Entity.prototype.setup = function (descr) {
     
     // I am not dead yet!
     this._isDeadNow = false;
+
 };
 
 Entity.prototype.setPos = function (cx, cy) {
@@ -66,7 +67,7 @@ Entity.prototype.kill = function () {
 Entity.prototype.findHitEntity = function () {
     var pos = this.getPos();
     return spatialManager.findEntityInRange(
-        pos.posX, pos.posY, this.getRadius()
+        pos.posX, pos.posY, this.getRadius(), this
     );
 };
 

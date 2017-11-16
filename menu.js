@@ -67,53 +67,53 @@ menuBar.drawMenuBar=function(ctx){
 
 var playerInfo = {
   lives:200,
-  coins:0
+  coins:5000
 };
 
 
 var i=-1;
 
 menuBar.getTower = function (x,y){
-  console.log("fer inn í getTower aðferð")
-  console.log(x,y)
-  console.log(origBrainX,origBrainY);
   if((x>=origBrainX && x<=origBrainX+origBrainW) && (y>=origBrainY && y<=origBrainY+origBrainH)){
-    entityManager.generateTower(Tower.towerType.properties[Tower.towerType.BRAIN],x,y);
-    //console.log(Tower.towerType.properties[Tower.towerType.BRAIN]);
-    isDragging=true;
-    console.log("brain");
-    i++;
-    return entityManager._towers[i];
+    if(playerInfo.coins>Tower.towerType.properties[Tower.towerType.BRAIN].price){
+      entityManager.generateTower(Tower.towerType.properties[Tower.towerType.BRAIN],x,y);
+      //console.log(Tower.towerType.properties[Tower.towerType.BRAIN]);
+      isDragging=true;
+      i++;
+      return entityManager._towers[i];
+  }
     //entityManager.generateTower(towerType.BRAIN);
     //return 'images/heili.png';
     //heili
   }else if(x>=origPatX && x<=origPatX+origPatW && y>=origPatY && y<=origPatY+origPatH){
-    console.log("pat");
-    entityManager.generateTower(Tower.towerType.properties[Tower.towerType.PAT],x,y);
-    isDragging=true;
-    i++;
+    if(playerInfo.coins>=Tower.towerType.properties[Tower.towerType.PAT].price){
+      entityManager.generateTower(Tower.towerType.properties[Tower.towerType.PAT],x,y);
+      isDragging=true;
+      i++;
 
-    return entityManager._towers[i];
+      return entityManager._towers[i];
+  }
     //return 'images/pat.png';
     //pat
   }else if(x>origSpyroX && x<=origSpyroX+origSpyroW && y>origSpyroY && y<origSpyroY+origSpyroH){
-    console.log("spyro")
-    entityManager.generateTower(Tower.towerType.properties[Tower.towerType.SPYRO],x,y);
-    isDragging=true;
-    i++;
-    return entityManager._towers[i];
+    if(playerInfo.coins>=Tower.towerType.properties[Tower.towerType.SPYRO].price){
+      entityManager.generateTower(Tower.towerType.properties[Tower.towerType.SPYRO],x,y);
+      isDragging=true;
+      i++;
+      return entityManager._towers[i];
+  }
     //return 'images/spyro.png';
     //spyro
   }else if(x>origDiamondX && x<=origDiamondX+origDiamondW && y>origDiamondY && y<origDiamondY+origDiamondH){
-    console.log("diamoon")
-    entityManager.generateTower(Tower.towerType.properties[Tower.towerType.DIAMOND],x,y);
-    isDragging=true;
-    i++;
-    return entityManager._towers[i];
+    if(playerInfo.coins>=Tower.towerType.properties[Tower.towerType.DIAMOND].price){
+      entityManager.generateTower(Tower.towerType.properties[Tower.towerType.DIAMOND],x,y);
+      isDragging=true;
+      i++;
+      return entityManager._towers[i];
+    }
     //diamond
     //return 'images/diamond.png';
   }else{
-    console.log("for hingað")
     return;
   }
 }

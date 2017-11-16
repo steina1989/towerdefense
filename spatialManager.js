@@ -51,10 +51,14 @@ var spatialManager = {
         this._entities[spatialID] = null;
     },
 
-    findEntityInRange: function(posX, posY, radius) {
+    findEntityInRange: function(posX, posY, radius, entity) {
         for (var ID in this._entities) {
             var e = this._entities[ID];
+
             if (e != null) {
+                if (e.entity.type === "balloon" && entity.type === "balloon") {
+                    continue;
+                }
                 var limitSq = util.square(e.radius + radius);
                 var dsquared = util.distSq(e.posX, e.posY, posX, posY);
                 if (dsquared < limitSq) {
