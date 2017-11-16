@@ -37,8 +37,6 @@ function Sprite(image) {
 
 Sprite.prototype.drawAt = function (ctx, x, y,width,height) {
     ctx.save()
-    //ctx.translate(x, y);
-    //ctx.scale(this.scale,this.scale)
     ctx.drawImage(this.image,x,y,width,height);
     ctx.restore()
 };
