@@ -136,6 +136,7 @@ Tower.prototype.update = function (du) {
 
 	    	if (currentTime - this.lastTime > this.rateOfFire) {
 	    		entityManager.fireBullet(this.cx + dX, this.cy + dY, relVelX, relVelY, 0);
+	    		console.log("bullet")
 	    		firstTime = false;
 	    		this.lastTime = currentTime;
 	    	}
