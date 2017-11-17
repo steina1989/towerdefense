@@ -102,7 +102,9 @@ function handleUp(evt){
 		  	console.log(tower, "illegal spot", tower);
 		}
 		// posToIndex fall til að segja hvort sé í löglegum reit
-		// if isPlaced, minnka coins
+		if(tower.isPlaced){
+      playerInfo.coins -= Tower.towerType.properties[Tower.towerType.DIAMOND].price;
+    }
 	}
 
 }

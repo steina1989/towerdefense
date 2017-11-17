@@ -123,6 +123,14 @@ var entityManager = {
             this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]));
         if (balloonType === "blue") 
             this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]));
+        if (balloonType === "green") 
+            this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.GREEN]));
+        if (balloonType === "yellow") 
+            this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.YELLOW]));
+        if (balloonType === "white") 
+            this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.WHITE]));
+        if (balloonType === "black") 
+            this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLACK]));
 
     },
 
