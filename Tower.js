@@ -25,6 +25,7 @@ function Tower(descr) {
 	this.range *= this.range;
 	var d =  new Date();
 	this.lastTime = d.getTime();
+	this.isPlaced = false;
 
 }
 
