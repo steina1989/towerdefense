@@ -38,6 +38,9 @@ var entityManager = {
         }
     },
 
+    d: new Date(),
+    lastTime : 0,
+
     // PUBLIC METHODS
 
     // A special return value, used by other objects,
@@ -58,8 +61,10 @@ var entityManager = {
         //this._generateShip();
         var cellIndex = Arena.getIndexOfCellNumber(1);
         var pos = Arena.indexToPos(cellIndex.row, cellIndex.column);
+        Arena.generateLevel();
         // Push 10 balloons into queue
         //console.log(pos);
+        
         for (var x = 0; x<10; x++){
             //this._balloonQueue.push(new Balloon({ 
               //  speed: 3
@@ -106,13 +111,19 @@ var entityManager = {
         }));
 };*/
 
-    generateBalloon: function() {
+    generateBalloon: function(balloonType) {
         //this._balloons.push(new Balloon({ 
           //  speed: 3
         //}))
         //var balloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE])
-        this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]))
-        //var twr = new Tower(towerType.properties[towerType.BRAIN]);
+        
+
+        //this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]))
+        if (balloonType === "red") 
+            this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]));
+        if (balloonType === "blue") 
+            this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]));
+
     },
 
     generateTower: function(descr,xPos, yPos) {

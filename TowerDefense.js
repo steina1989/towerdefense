@@ -20,6 +20,7 @@ function createInitialTower() {
         cy : 200
     });
     
+    
 }
 
 // =================
@@ -53,6 +54,13 @@ var KEY_SPATIAL = keyCode('X');
 var KEY_RESET = keyCode('R');
 var KEY_GEN_BALLOON = keyCode('1');
 
+var d = new Date();
+var lastTime = d.getTime();
+var countRed = 0;
+var countBlue = 0;
+
+var currentBalloon = "red";
+
 function processDiagnostics() {
 
     // Key toggles for diagnostics
@@ -85,6 +93,28 @@ function renderSimulation(ctx) {
     Arena.render(ctx);
     menuBar.render(ctx);
     entityManager.render(ctx);
+
+    var now = new Date();
+    var currentTime = now.getTime();
+
+    if (currentTime - lastTime > 500 && countRed < Arena.balloons1[0] 
+        && currentBalloon === "red") {
+        Arena.generateLevel("red");
+        lastTime = currentTime;
+        countRed++;
+        if (countRed === Arena.balloons1[0])
+            currentBalloon = "blue";
+        return;
+    }
+
+    else if (currentTime - lastTime > 300 && countBlue < Arena.balloons1[1]
+        && currentBalloon === "blue") {
+        Arena.generateLevel("blue");
+        lastTime = currentTime;
+        countBlue++;
+        return;
+    }
+
     
 
 
@@ -123,6 +153,7 @@ function requestPreloads() {
         yellowbloon  : "images/yellowbloon.png",
         whitebloon  : "images/whitebloon.png",
         blackbloon  : "images/blackbloon.png",
+        cloud : "images/cloud.png",
         menuBackground : "images/ground.jpg"
     };
 
@@ -147,6 +178,7 @@ function preloadDone() {
     g_sprites.yellowbloon = new Sprite(g_images.yellowbloon);
     g_sprites.whitebloon = new Sprite(g_images.whitebloon);
     g_sprites.blackbloon = new Sprite(g_images.blackbloon);
+    g_sprites.cloud = new Sprite(g_images.cloud);
     g_sprites.menuBackground = new Sprite(g_images.menuBackground);
     g_sprites.menuBackground.scale = 1
     Tower.init();
