@@ -80,20 +80,30 @@ function handleMove(evt){
 }*/
 
 function handleUp(evt){
-  g_mouseX = evt.clientX - g_canvas.offsetLeft; // kalla g_canvas arena í staðinn?
-  g_mouseY = evt.clientY - g_canvas.offsetTop;
-  
-  var pos = Arena.posToIndex(g_mouseX, g_mouseY);
-  var row = pos.row;
-  var column = pos.column;
-  if(Arena.grid[row][column] === 0){ // posToIndex != 0 þá placed er true
-  	// breyta í placeTower að staðsetning sé miðja reits
-  	console.log("núll reitur");
-  	tower.isPlaced = true;
-  	isDragging = false;
-  }
-  // posToIndex fall til að segja hvort sé í löglegum reit
-  // if isPlaced, minnka coins
+	if(isDragging){
+		g_mouseX = evt.clientX - g_canvas.offsetLeft; 
+		g_mouseY = evt.clientY - g_canvas.offsetTop;
+		  
+		var pos = Arena.posToIndex(g_mouseX, g_mouseY);
+		var row = pos.row;
+		var column = pos.column;
+		if(Arena.grid[row][column] === 0){ 
+			// ASDF tower er undefined hér, why??
+			// breyta í placeTower að staðsetning sé miðja reits
+		  	tower.isPlaced = true;
+		  	isDragging = false;
+		  	console.log(tower, "legal spot", tower);
+		}
+		else {
+			g_mouseX = evt.clientX - g_canvas.offsetLeft; 
+			g_mouseY = evt.clientY - g_canvas.offsetTop;
+			tower.isPlaced = false;
+		  	isDragging = true;
+		  	console.log(tower, "illegal spot", tower);
+		}
+		// posToIndex fall til að segja hvort sé í löglegum reit
+		// if isPlaced, minnka coins
+	}
 
 }
 
