@@ -34,6 +34,8 @@ var Arena = {
 	cellWidth : 60,
 	cellHeight : 60,
 
+	balloons1 : [10, 5],
+
 	grid :
 	[[ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
 	 [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
@@ -121,6 +123,7 @@ Arena.update = function(){
 // To do: Draw pretty background
 Arena.render = function(ctx) {
 	this.drawBackground(ctx);
+	//this.generateLevel();
 }
 
 // Placeholder backdrop
@@ -158,6 +161,10 @@ Arena._drawArrayPath = function(ctx,x,y){
 	ctx.rect(x-this.cellWidth/2,y-this.cellWidth/2,this.cellWidth,this.cellHeight);
 	ctx.stroke();
 	ctx.restore;
+}
+
+Arena.generateLevel = function(balloonType) {
+	entityManager.generateBalloon(balloonType);
 }
 
 

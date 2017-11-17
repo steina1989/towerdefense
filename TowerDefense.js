@@ -20,6 +20,7 @@ function createInitialTower() {
         cy : 200
     });
     
+    
 }
 
 // =================
@@ -53,6 +54,13 @@ var KEY_SPATIAL = keyCode('X');
 var KEY_RESET = keyCode('R');
 var KEY_GEN_BALLOON = keyCode('1');
 
+var d = new Date();
+var lastTime = d.getTime();
+var countRed = 0;
+var countBlue = 0;
+
+var currentBalloon = "red";
+
 function processDiagnostics() {
 
     // Key toggles for diagnostics
@@ -85,6 +93,28 @@ function renderSimulation(ctx) {
     Arena.render(ctx);
     menuBar.render(ctx);
     entityManager.render(ctx);
+
+    var now = new Date();
+    var currentTime = now.getTime();
+
+    if (currentTime - lastTime > 500 && countRed < Arena.balloons1[0] 
+        && currentBalloon === "red") {
+        Arena.generateLevel("red");
+        lastTime = currentTime;
+        countRed++;
+        if (countRed === Arena.balloons1[0])
+            currentBalloon = "blue";
+        return;
+    }
+
+    else if (currentTime - lastTime > 300 && countBlue < Arena.balloons1[1]
+        && currentBalloon === "blue") {
+        Arena.generateLevel("blue");
+        lastTime = currentTime;
+        countBlue++;
+        return;
+    }
+
     
 
 
