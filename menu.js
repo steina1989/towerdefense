@@ -46,13 +46,14 @@ var origCloudW = 70;
 var origCloudH = 50;
 
 
+
 menuBar.render = function(ctx){
   //this.drawMenuBar(ctx);
    // this.drawButton(600,0,200,g_canvas.height/2, getImage('images/ground.jpg'),ctx);
  // this.drawButton(600,g_canvas.height/2,200,g_canvas.height/2, getImage('images/ground.jpg'),ctx);
 
   g_sprites.menuBackground.drawAt(ctx,600,0,200,g_canvas.height)
-  menuBar.drawButton(700,150,30,2*Math.PI,ctx);
+  menuBar.drawButton(buttonX,buttonY,buttonR,2*Math.PI,ctx);
 
 
   g_sprites.twrHeili.drawAt(ctx,origBrainX,origBrainY,origBrainW,origBrainH);
@@ -121,6 +122,7 @@ menuBar.getTower = function (x,y){
   }
   }
 }
+
 
  
 playerInfo.write = function(ctx){

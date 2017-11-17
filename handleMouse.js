@@ -14,9 +14,18 @@
 var g_mouseX = 0,
     g_mouseY = 0,
     isDragging=false,
-    tower=null;
-  
-    //mynd
+    buttonX = 700,
+    buttonY = 150,
+    buttonR = 30,
+    dx = 0,
+    dy = 0,
+    distsq = 0,
+    rsq = 0,
+    tower=null; 
+
+if (distsq < rsq) {
+  console.log("click");
+}
 
 function handleMouse(evt) {
     
@@ -28,9 +37,17 @@ function handleMouse(evt) {
 
     // If no button is being pressed, then bail
     var button = evt.buttons === undefined ? evt.which : evt.buttons;
-  
+    dx = g_mouseX - buttonX,
+    dy = g_mouseY - buttonY;
+    distsq = dx * dx + dy * dy,
+    rsq = buttonR * buttonR;
+
+
     if (!button){
       return;
+    }else if(distsq < rsq){
+      console.log("click");
+
     }else{
       tower = menuBar.getTower(g_mouseX,g_mouseY);
       //console.log("þessi",tower);
