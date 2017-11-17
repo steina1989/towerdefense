@@ -123,6 +123,7 @@ function requestPreloads() {
         yellowbloon  : "images/yellowbloon.png",
         whitebloon  : "images/whitebloon.png",
         blackbloon  : "images/blackbloon.png",
+        cloud : "images/cloud.png",
         menuBackground : "images/ground.jpg"
     };
 
@@ -147,6 +148,7 @@ function preloadDone() {
     g_sprites.yellowbloon = new Sprite(g_images.yellowbloon);
     g_sprites.whitebloon = new Sprite(g_images.whitebloon);
     g_sprites.blackbloon = new Sprite(g_images.blackbloon);
+    g_sprites.cloud = new Sprite(g_images.cloud);
     g_sprites.menuBackground = new Sprite(g_images.menuBackground);
     g_sprites.menuBackground.scale = 1
     Tower.init();
