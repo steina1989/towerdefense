@@ -112,7 +112,7 @@ Tower.prototype.inRange = function(balloon){
 	return false;
 };
 
-// isPlaced er breyta sem er false þar til músin fer upp ASDF
+// isPlaced er eiginleiki sem er false þar til músin fer upp ASDF
 
 Tower.prototype.update = function (du) {    
 
@@ -194,3 +194,9 @@ Tower.prototype.findNearestBalloon = function (){
 	return nearestBalloon;
 };
 
+Tower.prototype.getTileValue = function(x, y) {
+	var pos = Arena.posToIndex(x, y);
+	var row = pos.row;
+	var column = pos.column;
+	return Arena.grid[row][column];
+}
