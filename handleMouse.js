@@ -45,9 +45,17 @@ function handleMouse(evt) {
     }else if(distsq < rsq){
           countRed=0;
           countBlue=0
+          countGreen = 0;
+          countYellow =0;
+          countWhite = 0;
+          countBlack=0;
           currentBalloon="red";
           Arena.balloons1[0]+=5;
           Arena.balloons1[1]+=2;
+          Arena.balloons1[2]+=2;
+          Arena.balloons1[3]+=2;
+          Arena.balloons1[4]+=2;
+          Arena.balloons1[5]+=2;
 
 
 
@@ -102,8 +110,8 @@ function handleUp(evt){
 			g_mouseX = evt.clientX - g_canvas.offsetLeft; 
 			g_mouseY = evt.clientY - g_canvas.offsetTop;
 			tower.isPlaced = false;
-		  	isDragging = false;
-		  	console.log(tower, "illegal spot", tower);
+		  isDragging = false;
+		  console.log(tower, "illegal spot", tower);
 
 		}
 		// posToIndex fall til að segja hvort sé í löglegum reit

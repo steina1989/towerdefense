@@ -58,6 +58,10 @@ var d = new Date();
 var lastTime = d.getTime();
 var countRed = 0;
 var countBlue = 0;
+var countGreen = 0;
+var countYellow = 0;
+var countWhite = 0;
+var countBlack = 0;
 
 var currentBalloon = "red";
 
@@ -113,10 +117,45 @@ function renderSimulation(ctx) {
         Arena.generateLevel("blue");
         lastTime = currentTime;
         countBlue++;
+        if (countBlue === Arena.balloons1[1])
+            currentBalloon = "green";
         return;
     }
+    else if (currentTime - lastTime > 300 && countGreen < Arena.balloons1[2]
+        && currentBalloon === "green") {
+        Arena.generateLevel("green");
+        lastTime = currentTime;
+        countGreen++;
+        if (countRed === Arena.balloons1[2])
+            currentBalloon = "yellow";
+        return;
+    }
+    else if (currentTime - lastTime > 300 && countYellow < Arena.balloons1[3]
+        && currentBalloon === "yellow") {
+        Arena.generateLevel("yellow");
+        lastTime = currentTime;
+        countYellow++;
+        if (countRed === Arena.balloons1[3])
+            currentBalloon = "white";
+        return;
+    }
+    else if (currentTime - lastTime > 300 && countWhite < Arena.balloons1[4]
+        && currentBalloon === "white") {
+        Arena.generateLevel("white");
+        lastTime = currentTime;
+        countWhite++;
+        if (countRed === Arena.balloons1[4])
+            currentBalloon = "black";
+        return;
+    }
+    else if (currentTime - lastTime > 300 && countBlack < Arena.balloons1[5]
+        && currentBalloon === "black") {
+        Arena.generateLevel("black");
+        lastTime = currentTime;
+        countBlack++;
+        return;
 
-
+}
 
     //entityManager.fireBullet(300,300,5,5,0);
 
