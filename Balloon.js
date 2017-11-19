@@ -157,6 +157,38 @@ Balloon.prototype.findDirection = function(){
 };
 
 Balloon.prototype.takeBulletHit = function(){
-	this.isDeadNow = true;
+	
+	
+	if (this.name === "red") {
+		this._isDeadNow = true;
+		this.kill();
+	}
+	var newBalloon = this;
+	if (this.name === "blue") {
+		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]);	
+	}
+	if (this.name === "green") {
+		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]);
+	}
+	if (this.name === "yellow") {
+		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]);
+	}
+	newBalloon.cx = this.cx;
+	newBalloon.cy = this.cy;
+	newBalloon.velX = this.velX;
+	newBalloon.velY = this.velY;
+	entityManager._balloons.push(newBalloon);
+
+	if (this.name === "blue") {
+		this.name = "red";
+	}
+	else if (this.name === "green") {
+		this.name = "blue";
+	}
+	else if (this.name === "yellow") {
+		this.name = "green";
+	}
+	//play sound?
+
 };
 

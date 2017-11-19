@@ -61,7 +61,8 @@ Bullet.prototype.update = function (du) {
     var hitEntity = this.findHitEntity();
     if (hitEntity) {
         var canTakeHit = hitEntity.takeBulletHit;
-        hitEntity.kill();
+        hitEntity.takeBulletHit();
+        //hitEntity.takeBulletHit();
         // If there exists such a function then call takeBulletHit(hitEntity)
         if (canTakeHit) canTakeHit.call(hitEntity); 
         return entityManager.KILL_ME_NOW;

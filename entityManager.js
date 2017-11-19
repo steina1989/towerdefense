@@ -178,7 +178,6 @@ var entityManager = {
             this.timeToNext = balloon.timeToNextOne;
             this._balloons.push(balloon);
             this.lastTime = 0;
-            console.log("hallo")
         }
 
     },
