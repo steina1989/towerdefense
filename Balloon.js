@@ -59,12 +59,12 @@ Balloon.init = function() {
 		WHITE : 5,
 		BLACK : 6,
 		properties: {
-			1: {name: "red", penalty: 1, speed: 2, timeToNextOne: 50, sprite: g_sprites.redbloon, type: "balloon"},
-			2: {name: "blue", penalty: 2, speed: 2, timeToNextOne: 50, sprite: g_sprites.bluebloon, type: "balloon"},
-			3: {name: "green", penalty: 3, speed: 3, timeToNextOne: 400, sprite: g_sprites.greenbloon, type: "balloon"},
-			4: {name: "yellow", penalty: 4, speed: 3, timeToNextOne: 350, sprite: g_sprites.yellowbloon, type: "balloon"},
-			5: {name: "white", penalty: 5, speed: 2, timeToNextOne: 300, sprite: g_sprites.whitebloon, type: "balloon"},
-			6: {name: "black", penalty: 6, speed: 2, timeToNextOne: 300, sprite: g_sprites.blackbloon, type: "balloon"}
+			1: {name: "red", penalty: 1, speed: 2, timeToNextOne: 20, sprite: g_sprites.redbloon, type: "balloon"},
+			2: {name: "blue", penalty: 2, speed: 2, timeToNextOne: 20, sprite: g_sprites.bluebloon, type: "balloon"},
+			3: {name: "green", penalty: 3, speed: 3, timeToNextOne: 30, sprite: g_sprites.greenbloon, type: "balloon"},
+			4: {name: "yellow", penalty: 4, speed: 3, timeToNextOne: 50, sprite: g_sprites.yellowbloon, type: "balloon"},
+			5: {name: "white", penalty: 5, speed: 2, timeToNextOne: 50, sprite: g_sprites.whitebloon, type: "balloon"},
+			6: {name: "black", penalty: 6, speed: 2, timeToNextOne: 50, sprite: g_sprites.blackbloon, type: "balloon"}
 		}
 	};
 };
