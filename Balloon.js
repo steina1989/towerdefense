@@ -153,13 +153,77 @@ Balloon.prototype.render = function(ctx) {
 
 
 Balloon.prototype.findDirection = function(){
-	this.nextX = Arena.nextCellInPath.nextY(this.cx,this.cy);
-	this.nextY = Arena.nextCellInPath.nextX(this.cx,this.cy);
+    var dir = Arena.nextCellInPath.nextY(this.cx,this.cy);
+	this.nextX = dir.nextY;
+	this.nextY = dir.nextX;
 };
 
 Balloon.prototype.takeBulletHit = function(){
-	this.isDeadNow = true;
+	
+	
+	/*if (this.name === "red") {
+		
+		this.kill();
+		return;
+	}*/
+	if (this.name != "red") {
+	if (this.name === "blue") {
+		var newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]);
+		newBalloon.cx = this.cx, newBalloon.cy = this.cy;
+		newBalloon.velX = this.velX, newBalloon.velY = this.velY;
+		entityManager._balloons.push(newBalloon);
+		console.log("pushed red")
+	}
+
+	else if (this.name === "green") {
+		var newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]);
+		newBalloon.cx = this.cx, newBalloon.cy = this.cy;
+		newBalloon.velX = this.velX, newBalloon.velY = this.velY;
+		entityManager._balloons.push(newBalloon);
+		console.log("pushed blue")
+	}
+
+	else if (this.name === "yellow") {
+		var newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.GREEN]);
+		newBalloon.cx = this.cx, newBalloon.cy = this.cy;
+		newBalloon.velX = this.velX, newBalloon.velY = this.velY;
+		entityManager._balloons.push(newBalloon);
+		console.log("pushed green")
+	}}
+
+	this.kill();
+	
+/*
+	if (this.name != "red") {
+	//var newBalloon = this;
+		if (this.name === "blue") {
+			var newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]);	
+		}
+		else if (this.name === "green") {
+			var newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]);
+		}
+		else if (this.name === "yellow") {
+			var newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.GREEN]);
+		}
+		newBalloon.cx = this.cx;
+		newBalloon.cy = this.cy;
+		newBalloon.velX = this.velX;
+		newBalloon.velY = this.velY;
+		entityManager._balloons.push(newBalloon);
+		console.log("pushed balloon")
+	}
+*/
+	/*if (this.name === "blue") {
+		this.name = "red";
+	}
+	else if (this.name === "green") {
+		this.name = "blue";
+	}
+	else if (this.name === "yellow") {
+		this.name = "green";
+	}*/
 	//play sound?
+	
 
 };
 
