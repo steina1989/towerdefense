@@ -159,11 +159,11 @@ Balloon.prototype.findDirection = function(){
 Balloon.prototype.takeBulletHit = function(){
 	
 	
-	if (this.name === "red") {
-		this._isDeadNow = true;
+	/*if (this.name === "red") {
+		
 		this.kill();
 		return;
-	}
+	}*/
 	var newBalloon = this;
 	if (this.name === "blue") {
 		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]);	
@@ -178,9 +178,10 @@ Balloon.prototype.takeBulletHit = function(){
 	newBalloon.cy = this.cy;
 	newBalloon.velX = this.velX;
 	newBalloon.velY = this.velY;
-	entityManager._balloons.push(newBalloon);
+	if (this.name != "red")
+		entityManager._balloons.push(newBalloon);
 
-	if (this.name === "blue") {
+	/*if (this.name === "blue") {
 		this.name = "red";
 	}
 	else if (this.name === "green") {
@@ -188,8 +189,9 @@ Balloon.prototype.takeBulletHit = function(){
 	}
 	else if (this.name === "yellow") {
 		this.name = "green";
-	}
+	}*/
 	//play sound?
+	this.kill();
 
 };
 
