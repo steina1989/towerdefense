@@ -22,7 +22,7 @@ var g_mouseX = 0,
     dy = 0,
     distsq = 0,
     rsq = 0,
-    tower=null; 
+    tower=null;
 
 
 function handleMouse(evt) {
@@ -36,7 +36,38 @@ function handleMouse(evt) {
     dy = g_mouseY - buttonY;
     distsq = dx * dx + dy * dy,
     rsq = buttonR * buttonR;
+    if(tower != null){
+      var pos = Arena.posToIndex(g_mouseX, g_mouseY);
+      var row = pos.row;
+      var column = pos.column;
 
+
+      // If we are dragging and want to place in a legal spot:
+      console.log(evt.clientX,evt.clientY);
+      if(Arena.isLegalTile(evt.clientX, evt.clientY) && evt.clientX < Arena.WIDTH){
+
+          // breyta í placeTower að staðsetning sé miðja reits
+         // gera snap to middle aðferð
+        tower.isPlaced = true;
+        playerInfo.coins -= Tower.towerType.properties[Tower.towerType.DIAMOND].price;
+        console.log(tower, "legal spot", "Tile legal?: ", Arena.isLegalTile(g_mouseX, g_mouseY));
+        Arena.grid[row][column] = -1;
+    
+
+    // If we are dragging and want to place in an illegal spot:
+     }else if(!Arena.isLegalTile(evt.clientX, evt.clientY) || evt.clientX > Arena.WIDTH){
+      tower.isPlaced=false;
+      console.log("fer eg hingað?")
+
+      return;
+      /*g_mouseX = evt.clientX - g_canvas.offsetLeft; 
+      g_mouseY = evt.clientY - g_canvas.offsetTop;
+      tower.isPlaced = false;
+      isDragging = true;
+      console.log(tower, "legal tile? ", Arena.isLegalTile(g_mouseX, g_mouseY));*/
+    
+}
+  }
 
     if (!button){
       return;
@@ -57,16 +88,14 @@ function handleMouse(evt) {
 
           entityManager.generateLevel();
 
-
-
     }else{
+
       tower = menuBar.getTower(g_mouseX,g_mouseY);
-      //console.log("þessi",tower);
-      //isDragging=true;
-      //menuBar.drawButton()
-      //g_ctx.drawImage(mynd,g_mouseX,g_mouseY,50,50);
-	}    
-}
+    }
+
+
+    
+  }
 
 function handleMove(evt){
 
@@ -74,63 +103,16 @@ function handleMove(evt){
     g_mouseY = evt.clientY - g_canvas.offsetTop;
     //console.log(g_mouseX,g_mouseY);
     // If we're not dragging a tower, do nothing
-    if(!isDragging){
-        return;
-    }
-    else {
-      //tower = menuBar.getTower(g_mouseX,g_mouseY); <- fokkar öllu upp
-      if(tower != null) {
-        tower.setPos(g_mouseX,g_mouseY);
-        tower.render(g_ctx);
-      }
-    }
-    /*
-    // If we are dragging and want to place in a legal spot:
-    if (isDragging && (Arena.isLegalTile(g_mouseX, g_mouseY) === 0 && evt.clientX < Arena.WIDTH)){
-        tower.setPos(g_mouseX,g_mouseY);
-        tower.render(g_ctx);
-    }
-    // If we are dragging and want to place in an illegal spot:
-    else if(isDragging && (Arena.isLegalTile(g_mouseX, g_mouseY) != 0 || evt.clientX > Arena.WIDTH)){
-    	tower.setPos(g_mouseX,g_mouseY);
-      tower.render(g_ctx);
-    }*/
+    if(tower != null){
+    tower.setPos(g_mouseX,g_mouseY);
+    tower.render(g_ctx);  
+}
 }
 
-function handleUp(evt){
-	if(isDragging && tower != null){
 
-		g_mouseX = evt.clientX - g_canvas.offsetLeft; 
-		g_mouseY = evt.clientY - g_canvas.offsetTop;
-		  
-		var pos = Arena.posToIndex(g_mouseX, g_mouseY);
-		var row = pos.row;
-		var column = pos.column;
 
-    // If we are dragging and want to place in a legal spot:
-		if(Arena.isLegalTile(g_mouseX, g_mouseY) && evt.clientX < Arena.WIDTH){ 
-			// breyta í placeTower að staðsetning sé miðja reits
-			// gera snap to middle aðferð
-		  	tower.isPlaced = true;
-        playerInfo.coins -= Tower.towerType.properties[Tower.towerType.DIAMOND].price;
-		  	isDragging = false;
-		  	console.log(tower, "legal spot", "Tile legal?: ", Arena.isLegalTile(g_mouseX, g_mouseY));
-		  	Arena.grid[row][column] = -1;
-		}
-
-		// If we are dragging and want to place in an illegal spot:
-    else if(!Arena.isLegalTile(g_mouseX, g_mouseY) || evt.clientX > Arena.WIDTH){
-      return;
-			/*g_mouseX = evt.clientX - g_canvas.offsetLeft; 
-			g_mouseY = evt.clientY - g_canvas.offsetTop;
-			tower.isPlaced = false;
-		  isDragging = true;
-		  console.log(tower, "legal tile? ", Arena.isLegalTile(g_mouseX, g_mouseY));*/
-		}
-	}
-}
 
 // Handle "down" and "move" events the same way.
 window.addEventListener("mousedown", handleMouse);
 window.addEventListener("mousemove", handleMove);
-window.addEventListener("mouseup", handleUp);
+//window.addEventListener("mouseup", handleUp);
