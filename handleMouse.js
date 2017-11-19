@@ -29,10 +29,7 @@ function handleMouse(evt) {
     
     g_mouseX = evt.clientX - g_canvas.offsetLeft; 
     g_mouseY = evt.clientY - g_canvas.offsetTop;
-    console.log("er í handleMouse");
-    
-    //console.log(g_mouseX,g_mouseY)
-
+  
     // If no button is being pressed, then bail
     var button = evt.buttons === undefined ? evt.which : evt.buttons;
     dx = g_mouseX - buttonX,
@@ -78,53 +75,56 @@ function handleMove(evt){
     if(!isDragging){
         return;
     }
+    else {
+      //tower = menuBar.getTower(g_mouseX,g_mouseY); <- fokkar öllu upp
+      if(tower != null) {
+        tower.setPos(g_mouseX,g_mouseY);
+        tower.render(g_ctx);
+      }
+    }
+    /*
     // If we are dragging and want to place in a legal spot:
-    else if (tower.getTileValue(g_mouseX, g_mouseY) === 0 || evt.clientX > Arena.WIDTH){
+    if (isDragging && (Arena.isLegalTile(g_mouseX, g_mouseY) === 0 && evt.clientX < Arena.WIDTH)){
         tower.setPos(g_mouseX,g_mouseY);
         tower.render(g_ctx);
     }
     // If we are dragging and want to place in an illegal spot:
-    else {
+    else if(isDragging && (Arena.isLegalTile(g_mouseX, g_mouseY) != 0 || evt.clientX > Arena.WIDTH)){
     	tower.setPos(g_mouseX,g_mouseY);
-        tower.render(g_ctx);
-    }
+      tower.render(g_ctx);
+    }*/
 }
 
 function handleUp(evt){
-	if(isDragging){
+	if(isDragging && tower != null){
+
 		g_mouseX = evt.clientX - g_canvas.offsetLeft; 
 		g_mouseY = evt.clientY - g_canvas.offsetTop;
 		  
 		var pos = Arena.posToIndex(g_mouseX, g_mouseY);
 		var row = pos.row;
 		var column = pos.column;
-		if(tower.getTileValue(g_mouseX, g_mouseY) === 0){ 
-			// ASDF tower er undefined hér, why??
+
+    // If we are dragging and want to place in a legal spot:
+		if(Arena.isLegalTile(g_mouseX, g_mouseY) && evt.clientX < Arena.WIDTH){ 
 			// breyta í placeTower að staðsetning sé miðja reits
 			// gera snap to middle aðferð
 		  	tower.isPlaced = true;
+        playerInfo.coins -= Tower.towerType.properties[Tower.towerType.DIAMOND].price;
 		  	isDragging = false;
-		  	console.log(tower, "legal spot", tower);
+		  	console.log(tower, "legal spot", "Tile legal?: ", Arena.isLegalTile(g_mouseX, g_mouseY));
 		  	Arena.grid[row][column] = -1;
 		}
-		else {
-			g_mouseX = evt.clientX - g_canvas.offsetLeft; 
+
+		// If we are dragging and want to place in an illegal spot:
+    else if(!Arena.isLegalTile(g_mouseX, g_mouseY) || evt.clientX > Arena.WIDTH){
+      return;
+			/*g_mouseX = evt.clientX - g_canvas.offsetLeft; 
 			g_mouseY = evt.clientY - g_canvas.offsetTop;
 			tower.isPlaced = false;
-		  isDragging = false;
-		  console.log(tower, "illegal spot", tower);
-
-		  	isDragging = false;
-		  	console.log(tower, "illegal spot", tower);
-        return;
+		  isDragging = true;
+		  console.log(tower, "legal tile? ", Arena.isLegalTile(g_mouseX, g_mouseY));*/
 		}
-		// posToIndex fall til að segja hvort sé í löglegum reit
-		if(tower.isPlaced){
-      playerInfo.coins -= Tower.towerType.properties[Tower.towerType.DIAMOND].price;
-    }
-	}
-	else {
-		return;
 	}
 }
 

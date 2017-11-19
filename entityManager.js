@@ -138,7 +138,7 @@ var entityManager = {
         var tower = new Tower(descr);
         tower.setPos(xPos,yPos);
         this._towers.push(tower);
-        console.log(tower);
+        //console.log(tower);
 
     },
 
