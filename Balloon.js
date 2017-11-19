@@ -168,10 +168,10 @@ Balloon.prototype.takeBulletHit = function(){
 		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]);	
 	}
 	if (this.name === "green") {
-		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]);
+		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]);
 	}
 	if (this.name === "yellow") {
-		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]);
+		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.GREEN]);
 	}
 	newBalloon.cx = this.cx;
 	newBalloon.cy = this.cy;
