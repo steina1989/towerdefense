@@ -43,11 +43,11 @@ function handleMouse(evt) {
     if (!button){
       return;
     }else if(distsq < rsq){
-      countRed=0;
-      countBlue=0
-      currentBalloon="red";
-      Arena.balloons1[0]+=5;
-      Arena.balloons1[1]+=2;
+          countRed=0;
+          countBlue=0
+          currentBalloon="red";
+          Arena.balloons1[0]+=5;
+          Arena.balloons1[1]+=2;
 
 
 
