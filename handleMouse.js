@@ -11,6 +11,7 @@
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 */
 
+
 var g_mouseX = 0,
     g_mouseY = 0,
     isDragging=false,
@@ -23,9 +24,6 @@ var g_mouseX = 0,
     rsq = 0,
     tower=null; 
 
-if (distsq < rsq) {
-  console.log("click");
-}
 
 function handleMouse(evt) {
     
@@ -45,7 +43,13 @@ function handleMouse(evt) {
     if (!button){
       return;
     }else if(distsq < rsq){
-      console.log("click");
+      countRed=0;
+      countBlue=0
+      currentBalloon="red";
+      Arena.balloons1[0]+=5;
+      Arena.balloons1[1]+=2;
+
+
 
     }else{
       tower = menuBar.getTower(g_mouseX,g_mouseY);
@@ -98,8 +102,9 @@ function handleUp(evt){
 			g_mouseX = evt.clientX - g_canvas.offsetLeft; 
 			g_mouseY = evt.clientY - g_canvas.offsetTop;
 			tower.isPlaced = false;
-		  	isDragging = true;
+		  	isDragging = false;
 		  	console.log(tower, "illegal spot", tower);
+
 		}
 		// posToIndex fall til að segja hvort sé í löglegum reit
 		if(tower.isPlaced){
