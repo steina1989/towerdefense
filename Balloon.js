@@ -164,7 +164,34 @@ Balloon.prototype.takeBulletHit = function(){
 		this.kill();
 		return;
 	}*/
+	if (this.name != "red") {
+	if (this.name === "blue") {
+		var newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]);
+		newBalloon.cx = this.cx, newBalloon.cy = this.cy;
+		newBalloon.velX = this.velX, newBalloon.velY = this.velY;
+		entityManager._balloons.push(newBalloon);
+		console.log("pushed red")
+	}
 
+	else if (this.name === "green") {
+		var newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]);
+		newBalloon.cx = this.cx, newBalloon.cy = this.cy;
+		newBalloon.velX = this.velX, newBalloon.velY = this.velY;
+		entityManager._balloons.push(newBalloon);
+		console.log("pushed blue")
+	}
+
+	else if (this.name === "yellow") {
+		var newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.GREEN]);
+		newBalloon.cx = this.cx, newBalloon.cy = this.cy;
+		newBalloon.velX = this.velX, newBalloon.velY = this.velY;
+		entityManager._balloons.push(newBalloon);
+		console.log("pushed green")
+	}}
+
+	this.kill();
+	
+/*
 	if (this.name != "red") {
 	//var newBalloon = this;
 		if (this.name === "blue") {
@@ -181,8 +208,9 @@ Balloon.prototype.takeBulletHit = function(){
 		newBalloon.velX = this.velX;
 		newBalloon.velY = this.velY;
 		entityManager._balloons.push(newBalloon);
+		console.log("pushed balloon")
 	}
-
+*/
 	/*if (this.name === "blue") {
 		this.name = "red";
 	}
@@ -193,7 +221,7 @@ Balloon.prototype.takeBulletHit = function(){
 		this.name = "green";
 	}*/
 	//play sound?
-	this.kill();
+	
 
 };
 
