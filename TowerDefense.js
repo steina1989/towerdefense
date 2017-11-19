@@ -47,7 +47,7 @@ function updateSimulation(du) {
 
 var g_allowMixedActions = true;
 var g_renderSpatialDebug = false;
-var g_renderArenaGrid = true;
+var g_renderArenaGrid = false;
 
 var KEY_RENDERARENA_GRID = keyCode('J')
 var KEY_SPATIAL = keyCode('X');
@@ -74,7 +74,8 @@ function processDiagnostics() {
 
     
     // Special diagnostic functions (halt balloons, reset )
-    if (eatKey(KEY_GEN_BALLOON)) entityManager.generateBalloon();
+    if (eatKey(KEY_GEN_BALLOON)) entityManager._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]));
+
 }
 
 
