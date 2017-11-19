@@ -114,6 +114,8 @@ Balloon.prototype.update = function(du) {
 
     if (this.isColliding()) {
     	this.takeBulletHit();
+    	this._isDeadNow = true;
+    	//console.log("die")
     }
 
     spatialManager.register(this);

@@ -29,11 +29,6 @@ function Tower(descr) {
 
 }
 
-/*
-The three different types of towers available.
-rateOfFire and bulletSpeed are measured in "per second".
-range is measured in pixels
-*/
 //var towerType;
 
 
@@ -44,10 +39,10 @@ Tower.init = function() {
 		DIAMOND : 3,
 		PAT: 4,
 		properties: {
-			1: {name: "brain", rateOfFire: 500, price: 5, range: 130, bulletDamage: 1, bulletSpeed: 3, sprite: g_sprites.twrHeili, isPlaced: false},
-			2: {name: "spyro", rateOfFire: 300, price: 15, range: 165, bulletDamage: 2, bulletSpeed: 3, sprite: g_sprites.twrSpyro, isPlaced: false},
-			3: {name: "diamond", rateOfFire: 200, price: 25, range: 190, bulletDamage: 3, bulletSpeed: 8, sprite: g_sprites.twrDiamond,isPlaced: false},
-			4: {name: "pat", rateOfFire: 200, price: 25, range: 190, bulletDamage: 3, bulletSpeed: 8, sprite: g_sprites.twrPat, isPlaced: false}
+			1: {name: "brain", fireDelay: 1200, price: 5, range: 100, bulletDamage: 1, bulletSpeed: 2, sprite: g_sprites.twrHeili, isPlaced: false},
+			2: {name: "spyro", fireDelay: 700, price: 15, range: 135, bulletDamage: 2, bulletSpeed: 4, sprite: g_sprites.twrSpyro, isPlaced: false},
+			3: {name: "diamond", fireDelay: 500, price: 25, range: 160, bulletDamage: 2, bulletSpeed: 6, sprite: g_sprites.twrDiamond,isPlaced: false},
+			4: {name: "pat", fireDelay: 200, price: 35, range: 180, bulletDamage: 3, bulletSpeed: 8, sprite: g_sprites.twrPat, isPlaced: false}
 		}
 	};
 };
@@ -135,9 +130,9 @@ Tower.prototype.update = function (du) {
 	    	var now = new Date();
 	    	var currentTime = now.getTime();
 
-	    	if (currentTime - this.lastTime > this.rateOfFire) {
+	    	if (currentTime - this.lastTime > this.fireDelay) {
 	    		entityManager.fireBullet(this.cx + dX, this.cy + dY, relVelX, relVelY, 0);
-	    		console.log("bullet")
+	    		//console.log("bullet")
 	    		firstTime = false;
 	    		this.lastTime = currentTime;
 	    	}
@@ -156,10 +151,6 @@ Tower.prototype.update = function (du) {
 		//this.generateBullet(speed, damage, this.rotation); ASDF dót
 	}
 };
-
-
-// ASDF kalla á generate bullet
-
 
 Tower.prototype.render = function (ctx) {
     this.sprite.drawCentredAt(
@@ -193,10 +184,3 @@ Tower.prototype.findNearestBalloon = function (){
 	}
 	return nearestBalloon;
 };
-
-Tower.prototype.getTileValue = function(x, y) {
-	var pos = Arena.posToIndex(x, y);
-	var row = pos.row;
-	var column = pos.column;
-	return Arena.grid[row][column];
-}

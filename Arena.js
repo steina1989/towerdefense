@@ -168,4 +168,9 @@ Arena.generateLevel = function(balloonType) {
 	entityManager.generateBalloon(balloonType);
 }
 
-
+Arena.isLegalTile = function(x, y) {
+	var pos = this.posToIndex(x, y);
+	var row = pos.row;
+	var column = pos.column;
+	return this.grid[row][column] === 0;
+}
