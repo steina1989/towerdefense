@@ -55,7 +55,11 @@ var g_renderArenaGrid = false;
 var KEY_RENDERARENA_GRID = keyCode('J')
 var KEY_SPATIAL = keyCode('X');
 var KEY_RESET = keyCode('R');
-var KEY_GEN_BALLOON = keyCode('1');
+var KEY_GEN_BALLOON_RED = keyCode('1');
+var KEY_GEN_BALLOON_BLUE = keyCode('2');
+var KEY_GEN_BALLOON_GREEN = keyCode('3');
+var KEY_GEN_BALLOON_YELLOW = keyCode('4');
+
 
 
 
@@ -70,7 +74,10 @@ function processDiagnostics() {
 
     
     // Special diagnostic functions (halt balloons, reset )
-    if (eatKey(KEY_GEN_BALLOON)) entityManager._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]));
+    if (eatKey(KEY_GEN_BALLOON_RED)) entityManager._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]));
+    if (eatKey(KEY_GEN_BALLOON_BLUE)) entityManager._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]));
+    if (eatKey(KEY_GEN_BALLOON_GREEN)) entityManager._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.GREEN]));
+    if (eatKey(KEY_GEN_BALLOON_YELLOW)) entityManager._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.YELLOW]));
 
 }
 
