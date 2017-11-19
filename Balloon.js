@@ -162,15 +162,16 @@ Balloon.prototype.takeBulletHit = function(){
 	if (this.name === "red") {
 		this._isDeadNow = true;
 		this.kill();
+		return;
 	}
 	var newBalloon = this;
 	if (this.name === "blue") {
 		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]);	
 	}
-	if (this.name === "green") {
+	else if (this.name === "green") {
 		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]);
 	}
-	if (this.name === "yellow") {
+	else if (this.name === "yellow") {
 		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.GREEN]);
 	}
 	newBalloon.cx = this.cx;
