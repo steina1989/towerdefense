@@ -164,22 +164,24 @@ Balloon.prototype.takeBulletHit = function(){
 		this.kill();
 		return;
 	}*/
-	var newBalloon = this;
-	if (this.name === "blue") {
-		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]);	
-	}
-	else if (this.name === "green") {
-		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]);
-	}
-	else if (this.name === "yellow") {
-		newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.GREEN]);
-	}
-	newBalloon.cx = this.cx;
-	newBalloon.cy = this.cy;
-	newBalloon.velX = this.velX;
-	newBalloon.velY = this.velY;
-	if (this.name != "red")
+
+	if (this.name != "red") {
+	//var newBalloon = this;
+		if (this.name === "blue") {
+			var newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]);	
+		}
+		else if (this.name === "green") {
+			var newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]);
+		}
+		else if (this.name === "yellow") {
+			var newBalloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.GREEN]);
+		}
+		newBalloon.cx = this.cx;
+		newBalloon.cy = this.cy;
+		newBalloon.velX = this.velX;
+		newBalloon.velY = this.velY;
 		entityManager._balloons.push(newBalloon);
+	}
 
 	/*if (this.name === "blue") {
 		this.name = "red";
