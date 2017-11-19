@@ -111,15 +111,12 @@ function handleUp(evt){
 			g_mouseX = evt.clientX - g_canvas.offsetLeft; 
 			g_mouseY = evt.clientY - g_canvas.offsetTop;
 			tower.isPlaced = false;
-<<<<<<< HEAD
 		  isDragging = false;
 		  console.log(tower, "illegal spot", tower);
 
-=======
 		  	isDragging = false;
 		  	console.log(tower, "illegal spot", tower);
         return;
->>>>>>> 00e8795e4e3df4dfc38d0737300584f2638a5f27
 		}
 		// posToIndex fall til að segja hvort sé í löglegum reit
 		if(tower.isPlaced){
