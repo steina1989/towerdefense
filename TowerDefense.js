@@ -97,6 +97,7 @@ function renderSimulation(ctx) {
     var now = new Date();
     var currentTime = now.getTime();
 
+
     if (currentTime - lastTime > 500 && countRed < Arena.balloons1[0] 
         && currentBalloon === "red") {
         Arena.generateLevel("red");
@@ -115,7 +116,6 @@ function renderSimulation(ctx) {
         return;
     }
 
-    
 
 
     //entityManager.fireBullet(300,300,5,5,0);
@@ -128,6 +128,8 @@ function renderSimulation(ctx) {
     if (g_renderArenaGrid) Arena.renderDiagnostics(ctx);
 
 }
+
+
 
 
 // =============

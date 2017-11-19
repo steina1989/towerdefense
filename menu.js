@@ -53,7 +53,7 @@ menuBar.render = function(ctx){
  // this.drawButton(600,g_canvas.height/2,200,g_canvas.height/2, getImage('images/ground.jpg'),ctx);
 
   g_sprites.menuBackground.drawAt(ctx,600,0,200,g_canvas.height)
-  menuBar.drawButton(buttonX,buttonY,buttonR,2*Math.PI,ctx);
+  menuBar.drawButton(buttonX,buttonY,buttonR,ctx);
 
 
   g_sprites.twrHeili.drawAt(ctx,origBrainX,origBrainY,origBrainW,origBrainH);
@@ -143,11 +143,11 @@ playerInfo.write = function(ctx){
 
 
 
-menuBar.drawButton=function(x,y,r,angle,ctx){
+menuBar.drawButton=function(x,y,r,ctx){
   ctx.save();
   ctx.beginPath();
   ctx.fillStyle ="black";
-  ctx.arc(x,y,r,0,angle);
+  util.fillCircle(ctx,x,y,r);
   ctx.fill();
 
   ctx.beginPath();
