@@ -23,6 +23,15 @@ with suitable 'data' and 'methods'.
 /*jslint nomen: true, white: true, plusplus: true*/
 
 
+var d = new Date();
+var lastTime = d.getTime();
+var countRed = 0;
+var countBlue = 0;
+var countGreen = 0;
+var countYellow = 0;
+var countWhite = 0;
+var countBlack = 0;
+
 var entityManager = {
 
     // "PRIVATE" DATA
@@ -38,8 +47,8 @@ var entityManager = {
         }
     },
 
-    d: new Date(),
     lastTime : 0,
+    timeToNext : 0,
 
     // PUBLIC METHODS
 
@@ -57,20 +66,10 @@ var entityManager = {
     },
 
     init: function() {
-        //this._generateRocks();
-        //this._generateShip();
         var cellIndex = Arena.getIndexOfCellNumber(1);
         var pos = Arena.indexToPos(cellIndex.row, cellIndex.column);
-        Arena.generateLevel();
-        // Push 10 balloons into queue
-        //console.log(pos);
-        
-        for (var x = 0; x<10; x++){
-            //this._balloonQueue.push(new Balloon({ 
-              //  speed: 3
-            //}))
-            this._balloonQueue.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]));
-        }
+
+        this.generateLevel();
 
         // ASDF taka út þessa ĺínu:
 
@@ -82,7 +81,7 @@ var entityManager = {
 
         //HÉR FYRIR OFAN: DEBUG, TAKA ÚT SEINNA
 
-        this._balloons.push(this._balloonQueue.pop());
+        //this._balloons.push(this._balloonQueue.pop());
     },
 
     fireBullet: function(cx, cy, velX, velY, rotation) {
@@ -112,25 +111,19 @@ var entityManager = {
 };*/
 
     generateBalloon: function(balloonType) {
-        //this._balloons.push(new Balloon({ 
-          //  speed: 3
-        //}))
-        //var balloon = new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE])
-        
 
-        //this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]))
-        if (balloonType === "red") 
-            this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]));
-        if (balloonType === "blue") 
-            this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]));
-        if (balloonType === "green") 
-            this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.GREEN]));
-        if (balloonType === "yellow") 
-            this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.YELLOW]));
-        if (balloonType === "white") 
-            this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.WHITE]));
-        if (balloonType === "black") 
-            this._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLACK]));
+        if (balloonType === 0) 
+            return new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]);
+        if (balloonType === 1) 
+            return new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLUE]);
+        if (balloonType === 2) 
+            return new Balloon(Balloon.balloonType.properties[Balloon.balloonType.GREEN]);
+        if (balloonType === 3) 
+            return new Balloon(Balloon.balloonType.properties[Balloon.balloonType.YELLOW]);
+        if (balloonType === 4) 
+            return new Balloon(Balloon.balloonType.properties[Balloon.balloonType.WHITE]);
+        if (balloonType === 5) 
+            return new Balloon(Balloon.balloonType.properties[Balloon.balloonType.BLACK]);
 
     },
 
@@ -143,19 +136,6 @@ var entityManager = {
     },
 
 
-    /*killNearestShip: function(xPos, yPos) {
-        var theShip = this._findNearestShip(xPos, yPos).theShip;
-        if (theShip) {
-            theShip.kill();
-        }
-    },*/
-
-    /*yoinkNearestShip: function(xPos, yPos) {
-        var theShip = this._findNearestShip(xPos, yPos).theShip;
-        if (theShip) {
-            theShip.setPos(xPos, yPos);
-        }
-    },*/
 
     placeTower: function(xPos,yPos) {
     	// ASDF þarf að breyta, er á byrjunarstigi
@@ -168,19 +148,10 @@ var entityManager = {
     	tower.setPos(xPos, yPos);
     },
 
-    /*resetShips: function() {
-        this._forEachOf(this._ships, Ship.prototype.reset);
-    },
-
-    haltShips: function() {
-        this._forEachOf(this._ships, Ship.prototype.halt);
-    },
-
-    toggleRocks: function() {
-        this._bShowRocks = !this._bShowRocks;
-    },*/
 
     update: function(du) {
+
+        this.lastTime += du;
 
         for (var c = 0; c < this._categories.length; ++c) {
 
@@ -201,8 +172,23 @@ var entityManager = {
             }
         }
 
-        //if (this._rocks.length === 0) this._generateRocks();
 
+        if (this.lastTime > this.timeToNext && this._balloonQueue.length > 0) {
+            var balloon = this._balloonQueue.pop();
+            this.timeToNext = balloon.timeToNextOne;
+            this._balloons.push(balloon);
+            this.lastTime = 0;
+            console.log("hallo")
+        }
+
+    },
+
+    generateLevel: function() {
+        for (var i = Arena.balloons1.length-1; i >= 0; i--) {
+            for (var j = 0; j < Arena.balloons1[i]; j++) {
+                this._balloonQueue.push(this.generateBalloon(i));
+            }
+        }
     },
 
     render: function(ctx) {

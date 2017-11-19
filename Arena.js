@@ -34,7 +34,7 @@ var Arena = {
 	cellWidth : 60,
 	cellHeight : 60,
 
-	balloons1 : [10,5,1,0,0,0],
+	balloons1 : [2,1,1,1,1,1],
 
 
 	grid :

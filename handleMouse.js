@@ -55,6 +55,8 @@ function handleMouse(evt) {
           Arena.balloons1[4]+=2;
           Arena.balloons1[5]+=2;
 
+          entityManager.generateLevel();
+
 
 
     }else{

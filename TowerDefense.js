@@ -41,27 +41,23 @@ function updateSimulation(du) {
     
     processDiagnostics();
     entityManager.update(du);
+
+
+
 }
 
 // GAME-SPECIFIC DIAGNOSTICS
 
 var g_allowMixedActions = true;
 var g_renderSpatialDebug = false;
-var g_renderArenaGrid = true;
+var g_renderArenaGrid = false;
 
 var KEY_RENDERARENA_GRID = keyCode('J')
 var KEY_SPATIAL = keyCode('X');
 var KEY_RESET = keyCode('R');
 var KEY_GEN_BALLOON = keyCode('1');
 
-var d = new Date();
-var lastTime = d.getTime();
-var countRed = 0;
-var countBlue = 0;
-var countGreen = 0;
-var countYellow = 0;
-var countWhite = 0;
-var countBlack = 0;
+
 
 var currentBalloon = "red";
 
@@ -74,7 +70,8 @@ function processDiagnostics() {
 
     
     // Special diagnostic functions (halt balloons, reset )
-    if (eatKey(KEY_GEN_BALLOON)) entityManager.generateBalloon();
+    if (eatKey(KEY_GEN_BALLOON)) entityManager._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]));
+
 }
 
 
@@ -98,64 +95,7 @@ function renderSimulation(ctx) {
     menuBar.render(ctx);
     entityManager.render(ctx);
 
-    var now = new Date();
-    var currentTime = now.getTime();
 
-
-    if (currentTime - lastTime > 500 && countRed < Arena.balloons1[0] 
-        && currentBalloon === "red") {
-        Arena.generateLevel("red");
-        lastTime = currentTime;
-        countRed++;
-        if (countRed === Arena.balloons1[0])
-            currentBalloon = "blue";
-        return;
-    }
-
-    else if (currentTime - lastTime > 300 && countBlue < Arena.balloons1[1]
-        && currentBalloon === "blue") {
-        Arena.generateLevel("blue");
-        lastTime = currentTime;
-        countBlue++;
-        if (countBlue === Arena.balloons1[1])
-            currentBalloon = "green";
-        return;
-    }
-    else if (currentTime - lastTime > 300 && countGreen < Arena.balloons1[2]
-        && currentBalloon === "green") {
-        Arena.generateLevel("green");
-        lastTime = currentTime;
-        countGreen++;
-        if (countRed === Arena.balloons1[2])
-            currentBalloon = "yellow";
-        return;
-    }
-    else if (currentTime - lastTime > 300 && countYellow < Arena.balloons1[3]
-        && currentBalloon === "yellow") {
-        Arena.generateLevel("yellow");
-        lastTime = currentTime;
-        countYellow++;
-        if (countRed === Arena.balloons1[3])
-            currentBalloon = "white";
-        return;
-    }
-    else if (currentTime - lastTime > 300 && countWhite < Arena.balloons1[4]
-        && currentBalloon === "white") {
-        Arena.generateLevel("white");
-        lastTime = currentTime;
-        countWhite++;
-        if (countRed === Arena.balloons1[4])
-            currentBalloon = "black";
-        return;
-    }
-    else if (currentTime - lastTime > 300 && countBlack < Arena.balloons1[5]
-        && currentBalloon === "black") {
-        Arena.generateLevel("black");
-        lastTime = currentTime;
-        countBlack++;
-        return;
-
-}
 
     //entityManager.fireBullet(300,300,5,5,0);
 
@@ -178,6 +118,8 @@ function renderSimulation(ctx) {
 var g_images = {};
 
 function requestPreloads() {
+
+    console.log("hallo")
 
     var requiredImages = {
         //ASDF þarf að updatea
