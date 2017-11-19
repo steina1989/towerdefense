@@ -114,8 +114,6 @@ Balloon.prototype.update = function(du) {
 
     if (this.isColliding()) {
     	this.takeBulletHit();
-    	this._isDeadNow = true;
-    	console.log("die")
     }
 
     spatialManager.register(this);
@@ -153,13 +151,12 @@ Balloon.prototype.render = function(ctx) {
 
 
 Balloon.prototype.findDirection = function(){
-	this.nextX = Arena.nextCellInPath.nextY(this.cx,this.cy);
-	this.nextY = Arena.nextCellInPath.nextX(this.cx,this.cy);
+    var dir = Arena.nextCellInPath.nextY(this.cx,this.cy);
+	this.nextX = dir.nextY;
+	this.nextY = dir.nextX;
 };
 
 Balloon.prototype.takeBulletHit = function(){
 	this.isDeadNow = true;
-	//play sound?
-
 };
 
