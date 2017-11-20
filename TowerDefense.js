@@ -94,7 +94,7 @@ function popSound(){
 } 
 
 function $$$(){
-    playerInfo.coins = 5000;
+    playerInfo.coins += 5000;
 }
 
 
