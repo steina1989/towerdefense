@@ -15,8 +15,6 @@
 function createInitialTower() {
 
     entityManager.generateTower({ 
-    // ASDF á eftir að búa til aðferðina í entityManager.
-    //hvaða aðferð? -hugrún
         cx : 200,
         cy : 200
     });
@@ -54,7 +52,6 @@ var g_renderSpatialDebug = false;
 var g_renderArenaGrid = false;
 
 var KEY_RENDERARENA_GRID = keyCode('J')
-var KEY_SPATIAL = keyCode('X');
 var KEY_RESET = keyCode('R');
 var KEY_CANCEL = keyCode('C');
 var KEY_GEN_BALLOON_RED = keyCode('1');
@@ -68,8 +65,6 @@ var currentBalloon = "red";
 function processDiagnostics() {
 
     // Key toggles for diagnostics
-    if (eatKey(KEY_SPATIAL)) g_renderSpatialDebug = !g_renderSpatialDebug;
-
     if (eatKey(KEY_RENDERARENA_GRID)) g_renderArenaGrid = !g_renderArenaGrid;
     if (eatKey(KEY_CANCEL)) g_cancel();
     
@@ -123,7 +118,6 @@ function renderSimulation(ctx) {
     entityManager.render(ctx);
 
 
-    if (g_renderSpatialDebug) spatialManager.render(ctx);
     if (g_renderArenaGrid) Arena.renderDiagnostics(ctx);
 
 }
@@ -137,7 +131,6 @@ var g_images = {};
 function requestPreloads() {
 
     var requiredImages = {
-        //ASDF þarf að updatea
         twrHeili   : "images/heili.png",
         twrSpyro   : "images/spyro.png",
         twrPat : "images/pat.png",

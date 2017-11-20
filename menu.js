@@ -124,20 +124,24 @@ menuBar.getTower = function (x, y){
 }
  
 playerInfo.write = function(ctx){
-  ctx.fillStyle = "black";
-  ctx.font = "bolder 18px Arial"; //ASDF breyta
+  ctx.save();
+  ctx.fillStyle = "#44CC33";
+  ctx.shadowBlur = 5; 
+  ctx.shadowColor = "#000000";
+  ctx.font = "bolder 18px Arial"; 
   
   ctx.fillText("Yolo's: " + this.lives, 615, 50);
   ctx.fillText("Ca$hMoneyzz: " + this.coins, 615, 70);
-  ctx.font = "15px Arial bolder";
+
+  ctx.font = "bolder 15px Arial";
   ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.SPYRO].price, 720, 300); //SPYRO
   ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.BRAIN].price, 630, 300); //BRAIN
   ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.DIAMOND].price, 630, 405); //DIAMOND
   ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.PAT].price, 720, 405); //PAT
   ctx.fillText("Next wave", 670, 110);
-  ctx.font = "30px Arial bold";
-  ctx.fillText("Level: " + Arena.level, 615,590)
-
+  ctx.font = "bold 30px Arial";
+  ctx.fillText("Level: " + Arena.level, 655,510);
+  ctx.restore();
 }
 
 menuBar.drawButton=function(x,y,r,ctx){
