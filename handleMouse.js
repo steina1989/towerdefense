@@ -74,6 +74,10 @@ function handleMouse(evt) {
     }  
   }
 
+
+/*
+  If we "have" a tower under the mouse, then snap its position to the grid.
+*/
 function handleMove(evt){
 
     g_mouseX = evt.clientX - g_canvas.offsetLeft; 
@@ -81,7 +85,15 @@ function handleMove(evt){
 
     //Tower follows the mouse
     if(tower != null){
-      tower.setPos(g_mouseX,g_mouseY);
+
+      if (g_mouseX < Arena.WIDTH){
+        var pos = Arena.posToIndex(g_mouseX,g_mouseY)
+        var newPos = Arena.indexToPos(pos.row,pos.column)
+
+        g_mouseX = newPos.x;
+        g_mouseY = newPos.y;
+      }
+      tower.setPos(g_mouseX,g_mouseY)
       tower.render(g_ctx);
     }
 }
