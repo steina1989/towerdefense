@@ -60,11 +60,15 @@ function handleMouse(evt) {
           countRed, countBlue, countGreen, countYellow = 0;
           currentBalloon="red";
 
+          Arena.level++;
+
           //Increse balloons by each level
           Arena.balloons1[0]+=5;
           Arena.balloons1[1]+=2;
-          Arena.balloons1[2]+=2;
-          Arena.balloons1[3]+=0.4;
+          if (Arena.level > 2) {
+          	Arena.balloons1[2]+=2;
+          	Arena.balloons1[3]+=0.4;
+          }
 
           entityManager.generateLevel();
       }

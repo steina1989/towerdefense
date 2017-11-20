@@ -97,6 +97,11 @@ function popSound(){
 
 } 
 
+function $$$(){
+    playerInfo.coins = 5000;
+}
+
+
 // =================
 // RENDER SIMULATION
 // =================

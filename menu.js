@@ -20,21 +20,20 @@ var origBrainX = 630,
     origBrainW = 65,
     origBrainH = 50;
 
-var origPatX = 720,
-    origPatY = 200,
-    origPatW = 60,
-    origPatH = 80;
-
-var origSpyroX = 640,
-    origSpyroY = 320,
+var origSpyroX = 720,
+    origSpyroY = 200,
     origSpyroW = 60,
-    origSpyroH = 70;
+    origSpyroH = 80;
 
-var origDiamondX = 720,
-    origDiamondY = 330,
+var origDiamondX = 640,
+    origDiamondY = 320,
     origDiamondW = 65,
     origDiamondH = 50;
 
+var origPatX = 720,
+    origPatY = 310,
+    origPatW = 50,
+    origPatH = 70;
 
 
 //Everything drawed
@@ -136,6 +135,8 @@ playerInfo.write = function(ctx){
   ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.SPYRO].price, 630, 405); //SPYRO
   ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.DIAMOND].price, 720, 405); //DIAMOND
   ctx.fillText("Next wave", 670, 110);
+  ctx.font = "30px Arial bold";
+  ctx.fillText("Level: " + Arena.level, 615,590)
 
 }
 
