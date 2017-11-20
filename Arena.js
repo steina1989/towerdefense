@@ -36,6 +36,8 @@ var Arena = {
 
 	balloons1 : [0,0,0,0],
 
+	level : 0,
+
 
 	grid :
 	[[ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
