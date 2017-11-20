@@ -140,7 +140,7 @@ playerInfo.write = function(ctx){
   ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.PAT].price, 720, 405); //PAT
   ctx.fillText("Next wave", 670, 110);
   ctx.font = "bold 30px Arial";
-  ctx.fillText("Level: " + Arena.level, 655,510);
+  ctx.fillText("Level: " + Arena.level, 645,510);
   ctx.restore();
 }
 
