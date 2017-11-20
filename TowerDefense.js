@@ -56,6 +56,7 @@ var g_renderArenaGrid = false;
 var KEY_RENDERARENA_GRID = keyCode('J')
 var KEY_SPATIAL = keyCode('X');
 var KEY_RESET = keyCode('R');
+var KEY_CANCEL = keyCode('C');
 var KEY_GEN_BALLOON_RED = keyCode('1');
 var KEY_GEN_BALLOON_BLUE = keyCode('2');
 var KEY_GEN_BALLOON_GREEN = keyCode('3');
@@ -70,6 +71,7 @@ function processDiagnostics() {
     if (eatKey(KEY_SPATIAL)) g_renderSpatialDebug = !g_renderSpatialDebug;
 
     if (eatKey(KEY_RENDERARENA_GRID)) g_renderArenaGrid = !g_renderArenaGrid;
+    if (eatKey(KEY_CANCEL)) g_cancel();
     
     // Special diagnostic functions (halt balloons, reset )
     if (eatKey(KEY_GEN_BALLOON_RED)) entityManager._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]));
@@ -79,6 +81,21 @@ function processDiagnostics() {
 
 }
 
+function g_cancel(){
+    console.log(tower._isDeadNow);
+    tower.kill();
+    if(tower._isDeadNow){
+        tower = entityManager.KILL_ME_NOW;
+    }
+    console.log(tower._isDeadNow);
+    console.log(tower);
+
+}
+function popSound(){
+    var pop = new Audio("pop.wav");
+    pop.play();
+
+} 
 
 // =================
 // RENDER SIMULATION
@@ -127,8 +144,6 @@ function requestPreloads() {
         bluebloon  : "images/bluebloon.png",
         greenbloon  : "images/greenbloon.png",
         yellowbloon  : "images/yellowbloon.png",
-        whitebloon  : "images/whitebloon.png",
-        blackbloon  : "images/blackbloon.png",
         menuBackground : "images/ground.jpg"
     };
 
@@ -150,8 +165,6 @@ function preloadDone() {
     g_sprites.bluebloon = new Sprite(g_images.bluebloon);
     g_sprites.greenbloon = new Sprite(g_images.greenbloon);
     g_sprites.yellowbloon = new Sprite(g_images.yellowbloon);
-    g_sprites.whitebloon = new Sprite(g_images.whitebloon);
-    g_sprites.blackbloon = new Sprite(g_images.blackbloon);
     g_sprites.menuBackground = new Sprite(g_images.menuBackground);
     g_sprites.menuBackground.scale = 1
     Tower.init();

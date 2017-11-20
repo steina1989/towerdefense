@@ -29,6 +29,7 @@ function Tower(descr) {
 
 }
 
+
 Tower.init = function() {
 	this.towerType = {
 		BRAIN : 1,
