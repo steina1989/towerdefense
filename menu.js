@@ -141,6 +141,8 @@ playerInfo.write = function(ctx){
   ctx.fillText("Next wave", 670, 110);
   ctx.font = "bold 30px Arial";
   ctx.fillText("Level: " + Arena.level, 645,510);
+  ctx.font = "bold 15px Arial";
+  ctx.fillText("{Instructions below} ", 628,580);
   ctx.restore();
 }
 
