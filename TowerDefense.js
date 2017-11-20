@@ -80,6 +80,11 @@ function processDiagnostics() {
 }
 
 
+function $$$(){
+    playerInfo.coins = 5000;
+}
+
+
 // =================
 // RENDER SIMULATION
 // =================
