@@ -36,10 +36,10 @@ Tower.init = function() {
 		DIAMOND : 3,
 		PAT: 4,
 		properties: {
-			1: {name: "brain", fireDelay: 1200, price: 5, range: 100, bulletDamage: 1, bulletSpeed: 2, sprite: g_sprites.twrHeili, isPlaced: false},
-			2: {name: "spyro", fireDelay: 700, price: 15, range: 135, bulletDamage: 2, bulletSpeed: 4, sprite: g_sprites.twrSpyro, isPlaced: false},
-			3: {name: "diamond", fireDelay: 500, price: 25, range: 160, bulletDamage: 2, bulletSpeed: 6, sprite: g_sprites.twrDiamond,isPlaced: false},
-			4: {name: "pat", fireDelay: 200, price: 35, range: 180, bulletDamage: 3, bulletSpeed: 8, sprite: g_sprites.twrPat, isPlaced: false}
+			1: {name: "brain", fireDelay: 1200, price: 120, range: 100, bulletDamage: 1, bulletSpeed: 3, sprite: g_sprites.twrHeili, isPlaced: false},
+			2: {name: "spyro", fireDelay: 700, price: 200, range: 135, bulletDamage: 2, bulletSpeed: 5, sprite: g_sprites.twrSpyro, isPlaced: false},
+			3: {name: "diamond", fireDelay: 500, price: 550, range: 160, bulletDamage: 2, bulletSpeed: 7, sprite: g_sprites.twrDiamond,isPlaced: false},
+			4: {name: "pat", fireDelay: 200, price: 2000, range: 180, bulletDamage: 3, bulletSpeed: 9, sprite: g_sprites.twrPat, isPlaced: false}
 		}
 	};
 };

@@ -73,8 +73,8 @@ menuBar.render = function(ctx){
 
 
 var playerInfo = {
-  lives:20,
-  coins:5000
+  lives:200,
+  coins:330
 };
 
 
@@ -131,10 +131,10 @@ playerInfo.write = function(ctx){
   ctx.fillText("Yolo's: " + this.lives, 615, 50);
   ctx.fillText("Ca$hMoneyzz: " + this.coins, 615, 70);
   ctx.font = "15px Arial bold";
-  ctx.fillText("Cost: 100", 720, 300); //PAT
-  ctx.fillText("Cost: 100", 630, 300); //BRAIN
-  ctx.fillText("Cost: 100", 630, 405); //SPYRO
-  ctx.fillText("Cost: 100", 720, 405); //DIAMOND
+  ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.PAT].price, 720, 300); //PAT
+  ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.BRAIN].price, 630, 300); //BRAIN
+  ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.SPYRO].price, 630, 405); //SPYRO
+  ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.DIAMOND].price, 720, 405); //DIAMOND
   ctx.fillText("Next wave", 670, 110);
 
 }

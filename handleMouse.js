@@ -33,7 +33,7 @@ function handleMouse(evt) {
       // If we want to place tower in a legal spot:
       if(Arena.isLegalTile(evt.clientX, evt.clientY) && evt.clientX < Arena.WIDTH){
         tower.isPlaced = true;
-        playerInfo.coins -= Tower.towerType.properties[Tower.towerType.DIAMOND].price;
+        playerInfo.coins -= tower.price;
 
         //Change tile so we can't place tower on top of tower
         Arena.grid[row][column] = -1;
@@ -64,7 +64,7 @@ function handleMouse(evt) {
           Arena.balloons1[0]+=5;
           Arena.balloons1[1]+=2;
           Arena.balloons1[2]+=2;
-          Arena.balloons1[3]+=1;
+          Arena.balloons1[3]+=0.4;
 
           entityManager.generateLevel();
       }

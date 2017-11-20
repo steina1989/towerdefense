@@ -86,11 +86,13 @@ clearCanvas: function (ctx) {
 },
 
 
-//ASDF
 gameOverText: function (ctx){
-    ctx.fillStyle="red";
+    ctx.fillStyle="black";
     ctx.font = "bolder 50px Arial";
     ctx.fillText("Is that all you got?",150,300);
+    ctx.font = "bolder 30px Arial";
+    ctx.fillText("Refresh to play again,",170,360);
+
 },
 
 strokeCircle: function (ctx, x, y, r) {

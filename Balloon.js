@@ -48,10 +48,10 @@ Balloon.init = function() {
 		YELLOW : 4,
 
 		properties: {
-			1: {name: "red", penalty: 1, speed: 1, timeToNextOne: 20, sprite: g_sprites.redbloon, type: "balloon"},
+			1: {name: "red", penalty: 1, speed: 1.5, timeToNextOne: 20, sprite: g_sprites.redbloon, type: "balloon"},
 			2: {name: "blue", penalty: 2, speed: 1.5, timeToNextOne: 20, sprite: g_sprites.bluebloon, type: "balloon"},
 			3: {name: "green", penalty: 3, speed: 2, timeToNextOne: 30, sprite: g_sprites.greenbloon, type: "balloon"},
-			4: {name: "yellow", penalty: 4, speed: 3, timeToNextOne: 50, sprite: g_sprites.yellowbloon, type: "balloon"}
+			4: {name: "yellow", penalty: 4, speed: 2.5, timeToNextOne: 50, sprite: g_sprites.yellowbloon, type: "balloon"}
 		}
 	};
 };
