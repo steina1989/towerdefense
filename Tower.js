@@ -116,6 +116,9 @@ Tower.prototype.update = function (du) {
 };
 
 Tower.prototype.render = function (ctx) {
+	if (this._isDeadNow) 
+		return;
+	
     this.sprite.drawCentredAt(ctx, 
     	this.cx, 
     	this.cy, 

@@ -84,6 +84,7 @@ function g_cancel(){
     }
     console.log(tower._isDeadNow);
     console.log(tower);
+    tower = null;
 
 }
 function popSound(){
