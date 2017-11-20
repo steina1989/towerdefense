@@ -56,7 +56,6 @@ Bullet.prototype.update = function (du) {
 
         playerInfo.coins+=10;
 
-        playerInfo.coins+=23;
         popSound();
 
         // If there exists such a function then call takeBulletHit(hitEntity)
