@@ -25,7 +25,7 @@ var origSpyroX = 720,
     origSpyroW = 60,
     origSpyroH = 80;
 
-var origDiamondX = 640,
+var origDiamondX = 630,
     origDiamondY = 320,
     origDiamondW = 65,
     origDiamondH = 50;
@@ -125,15 +125,15 @@ menuBar.getTower = function (x, y){
  
 playerInfo.write = function(ctx){
   ctx.fillStyle = "black";
-  ctx.font = "bolder 20px Arial"; //ASDF breyta
+  ctx.font = "bolder 18px Arial"; //ASDF breyta
   
   ctx.fillText("Yolo's: " + this.lives, 615, 50);
   ctx.fillText("Ca$hMoneyzz: " + this.coins, 615, 70);
-  ctx.font = "15px Arial bold";
-  ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.PAT].price, 720, 300); //PAT
+  ctx.font = "15px Arial bolder";
+  ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.SPYRO].price, 720, 300); //SPYRO
   ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.BRAIN].price, 630, 300); //BRAIN
-  ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.SPYRO].price, 630, 405); //SPYRO
-  ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.DIAMOND].price, 720, 405); //DIAMOND
+  ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.DIAMOND].price, 630, 405); //DIAMOND
+  ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.PAT].price, 720, 405); //PAT
   ctx.fillText("Next wave", 670, 110);
   ctx.font = "30px Arial bold";
   ctx.fillText("Level: " + Arena.level, 615,590)
