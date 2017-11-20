@@ -34,7 +34,7 @@ var Arena = {
 	cellWidth : 60,
 	cellHeight : 60,
 
-	balloons1 : [5,1,1,1],
+	balloons1 : [5,1,0,0],
 
 
 	grid :
@@ -116,15 +116,9 @@ Arena.indexToPos = function(row,column){
 }
 
 
-Arena.update = function(){
-
-
-}
-
-// To do: Draw pretty background
+//Draw pretty background
 Arena.render = function(ctx) {
 	this.drawBackground(ctx);
-	//this.generateLevel();
 }
 
 // Placeholder backdrop
@@ -150,11 +144,11 @@ Arena.renderDiagnostics = function(ctx){
 				var posY = pos.y;
 				this._drawArrayPath(ctx,posX,posY); 
 			}
-
 		}
 	}	
 }
 
+//Draws a path over the background
 Arena._drawArrayPath = function(ctx,x,y){
 	ctx.beginPath();
 	ctx.save;

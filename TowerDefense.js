@@ -16,6 +16,7 @@ function createInitialTower() {
 
     entityManager.generateTower({ 
     // ASDF á eftir að búa til aðferðina í entityManager.
+    //hvaða aðferð? -hugrún
         cx : 200,
         cy : 200
     });
@@ -61,8 +62,6 @@ var KEY_GEN_BALLOON_GREEN = keyCode('3');
 var KEY_GEN_BALLOON_YELLOW = keyCode('4');
 
 
-
-
 var currentBalloon = "red";
 
 function processDiagnostics() {
@@ -71,7 +70,6 @@ function processDiagnostics() {
     if (eatKey(KEY_SPATIAL)) g_renderSpatialDebug = !g_renderSpatialDebug;
 
     if (eatKey(KEY_RENDERARENA_GRID)) g_renderArenaGrid = !g_renderArenaGrid;
-
     
     // Special diagnostic functions (halt balloons, reset )
     if (eatKey(KEY_GEN_BALLOON_RED)) entityManager._balloons.push(new Balloon(Balloon.balloonType.properties[Balloon.balloonType.RED]));
@@ -103,20 +101,10 @@ function renderSimulation(ctx) {
     entityManager.render(ctx);
 
 
-
-    //entityManager.fireBullet(300,300,5,5,0);
-
-    //g_sprites.balloon.drawCentredAt(ctx, 200,200,0);
-
-    //g_sprites.tower.drawCentredAt(ctx,400,200,0);
-
     if (g_renderSpatialDebug) spatialManager.render(ctx);
     if (g_renderArenaGrid) Arena.renderDiagnostics(ctx);
 
 }
-
-
-
 
 // =============
 // PRELOAD STUFF
@@ -125,8 +113,6 @@ function renderSimulation(ctx) {
 var g_images = {};
 
 function requestPreloads() {
-
-    console.log("hallo")
 
     var requiredImages = {
         //ASDF þarf að updatea
@@ -143,7 +129,6 @@ function requestPreloads() {
         yellowbloon  : "images/yellowbloon.png",
         whitebloon  : "images/whitebloon.png",
         blackbloon  : "images/blackbloon.png",
-        cloud : "images/cloud.png",
         menuBackground : "images/ground.jpg"
     };
 
@@ -153,7 +138,6 @@ function requestPreloads() {
 var g_sprites = {};
 
 function preloadDone() {
-    //ASDF þarf að updatea
 
     g_sprites.twrHeili  = new Sprite(g_images.twrHeili);
     g_sprites.twrSpyro  = new Sprite(g_images.twrSpyro);
@@ -168,7 +152,6 @@ function preloadDone() {
     g_sprites.yellowbloon = new Sprite(g_images.yellowbloon);
     g_sprites.whitebloon = new Sprite(g_images.whitebloon);
     g_sprites.blackbloon = new Sprite(g_images.blackbloon);
-    g_sprites.cloud = new Sprite(g_images.cloud);
     g_sprites.menuBackground = new Sprite(g_images.menuBackground);
     g_sprites.menuBackground.scale = 1
     Tower.init();

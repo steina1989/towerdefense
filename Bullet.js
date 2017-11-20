@@ -17,18 +17,9 @@ function Bullet(descr) {
 
     // Common inherited setup logic from Entity
     this.setup(descr);
-
-    
-/*
-    // Diagnostics to check inheritance stuff
-    this._bulletProperty = true;
-    console.dir(this);
-*/
-
 }
 
 Bullet.prototype = new Entity();
-
     
 // Initial, inheritable, default values
 Bullet.prototype.rotation = 0;
@@ -37,8 +28,8 @@ Bullet.prototype.cy = 200;
 Bullet.prototype.velX = 1;
 Bullet.prototype.velY = 1;
 
-// Convert times from milliseconds to "nominal" time units.
-//Bullet.prototype.lifeSpan = 3000 / NOMINAL_UPDATE_INTERVAL;
+// ASDF MÁ TAKA ÚT ? Convert times from milliseconds to "nominal" time units.
+// ASDF MÁ TAKA ÚT? Bullet.prototype.lifeSpan = 3000 / NOMINAL_UPDATE_INTERVAL;
 
 Bullet.prototype.update = function (du) {
 
@@ -62,47 +53,29 @@ Bullet.prototype.update = function (du) {
     if (hitEntity) {
         var canTakeHit = hitEntity.takeBulletHit;
         hitEntity.kill();
-        //hitEntity.takeBulletHit();
+
         // If there exists such a function then call takeBulletHit(hitEntity)
         if (canTakeHit) canTakeHit.call(hitEntity); 
         return entityManager.KILL_ME_NOW;
     }
-    
-
-    
-    // Handle collisions
-    //
-    /*var hitEntity = this.findHitEntity();
-    if (hitEntity) {
-        var canTakeHit = hitEntity.takeBulletHit;
-        if (canTakeHit) canTakeHit.call(hitEntity);
-        return entityManager.KILL_ME_NOW;
-    }*/
 
     // put back in the grid at the new place
     spatialManager.register(this);
-
 };
 
 Bullet.prototype.getRadius = function () {
-
     return g_images.bullet.width/2;
 };
 
 Bullet.prototype.takeBulletHit = function () {
     this.kill();
     playerInfo.coins+=23;
-    
 };
 
 Bullet.prototype.render = function (ctx) {
-
     g_sprites.bullet.drawCentredAt(
         ctx, this.cx, this.cy, this.rotation
     );
-
-    //g_sprites.bullet.drawCentredAt(ctx, 50,50,0);
-
 };
 
 var firstTime = true;

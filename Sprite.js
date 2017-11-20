@@ -35,9 +35,9 @@ function Sprite(image) {
     
 }
 
-Sprite.prototype.drawAt = function (ctx, x, y,width,height) {
+Sprite.prototype.drawAt = function (ctx, x, y, width, height) {
     ctx.save()
-    ctx.drawImage(this.image,x,y,width,height);
+    ctx.drawImage(this.image, x, y, width, height);
     ctx.restore()
 };
 

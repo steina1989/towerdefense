@@ -29,9 +29,6 @@ function Tower(descr) {
 
 }
 
-//var towerType;
-
-
 Tower.init = function() {
 	this.towerType = {
 		BRAIN : 1,
@@ -46,27 +43,6 @@ Tower.init = function() {
 		}
 	};
 };
-
-// ASDF Debug fall, eyða út 
-/*
-Tower.generateTower = function() {
-	//
-	var twr = new Tower(towerType.properties[towerType.BRAIN]);
-	twr.cx = 250;
-	twr.cy = 250;
-	twr.rotation = 0;
-	//twr.render(ctx);
-
-	entityManager._towers.push(twr);
-	//console.log(entityManager._towers[0]);
-	//return twr;
-	//Teiknast í 0.00000000000sek ókei
-
-};
-
-*/
-
-//kallað á í TowerDefense
 
 /*
 In order to be able to construct different types of towers, 
@@ -107,10 +83,10 @@ Tower.prototype.inRange = function(balloon){
 	return false;
 };
 
-// isPlaced er eiginleiki sem er false þar til músin fer upp ASDF
+
 
 Tower.prototype.update = function (du) {    
-
+	//Make sure tower does not shoot if it has not been placed
 	if(this.isPlaced){
 		// Distance between nearest balloon and tower
 	    var nearestBln = this.findNearestBalloon();
@@ -125,50 +101,38 @@ Tower.prototype.update = function (du) {
 	        var relVelX = dX * speed;
 	        var relVelY = dY * speed;
 	        var launchDist = this.sprite.width * 1.2;
-	    	//var velX = this.properties.bulletSpeed;
 
 	    	var now = new Date();
 	    	var currentTime = now.getTime();
 
 	    	if (currentTime - this.lastTime > this.fireDelay) {
 	    		entityManager.fireBullet(this.cx + dX, this.cy + dY, relVelX, relVelY, 0);
-	    		//console.log("bullet")
 	    		firstTime = false;
 	    		this.lastTime = currentTime;
 	    	}
 	    }
-
-
-        //var launchDist = this.getRadius() * 1.2;
-        
-        //var relVel = this.launchVel;
-        
-
-        //entityManager.fireBullet(
-          // this.cx + dX * launchDist, this.cy + dY * launchDist,
-           //this.velX + relVelX, this.velY + relVelY,
-           //this.rotation);
-		//this.generateBullet(speed, damage, this.rotation); ASDF dót
 	}
 };
 
 Tower.prototype.render = function (ctx) {
-    this.sprite.drawCentredAt(
-	ctx, this.cx, this.cy, this.rotation
+    this.sprite.drawCentredAt(ctx, 
+    	this.cx, 
+    	this.cy, 
+    	this.rotation
     );
+
+    //Draw a pretty circle around towers to know their range
     if(!this.isPlaced){
-    	//ctx.save();
     	ctx.strokeStyle = "red";
-    	util.strokeCircle(ctx, this.cx, this.cy, Math.sqrt(this.range)); // ASDF
+    	util.strokeCircle(ctx, this.cx, this.cy, Math.sqrt(this.range));
     	ctx.fillStyle = "rgba(240, 80, 100, 0.3)";
     	util.fillCircle(ctx, this.cx, this.cy, Math.sqrt(this.range));
-    	//ctx.restore();
-    	//ctx.close();
     }
 };
 
+//Function that returns the closest balloon
 Tower.prototype.findNearestBalloon = function (){
-	// Skilar blöðru hlut í minnstri fjarlægð
+
 	var numBloons = entityManager._balloons.length;
 	var shortestDist = Number.MAX_VALUE;
 	var nearestBalloon;

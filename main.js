@@ -60,7 +60,8 @@ main._updateClocks = function (frameTime) {
 main._iterCore = function (dt) {
     
     // Handle QUIT
-    if (requestedQuit()) {
+    if (playerInfo.lives <= 0) {
+        util.gameOverText(g_ctx);
         this.gameOver();
         return;
     }
@@ -79,10 +80,7 @@ main.gameOver = function () {
 
 // Simple voluntary quit mechanism
 //
-var KEY_QUIT = 'Q'.charCodeAt(0);
-function requestedQuit() {
-    return keys[KEY_QUIT];
-}
+
 
 // Annoying shim for Firefox and Safari
 window.requestAnimationFrame = 

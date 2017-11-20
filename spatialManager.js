@@ -28,7 +28,6 @@ var spatialManager = {
 
     getNewSpatialID: function() {
 
-        // TODO: YOUR STUFF HERE!
         return ++this._nextSpatialID;
 
     },
@@ -37,7 +36,6 @@ var spatialManager = {
         var pos = entity.getPos();
         var spatialID = entity.getSpatialID();
 
-        // TODO: YOUR STUFF HERE!
         this._entities[spatialID] = {
             posX: pos.posX,
             posY: pos.posY,
@@ -68,7 +66,7 @@ var spatialManager = {
         }
     },
 
-    render: function(ctx) {
+    /*render: function(ctx) {
         var oldStyle = ctx.strokeStyle;
         ctx.strokeStyle = "red";
 
@@ -79,6 +77,6 @@ var spatialManager = {
             }
         }
         ctx.strokeStyle = oldStyle;
-    }
+    }*/
 
 }

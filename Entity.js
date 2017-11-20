@@ -20,12 +20,6 @@ game Entities.
 
 function Entity() {
 
-/*
-    // Diagnostics to check inheritance stuff
-    this._entityProperty = true;
-    console.dir(this);
-*/
-
 };
 
 Entity.prototype.setup = function (descr) {
