@@ -53,7 +53,11 @@ Bullet.prototype.update = function (du) {
     if (hitEntity) {
         var canTakeHit = hitEntity.takeBulletHit;
         hitEntity.kill();
+
         playerInfo.coins+=10;
+
+        playerInfo.coins+=23;
+        popSound();
 
         // If there exists such a function then call takeBulletHit(hitEntity)
         if (canTakeHit) canTakeHit.call(hitEntity); 
