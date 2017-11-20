@@ -135,6 +135,8 @@ playerInfo.write = function(ctx){
   ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.SPYRO].price, 630, 405); //SPYRO
   ctx.fillText("Cost: " + Tower.towerType.properties[Tower.towerType.DIAMOND].price, 720, 405); //DIAMOND
   ctx.fillText("Next wave", 670, 110);
+  ctx.font = "30px Arial bold";
+  ctx.fillText("Level: " + Arena.level, 615,590)
 
 }
 
